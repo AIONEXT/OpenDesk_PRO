@@ -1,0 +1,90 @@
+{
+  "name": "opendesk-pro",
+  "productName": "OpenDesk PRO",
+  "version": "3.1.0",
+  "license": "MIT",
+  "author": "OpenDesk PRO Contributors",
+  "homepage": "https://opendesk.app",
+  "description": "OpenDesk PRO v3.1 Enterprise \u2014 macOS All-in-One Liquid Glass Workspace Drawer, Unified Security/Privacy/Vault Packet & Zero-Telemetry AI Hub",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && bash ./build-macos-dmg.sh",
+    "build:app": "tsc --noEmit && vite build && bash ./build-macos-dmg.sh",
+    "test": "tsc --noEmit && node ./test-all-features.mjs",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.opendesk.app",
+    "productName": "OpenDesk PRO",
+    "copyright": "Copyright \u00a9 2026 OpenDesk PRO Contributors (MIT License)",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json",
+      "LICENSE",
+      "PRIVACY.md",
+      "SECURITY.md",
+      "THIRD_PARTY_NOTICES.md",
+      "COMMERCIAL_LICENSING.md"
+    ],
+    "extraResources": [
+      {
+        "from": "src/main/assets",
+        "to": "assets"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "identity": null,
+      "extendInfo": {
+        "LSUIElement": 1,
+        "NSHumanReadableCopyright": "Copyright \u00a9 2026 OpenDesk PRO Contributors. Licensed under the MIT License."
+      },
+      "target": [
+        "dmg",
+        "dir"
+      ]
+    },
+    "dmg": {
+      "title": "OpenDesk PRO 3.1",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vite-plugin-electron": "^0.28.8"
+  }
+}

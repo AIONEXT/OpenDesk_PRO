@@ -1,0 +1,28 @@
+# macOS System Files
+.DS_Store
+._*
+
+# Dependencies
+node_modules/
+
+# Build & Packaging Artifacts
+dist/
+dist-electron/
+release/
+*.asar
+*.dmg
+*.app/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+ai-config.json
+!ai-config.example.json
+
+# Encrypted Vault & License Data
+*.dfvault
+*.dfenc
+*.dfbackup
+*.dfsec
+OpenDesk_License_Receipt.txt

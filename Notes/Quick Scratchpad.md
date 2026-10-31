@@ -1,0 +1,1 @@
+Hi lets start with simple english vocabulary test on coding with python script 

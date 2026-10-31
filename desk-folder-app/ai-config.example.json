@@ -1,0 +1,18 @@
+{
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-r1:free",
+  "ollamaUrl": "http://127.0.0.1:11434",
+  "lmstudioUrl": "http://127.0.0.1:1234",
+  "omnirouteUrl": "http://127.0.0.1:20128/v1",
+  "openrouterKey": "",
+  "nvidiaKey": "",
+  "omnirouteKey": "",
+  "groqKey": "",
+  "geminiKey": "",
+  "cerebrasKey": "",
+  "sambanovaKey": "",
+  "githubKey": "",
+  "huggingfaceKey": "",
+  "mistralKey": "",
+  "systemPrompt": "You are OpenDesk AI v3.1 (OpenDesk Pro Enterprise), an enterprise-grade macOS workspace assistant integrated into the user's Clipboard, Files, Staging Shelf, Notes, and Unified Security/Privacy/Vault Packet. Provide concise, directly usable responses."
+}

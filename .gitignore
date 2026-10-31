@@ -1,0 +1,44 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build Outputs & Electron Bundles
+dist/
+dist-electron/
+release/
+*.asar
+*.dmg
+*.app/
+*.blockmap
+
+# Environment & Local Secrets
+.env
+.env.*
+!.env.example
+ai-config.json
+!ai-config.example.json
+
+# Encrypted User Data, Vaults & Receipts
+Vault/
+*.dfvault
+*.dfenc
+*.dfbackup
+*.dfsec
+OpenDesk_License_Receipt.txt
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+.claude/
+.obsidian/workspace.json
+*.swp
+*.swo

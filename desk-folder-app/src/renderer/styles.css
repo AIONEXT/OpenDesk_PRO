@@ -1,0 +1,655 @@
+/* OpenDesk Pro v3.1 — macOS Tahoe Appearance, Dynamic Liquid Glass Tint & Blur, Dual-Tone Light Themes, Resizable Split Panes & Zero-Overlap Layout Engine */
+
+:root {
+  --macos-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  --macos-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --df-accent: #007aff;
+  --df-accent-soft: rgba(0, 122, 255, 0.24);
+  --df-theme-line: linear-gradient(90deg, #007aff 0%, #af52de 20%, #ff2d55 42%, #ff9500 64%, #ffcc00 82%, #34c759 100%);
+  --df-liquid-alpha: 0.38;
+  --df-liquid-card-alpha: 0.14;
+  --df-liquid-blur-px: 48px;
+  --df-glass-tint-rgba: rgba(0, 122, 255, 0.18);
+  --df-glass-sheen-rgba: rgba(255, 255, 255, 0.18);
+}
+
+/* ============================================================================
+   1. LIQUID GLASS THEME (Dynamic Translucency & Tint Slider: 10% Clear <-> 95% Frosted)
+   ============================================================================ */
+.theme-liquid {
+  --df-bg-drawer: linear-gradient(
+    145deg,
+    var(--df-glass-sheen-rgba, rgba(255, 255, 255, 0.18)) 0%,
+    var(--df-glass-tint-rgba, rgba(14, 116, 144, 0.28)) 42%,
+    rgba(10, 16, 30, var(--df-liquid-alpha)) 100%
+  );
+  --df-bg-header: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, calc(var(--df-liquid-card-alpha) * 1.15)) 0%,
+    var(--df-glass-tint-rgba, rgba(255, 255, 255, 0.06)) 100%
+  );
+  --df-bg-subbar: rgba(12, 19, 34, calc(var(--df-liquid-alpha) * 0.82));
+  --df-bg-card: rgba(255, 255, 255, var(--df-liquid-card-alpha));
+  --df-bg-card-hover: rgba(255, 255, 255, calc(var(--df-liquid-card-alpha) + 0.10));
+  --df-bg-input: rgba(10, 16, 30, calc(var(--df-liquid-alpha) * 0.90 + 0.06));
+  --df-bg-modal: rgba(13, 18, 32, 0.95);
+  --df-bg-pill: rgba(255, 255, 255, calc(var(--df-liquid-card-alpha) * 0.95));
+  --df-bg-pill-hover: rgba(255, 255, 255, calc(var(--df-liquid-card-alpha) + 0.12));
+  --df-border: rgba(255, 255, 255, calc(0.14 + var(--df-liquid-card-alpha) * 0.65));
+  --df-border-subtle: rgba(255, 255, 255, 0.14);
+  --df-text-primary: #ffffff;
+  --df-text-secondary: rgba(248, 250, 252, 0.92);
+  --df-text-muted: rgba(226, 232, 240, 0.76);
+  --df-scrollbar: rgba(255, 255, 255, 0.30);
+  --df-shadow:
+    0 32px 68px -12px rgba(0, 0, 0, 0.52),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+}
+
+/* ============================================================================
+   2. MIDNIGHT AURORA THEME (Indigo-Emerald Deep Glass)
+   ============================================================================ */
+.theme-aurora {
+  --df-bg-drawer: linear-gradient(155deg, rgba(16, 24, 48, 0.90) 0%, rgba(19, 38, 47, 0.92) 55%, rgba(12, 18, 34, 0.94) 100%);
+  --df-bg-header: linear-gradient(180deg, rgba(56, 189, 248, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+  --df-bg-subbar: rgba(10, 18, 32, 0.58);
+  --df-bg-card: rgba(56, 189, 248, 0.09);
+  --df-bg-card-hover: rgba(56, 189, 248, 0.16);
+  --df-bg-input: rgba(8, 14, 26, 0.68);
+  --df-bg-modal: rgba(11, 19, 35, 0.96);
+  --df-bg-pill: rgba(56, 189, 248, 0.13);
+  --df-bg-pill-hover: rgba(56, 189, 248, 0.23);
+  --df-border: rgba(56, 189, 248, 0.25);
+  --df-border-subtle: rgba(56, 189, 248, 0.13);
+  --df-text-primary: #f0fdfa;
+  --df-text-secondary: #bae6fd;
+  --df-text-muted: #7dd3fc;
+  --df-scrollbar: rgba(56, 189, 248, 0.32);
+  --df-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.62), inset 0 1px 1px 0 rgba(56, 189, 248, 0.30);
+}
+
+/* ============================================================================
+   3. NORD FROST THEME (Arctic Slate Blue Studio)
+   ============================================================================ */
+.theme-nord {
+  --df-bg-drawer: linear-gradient(180deg, rgba(46, 52, 64, 0.92) 0%, rgba(36, 41, 51, 0.95) 100%);
+  --df-bg-header: linear-gradient(180deg, rgba(136, 192, 208, 0.14) 0%, rgba(76, 86, 106, 0.08) 100%);
+  --df-bg-subbar: rgba(43, 48, 60, 0.68);
+  --df-bg-card: rgba(67, 76, 94, 0.45);
+  --df-bg-card-hover: rgba(76, 86, 106, 0.65);
+  --df-bg-input: rgba(30, 34, 42, 0.68);
+  --df-bg-modal: rgba(46, 52, 64, 0.96);
+  --df-bg-pill: rgba(136, 192, 208, 0.14);
+  --df-bg-pill-hover: rgba(136, 192, 208, 0.24);
+  --df-border: rgba(136, 192, 208, 0.22);
+  --df-border-subtle: rgba(216, 222, 233, 0.10);
+  --df-text-primary: #eceff4;
+  --df-text-secondary: #d8dee9;
+  --df-text-muted: #88c0d0;
+  --df-scrollbar: rgba(136, 192, 208, 0.28);
+  --df-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.58), inset 0 1px 1px 0 rgba(236, 239, 244, 0.22);
+}
+
+/* ============================================================================
+   4. SOLARIZED AMBER THEME (Warm Gold & Deep Teal Glass)
+   ============================================================================ */
+.theme-solarized {
+  --df-bg-drawer: linear-gradient(180deg, rgba(0, 43, 54, 0.93) 0%, rgba(7, 54, 66, 0.95) 100%);
+  --df-bg-header: linear-gradient(180deg, rgba(181, 137, 0, 0.16) 0%, rgba(7, 54, 66, 0.12) 100%);
+  --df-bg-subbar: rgba(0, 33, 43, 0.62);
+  --df-bg-card: rgba(7, 54, 66, 0.65);
+  --df-bg-card-hover: rgba(14, 70, 86, 0.80);
+  --df-bg-input: rgba(0, 28, 36, 0.72);
+  --df-bg-modal: rgba(0, 43, 54, 0.96);
+  --df-bg-pill: rgba(181, 137, 0, 0.16);
+  --df-bg-pill-hover: rgba(181, 137, 0, 0.28);
+  --df-border: rgba(147, 161, 161, 0.24);
+  --df-border-subtle: rgba(147, 161, 161, 0.12);
+  --df-text-primary: #fdf6e3;
+  --df-text-secondary: #eee8d5;
+  --df-text-muted: #93a1a1;
+  --df-scrollbar: rgba(181, 137, 0, 0.34);
+  --df-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.60), inset 0 1px 1px 0 rgba(253, 246, 227, 0.20);
+}
+
+/* ============================================================================
+   5. OBSIDIAN PRO THEME (Carbon Violet High-Contrast Studio)
+   ============================================================================ */
+.theme-obsidian {
+  --df-bg-drawer: linear-gradient(180deg, rgba(17, 14, 27, 0.94) 0%, rgba(10, 9, 16, 0.96) 100%);
+  --df-bg-header: linear-gradient(180deg, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0.03) 100%);
+  --df-bg-subbar: rgba(9, 7, 15, 0.68);
+  --df-bg-card: rgba(168, 85, 247, 0.08);
+  --df-bg-card-hover: rgba(168, 85, 247, 0.15);
+  --df-bg-input: rgba(6, 5, 12, 0.75);
+  --df-bg-modal: rgba(16, 13, 26, 0.97);
+  --df-bg-pill: rgba(168, 85, 247, 0.14);
+  --df-bg-pill-hover: rgba(168, 85, 247, 0.25);
+  --df-border: rgba(168, 85, 247, 0.26);
+  --df-border-subtle: rgba(168, 85, 247, 0.12);
+  --df-text-primary: #faf5ff;
+  --df-text-secondary: #e9d5ff;
+  --df-text-muted: #c084fc;
+  --df-scrollbar: rgba(168, 85, 247, 0.34);
+  --df-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.68), inset 0 1px 1px 0 rgba(168, 85, 247, 0.28);
+}
+
+/* ============================================================================
+   6. LIGHT & DUAL-TONE LIGHT THEMES (Beige/Bridge + Orange, White + Blue, etc.)
+   ============================================================================ */
+.theme-light {
+  --df-bg-drawer: var(--df-dual-bg, linear-gradient(145deg, #faf3e8 0%, #f3e5d2 55%, #fff7ed 100%));
+  --df-bg-header: var(--df-dual-header, linear-gradient(180deg, rgba(234, 88, 12, 0.14) 0%, rgba(255, 255, 255, 0.75) 100%));
+  --df-bg-subbar: var(--df-dual-subbar, rgba(234, 88, 12, 0.09));
+  --df-bg-card: var(--df-dual-card, rgba(255, 252, 247, 0.90));
+  --df-bg-card-hover: var(--df-dual-card-hover, rgba(255, 255, 255, 0.99));
+  --df-bg-input: var(--df-dual-input, rgba(255, 255, 255, 0.96));
+  --df-bg-modal: var(--df-dual-modal, #fcf8f2);
+  --df-bg-pill: var(--df-dual-pill, rgba(234, 88, 12, 0.11));
+  --df-bg-pill-hover: var(--df-dual-pill-hover, rgba(234, 88, 12, 0.20));
+  --df-border: var(--df-dual-border, rgba(234, 88, 12, 0.28));
+  --df-border-subtle: var(--df-dual-border-subtle, rgba(234, 88, 12, 0.15));
+  --df-text-primary: var(--df-dual-text-primary, #29180e);
+  --df-text-secondary: var(--df-dual-text-secondary, #5c3a21);
+  --df-text-muted: var(--df-dual-text-muted, #8c5e3c);
+  --df-scrollbar: var(--df-dual-border, rgba(234, 88, 12, 0.32));
+  --df-shadow:
+    0 24px 52px -10px rgba(15, 23, 42, 0.22),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px var(--df-dual-border, rgba(234, 88, 12, 0.18));
+}
+
+/* ============================================================================
+   7. DARK & SOLID COLOR THEMES (Native Dark + Custom Solid Surface Palettes)
+   ============================================================================ */
+.theme-dark,
+.theme-solid {
+  --df-bg-drawer: var(--df-solid-bg, #0f172a);
+  --df-bg-header: rgba(255, 255, 255, 0.05);
+  --df-bg-subbar: rgba(0, 0, 0, 0.28);
+  --df-bg-card: rgba(255, 255, 255, 0.06);
+  --df-bg-card-hover: rgba(255, 255, 255, 0.11);
+  --df-bg-input: rgba(0, 0, 0, 0.38);
+  --df-bg-modal: var(--df-solid-bg, #0f172a);
+  --df-bg-pill: rgba(255, 255, 255, 0.08);
+  --df-bg-pill-hover: rgba(255, 255, 255, 0.15);
+  --df-border: rgba(255, 255, 255, 0.14);
+  --df-border-subtle: rgba(255, 255, 255, 0.08);
+  --df-text-primary: #f8fafc;
+  --df-text-secondary: #cbd5e1;
+  --df-text-muted: #94a3b8;
+  --df-scrollbar: rgba(255, 255, 255, 0.22);
+  --df-shadow:
+    0 28px 60px -10px rgba(0, 0, 0, 0.62),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+html, body, #root {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--macos-font);
+}
+
+::selection {
+  background: var(--df-accent);
+  color: #ffffff;
+}
+
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Main Drawer Surface with Live Glass Blur & Tint Support */
+.df-drawer {
+  background: var(--df-bg-drawer) !important;
+  color: var(--df-text-primary) !important;
+  backdrop-filter: blur(var(--df-liquid-blur-px, 48px)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--df-liquid-blur-px, 48px)) saturate(180%);
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-left: 1px solid var(--df-border);
+  border-right: 1px solid var(--df-border);
+  border-bottom: 1px solid var(--df-border);
+  box-shadow: var(--df-shadow);
+  will-change: transform, opacity;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.df-glass-disabled .df-drawer {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Semantic Text Alignment Utilities */
+.df-text-primary {
+  color: var(--df-text-primary) !important;
+}
+
+.df-text-secondary {
+  color: var(--df-text-secondary) !important;
+}
+
+.df-text-muted {
+  color: var(--df-text-muted) !important;
+}
+
+/* Semantic Surfaces */
+.df-pane-header {
+  background: var(--df-bg-header);
+  border-bottom: 1px solid var(--df-border);
+  color: var(--df-text-primary);
+  min-width: 0;
+}
+
+.df-subbar {
+  background: var(--df-bg-subbar);
+  border-bottom: 1px solid var(--df-border-subtle);
+  color: var(--df-text-secondary);
+  min-width: 0;
+}
+
+.df-pane-divider {
+  border-right: 1px solid var(--df-border);
+}
+
+/* ============================================================================
+   INSTANT BUTTON / KEY HOVER REFLECTION BADGE
+   ============================================================================ */
+.df-key-hover-tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background: rgba(12, 18, 32, 0.94);
+  color: #f8fafc;
+  border: 1px solid var(--df-accent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transform: translate(-50%, 0);
+  transition: opacity 0.08s ease;
+}
+
+.theme-light .df-key-hover-tooltip {
+  background: rgba(255, 255, 255, 0.97);
+  color: var(--df-text-primary);
+  border: 1.5px solid var(--df-accent);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.22);
+}
+
+/* ============================================================================
+   INTERACTIVE RESIZABLE SPLIT PANE HANDLE
+   ============================================================================ */
+.df-pane-resizer {
+  width: 5px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.df-pane-resizer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2px;
+  width: 1px;
+  background: var(--df-border);
+}
+
+.df-pane-resizer::after {
+  content: "";
+  width: 3px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--df-border);
+  opacity: 0.55;
+  transition: all 0.15s ease;
+}
+
+.df-pane-resizer:hover,
+.df-pane-resizer-active {
+  background: var(--df-accent-soft);
+}
+
+.df-pane-resizer:hover::after,
+.df-pane-resizer-active::after {
+  background: var(--df-accent);
+  opacity: 1;
+  height: 44px;
+}
+
+/* ============================================================================
+   ZERO-OVERLAP FILE GRID & CARD ALIGNMENT SYSTEM
+   Guarantees file icons, extension tags, filenames, and action buttons NEVER overlap
+   ============================================================================ */
+.df-files-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(114px, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.df-file-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  width: 100%;
+  padding: 7px 6px 6px 6px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background 0.16s ease, border-color 0.16s ease;
+}
+
+.df-file-card:hover {
+  transform: translateY(-1.5px);
+  border-color: var(--df-accent);
+}
+
+.df-file-top-bar {
+  width: 100%;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.df-file-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 3px 0;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.df-file-card:hover .df-file-icon-box {
+  transform: scale(1.05);
+}
+
+.df-file-name {
+  width: 100%;
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 2px;
+}
+
+.df-file-meta {
+  width: 100%;
+  font-size: 9px;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.df-file-actions-bar {
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px solid var(--df-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.df-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  padding: 6px 8px;
+  overflow: hidden;
+  transition: background 0.14s ease;
+}
+
+.df-card {
+  background: var(--df-bg-card);
+  border: 1px solid var(--df-border);
+  color: var(--df-text-primary);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.df-card:hover {
+  background: var(--df-bg-card-hover);
+}
+
+/* v3.1 Inspector & Progress Utilities */
+.df-stat-badge {
+  background: var(--df-bg-pill);
+  border: 1px solid var(--df-border-subtle);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 9.5px;
+  font-family: var(--macos-mono);
+  color: var(--df-text-secondary);
+}
+
+.df-progress-track {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--df-bg-pill);
+  overflow: hidden;
+}
+
+.df-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--df-accent);
+  transition: width 0.3s ease;
+}
+
+/* Icon & Widget Styles (Matching macOS Tahoe: Default | Dark | Clear | Tinted) */
+.df-icon-badge-default {
+  background: var(--df-bg-card);
+  border: 1px solid var(--df-border-subtle);
+}
+
+.df-icon-badge-dark {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.df-icon-badge-clear {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  filter: saturate(0.35) contrast(1.08);
+}
+
+.df-icon-badge-tinted {
+  background: var(--df-accent-soft) !important;
+  border: 1px solid var(--df-accent) !important;
+  box-shadow: inset 0 0 12px var(--df-accent-soft);
+}
+
+.df-pill {
+  background: var(--df-bg-pill);
+  color: var(--df-text-secondary);
+  border: 1px solid var(--df-border-subtle);
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.df-pill:hover {
+  background: var(--df-bg-pill-hover);
+  color: var(--df-text-primary);
+}
+
+.df-pill-active {
+  background: var(--df-accent) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-weight: 600;
+}
+
+.df-input {
+  background: var(--df-bg-input) !important;
+  color: var(--df-text-primary) !important;
+  border: 1px solid var(--df-border) !important;
+  border-radius: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.df-input::placeholder {
+  color: var(--df-text-muted) !important;
+}
+
+.df-input:focus {
+  outline: none;
+  border-color: var(--df-accent) !important;
+  box-shadow: 0 0 0 2px var(--df-accent-soft);
+}
+
+.df-modal {
+  background: var(--df-bg-modal) !important;
+  color: var(--df-text-primary) !important;
+  border: 1px solid var(--df-border) !important;
+}
+
+/* Interactive Markdown Table Styling */
+.df-md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0;
+  font-size: 11px;
+  border: 1px solid var(--df-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.df-md-table th {
+  background: var(--df-bg-subbar);
+  color: var(--df-text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--df-border);
+}
+
+.df-md-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--df-border-subtle);
+  color: var(--df-text-secondary);
+}
+
+.df-md-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Bottom Pull-Tab Handle (Gear Tab) */
+.drawer-pull-tab {
+  background: var(--df-bg-drawer);
+  border-left: 1px solid var(--df-border);
+  border-right: 1px solid var(--df-border);
+  border-bottom: 1px solid var(--df-border);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: var(--df-text-secondary);
+}
+
+.drawer-pull-tab:hover {
+  color: var(--df-text-primary);
+}
+
+/* Row Dividers */
+.df-row-divider > * + * {
+  border-top: 1px solid var(--df-border-subtle);
+}
+
+/* macOS Liquid Glass Range Slider */
+input[type="range"].df-liquid-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].df-liquid-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.30);
+  cursor: pointer;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--df-scrollbar);
+  border-radius: 9999px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent nested children from creating redundant GPU blur layers while keeping root .df-drawer glass blur active */
+.df-drawer *:not(.df-key-hover-tooltip) {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+html, body, #root {
+  background: transparent !important;
+}
