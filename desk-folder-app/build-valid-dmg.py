@@ -276,10 +276,10 @@ def main():
             with open(icns_path, "rb") as icf:
                 new_icns = icf.read()
             break
-        if len(new_icns) == 31873:
-            icns_pos_head = head_buf.find(b"icns\x00\x00\x7c\x81")
-            if icns_pos_head != -1:
-                head_buf[icns_pos_head : icns_pos_head + 31873] = new_icns
+    if len(new_icns) == 31873:
+        icns_pos_head = head_buf.find(b"icns\x00\x00\x7c\x81")
+        if icns_pos_head != -1:
+            head_buf[icns_pos_head : icns_pos_head + 31873] = new_icns
     apsb_head = patch_apfs_volume_superblocks(head_buf)
 
     # Patch Run 228: Info.plist ElectronAsarIntegrity hash & main/helper bundle versions (2.2.0 -> 3.1.0)

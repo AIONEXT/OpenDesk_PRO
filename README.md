@@ -5,11 +5,11 @@
 A commercial-ready, MIT-licensed macOS menu bar (`🛡️📂`) and top-edge two-finger trackpad pull-down workspace supercharged with the **OpenDesk All-in-One Security, Privacy, Vault, Recall & Unique Features Packet** — combining **7-Day Commercial Trial, Instant Checkout, 1-Click License Recall & One-Time Lifetime Offline HMAC-SHA256 Licensing (`ODPRO-` / `ODENT-`)**, **Full-Workspace Encrypted Security Lock (`🔒 Lock` / `⌘+L`)**, **Dedicated AES-256-GCM Encrypted Vault (`🔐 Vault`)**, **Encrypted `.dfbackup` Snapshot Exporter & 1-Click Workspace Recall (`⏪ Recall`)**, **Zero-Knowledge Armored Text & Snippet Cipher (`ODSEAL1:...`)**, **Strict Privacy & Outbound PII Redaction Shield (`🛡️ Strict Privacy`)**, **CSPRNG Secret Generator & DoD 5220.22-M 3-Pass File Shredder**, **Workspace Secret Leak Scanner + 1-Click Vault & Redact**, **Power Clipboard & Developer Utilities**, **Zero-Overlap Files Dropzone & Native Drag-Out Shelf**, **Fast 8KB-Prehashed SHA-256 Duplicate Cleaner (`🧹`)**, **Obsidian-Compatible Markdown & Table Notepad**, **Pomodoro Focus Suite**, **Global Command Palette (`⌘K`)**, and a **14-Provider Local/Free/Cloud AI Studio**.
 
 ## Single Canonical Installer, App Bundle & Dedicated Vaults
-- **Updated macOS Disk Image (`.dmg`)**: `/Users/aio_x/Documents/Mac DeskFolder/DeskFolder-3.1.0.dmg` (updated in-place with zero duplicate `.dmg` files)
-- **Standalone Release App Bundle**: `/Users/aio_x/Documents/Mac DeskFolder/desk-folder-app/release/DeskFolder.app`
-- **Custom OpenDesk macOS Squircle Icon**: `/Users/aio_x/Documents/Mac DeskFolder/desk-folder-app/build/icon.png` & embedded `icon.icns`
-- **Dedicated AES-256-GCM Encrypted Vault**: `/Users/aio_x/Documents/Mac DeskFolder/Vault` (`vault-store.dfvault` + `*.dfenc` encrypted files + `*.dfbackup` snapshots)
-- **Dedicated Obsidian Knowledge Vault**: `/Users/aio_x/Documents/Mac DeskFolder/Notes` (`.obsidian` configured)
+- **Updated macOS Disk Image (`.dmg`)**: `./DeskFolder-3.1.0.dmg` (updated in-place with zero duplicate `.dmg` files)
+- **Standalone Release App Bundle**: `./desk-folder-app/release/DeskFolder.app`
+- **Custom OpenDesk macOS Squircle Icon**: `./desk-folder-app/build/icon.png` & embedded `icon.icns`
+- **Dedicated AES-256-GCM Encrypted Vault**: `./Vault` (`vault-store.dfvault` + `*.dfenc` encrypted files + `*.dfbackup` snapshots)
+- **Dedicated Obsidian Knowledge Vault**: `./Notes` (`.obsidian` configured)
 - **Commercial & Legal Compliance Package**: [`COMMERCIAL_LICENSING.md`](./COMMERCIAL_LICENSING.md), [`LICENSE`](./LICENSE) (MIT License), [`PRIVACY.md`](./PRIVACY.md), [`SECURITY.md`](./SECURITY.md), [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md), [`CHANGELOG.md`](./CHANGELOG.md), [`CONTRIBUTING.md`](./CONTRIBUTING.md), and [`build/entitlements.mac.plist`](./desk-folder-app/build/entitlements.mac.plist).
 
 ## v3.1 Enterprise Feature Highlights (Unified Single Packet)

@@ -2,8 +2,8 @@
 set -e
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-APP_DIR="/Users/aio_x/Documents/Mac DeskFolder/desk-folder-app"
-WORKSPACE_DIR="/Users/aio_x/Documents/Mac DeskFolder"
+APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(cd "$APP_DIR/.." && pwd)"
 NOTES_DIR="$WORKSPACE_DIR/Notes"
 USER_DATA_DIR="$HOME/Library/Application Support/DeskFolder"
 LAUNCH_AGENT_DIR="$HOME/Library/LaunchAgents"
