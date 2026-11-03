@@ -1301,11 +1301,14 @@ const App = () => {
   })
   const [customIntegrationWebhook, setCustomIntegrationWebhook] = useState<string>('')
 
-  // 7-Day Commercial Trial, Customer Checkout & License State
+  // 15-Day Commercial Trial, $9 Automated Lifetime Checkout & License State
   const [licenseStatus, setLicenseStatus] = useState<any>({
     isActivated: false,
-    licenseTier: '7-Day Pro Trial',
-    trialDaysRemaining: 7,
+    licenseTier: '15-Day Pro Trial',
+    trialDaysTotal: 15,
+    trialDaysRemaining: 15,
+    trialHoursRemaining: 360,
+    lifetimePriceUsd: 9,
     isTrialExpired: false,
     masterDemoKey: '',
   })
@@ -1313,7 +1316,7 @@ const App = () => {
   const [licenseKeyInput, setLicenseKeyInput] = useState('')
   const [licensedToInput, setLicensedToInput] = useState('')
   const [checkoutEmailInput, setCheckoutEmailInput] = useState('')
-  const [checkoutMethod, setCheckoutMethod] = useState<'Card / Apple Pay' | 'UPI / Instant QR' | 'Stripe Web Checkout'>('Card / Apple Pay')
+  const [checkoutMethod, setCheckoutMethod] = useState<'UPI / Instant QR' | 'Card / Apple Pay' | 'Razorpay / Global'>('UPI / Instant QR')
   const [lastReceiptInfo, setLastReceiptInfo] = useState<{ key: string; receiptPath: string; plan: string } | null>(null)
 
   // Full-Workspace Encrypted Security Lock State (⌘+L)
@@ -5039,6 +5042,21 @@ const App = () => {
             </button>
 
             <button
+              onClick={() => setShowLicenseModal(!showLicenseModal)}
+              title="15-Day Free Trial & $9 One-Time Lifetime Subscription (Automated Gateway)"
+              className={`px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 ${
+                showLicenseModal || licenseStatus?.isActivated ? 'df-pill-active' : 'df-pill'
+              }`}
+            >
+              <span>💎</span>
+              <span>
+                {licenseStatus?.isActivated
+                  ? 'Lifetime Active'
+                  : `${licenseStatus?.trialDaysRemaining ?? 15}d Trial · $9`}
+              </span>
+            </button>
+
+            <button
               onClick={async () => {
                 const next = !isPinned
                 setIsPinned(next)
@@ -6804,7 +6822,7 @@ const App = () => {
           </div>
         )}
 
-        {/* 7-DAY COMMERCIAL TRIAL & CUSTOMER CHECKOUT / LIFETIME LICENSE ACTIVATION MODAL */}
+        {/* 15-DAY FREE TRIAL & STREAMLINED $9 AUTOMATED LIFETIME SUBSCRIPTION MODAL */}
         {(showLicenseModal || licenseStatus?.isTrialExpired) && (
           <div
             onClick={() => {
@@ -6814,7 +6832,7 @@ const App = () => {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="df-modal rounded-2xl w-full max-w-xl max-h-[92%] overflow-y-auto p-5 shadow-2xl space-y-3.5 text-xs"
+              className="df-modal rounded-2xl w-full max-w-lg max-h-[92%] overflow-y-auto p-5 shadow-2xl space-y-3 text-xs"
             >
               <div className="flex items-center justify-between pb-2.5" style={{ borderBottom: '1px solid var(--df-border)' }}>
                 <div className="flex items-center gap-2.5">
@@ -6824,11 +6842,11 @@ const App = () => {
                       {licenseStatus?.isActivated
                         ? `OpenDesk PRO Lifetime Activated (${licenseStatus.licenseTier})`
                         : licenseStatus?.isTrialExpired
-                        ? '7-Day Free Trial Ended — Complete One-Time Checkout to Unlock Forever'
-                        : `OpenDesk PRO 7-Day Free Trial (${licenseStatus?.trialDaysRemaining ?? 7} Days Left) · Buy Lifetime Pro`}
+                        ? '15-Day Free Trial Ended — Unlock Lifetime Access for $9'
+                        : `OpenDesk PRO 15-Day Free Trial (${licenseStatus?.trialDaysRemaining ?? 15} Days Left) · $9 Lifetime`}
                     </h3>
                     <div className="text-[10px] df-text-muted">
-                      Pay Once, Own Forever · Instant License Key Delivery & Auto-Activation · Zero Recurring Subscriptions
+                      15-Day Free Trial → $9 One-Time Lifetime Subscription · Instant Automated Gateway & Zero Lag
                     </div>
                   </div>
                 </div>
@@ -6839,16 +6857,16 @@ const App = () => {
                 )}
               </div>
 
-              {/* Trial Progress & Status Banner */}
-              <div className="df-card p-3.5 space-y-2">
+              {/* Fast In-Memory Trial & License Status Banner */}
+              <div className="df-card p-3 space-y-2">
                 <div className="flex items-center justify-between text-[11px]">
-                  <span className="df-text-secondary">Current Status:</span>
+                  <span className="df-text-secondary">Status:</span>
                   <span className="font-bold df-text-primary">
                     {licenseStatus?.isActivated
                       ? `✅ ${licenseStatus.licenseTier} (${licenseStatus.licenseKeyMasked})`
                       : licenseStatus?.isTrialExpired
-                      ? '🔒 7-Day Trial Ended — Choose a Plan Below to Unlock Immediately'
-                      : `⏳ ${licenseStatus?.trialDaysRemaining ?? 7} days (${licenseStatus?.trialHoursRemaining ?? 168} hours) left in your 7-Day Trial`}
+                      ? '🔒 15-Day Trial Ended — Complete 1-Click $9 Lifetime Unlock Below'
+                      : `⏳ ${licenseStatus?.trialDaysRemaining ?? 15} days (${licenseStatus?.trialHoursRemaining ?? 360} hours) remaining in 15-Day Free Trial`}
                   </span>
                 </div>
                 <div className="df-progress-track">
@@ -6857,32 +6875,40 @@ const App = () => {
                     style={{
                       width: licenseStatus?.isActivated
                         ? '100%'
-                        : `${Math.min(100, Math.max(5, ((licenseStatus?.trialDaysRemaining ?? 7) / 7) * 100))}%`,
+                        : `${Math.min(100, Math.max(5, ((licenseStatus?.trialDaysRemaining ?? 15) / 15) * 100))}%`,
                     }}
                   />
                 </div>
               </div>
 
-              {/* STEP 1: HOW CUSTOMERS PAY AFTER 7 DAYS (1-CLICK INSTANT CHECKOUT + AUTO KEY ACTIVATION) */}
+              {/* STREAMLINED 1-CLICK $9 LIFETIME AUTOMATED CHECKOUT */}
               <div className="df-card p-3.5 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold df-text-primary text-xs">
-                    💳 Step 1: Instant Customer Checkout (Auto-Generates & Activates Your Key)
-                  </span>
-                  <span className="df-stat-badge">One-Time Payment</span>
+                  <div>
+                    <span className="font-bold df-text-primary text-xs">
+                      ⚡ 1-Click Automated Lifetime Subscription
+                    </span>
+                    <div className="text-[10px] df-text-muted">
+                      Full GUI + AES-256-GCM Vault + All 14 Free/Local AI Models · Own Forever
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-base font-extrabold text-emerald-400">$9</span>
+                    <span className="text-[10px] df-text-muted block">one-time · after 15d</span>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <input
                     type="text"
-                    placeholder="Your Name or Company..."
+                    placeholder="Name or Organization (optional)..."
                     value={licensedToInput}
                     onChange={(e) => setLicensedToInput(e.target.value)}
                     className="df-input px-2.5 py-1.5 text-xs"
                   />
                   <input
                     type="email"
-                    placeholder="Email for Receipt & Key (e.g. you@domain.com)..."
+                    placeholder="Email for Receipt & Key..."
                     value={checkoutEmailInput}
                     onChange={(e) => setCheckoutEmailInput(e.target.value)}
                     className="df-input px-2.5 py-1.5 text-xs"
@@ -6890,8 +6916,8 @@ const App = () => {
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[10.5px]">
-                  <span className="df-text-muted shrink-0">Payment Method:</span>
-                  {(['Card / Apple Pay', 'UPI / Instant QR', 'Stripe Web Checkout'] as const).map((pm) => (
+                  <span className="df-text-muted shrink-0">Rail:</span>
+                  {(['UPI / Instant QR', 'Card / Apple Pay', 'Razorpay / Global'] as const).map((pm) => (
                     <button
                       key={pm}
                       onClick={() => setCheckoutMethod(pm)}
@@ -6904,74 +6930,43 @@ const App = () => {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div className="p-3 rounded-xl df-subbar flex flex-col justify-between gap-2" style={{ border: '1px solid var(--df-border)' }}>
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs df-text-primary">OpenDesk PRO Lifetime</span>
-                        <span className="text-sm font-extrabold text-sky-400">$29</span>
-                      </div>
-                      <div className="text-[10px] df-text-muted mt-0.5">
-                        1 Mac · Full AES-256-GCM Vault · All 14 Free/Local AI Models · Lifetime Updates
-                      </div>
-                    </div>
-                    <button
-                      onClick={async () => {
-                        const res = await window.electronAPI.licenseCompleteCheckout?.({
-                          tier: 'PRO',
-                          customerName: licensedToInput || checkoutEmailInput || 'OpenDesk PRO Customer',
-                          customerEmail: checkoutEmailInput,
-                          paymentMethod: checkoutMethod,
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={async () => {
+                      const res = await window.electronAPI.licenseCompleteCheckout?.({
+                        tier: 'PRO',
+                        customerName: licensedToInput || checkoutEmailInput || 'OpenDesk PRO Customer',
+                        customerEmail: checkoutEmailInput,
+                        paymentMethod: checkoutMethod,
+                      })
+                      if (res?.success) {
+                        setLicenseStatus(res.status)
+                        setLicenseKeyInput(res.licenseKey)
+                        setLastReceiptInfo({
+                          key: res.licenseKey,
+                          receiptPath: res.receiptPath,
+                          plan: `OpenDesk PRO Lifetime ($${res.amountUsd || 9})`,
                         })
-                        if (res?.success) {
-                          setLicenseStatus(res.status)
-                          setLicenseKeyInput(res.licenseKey)
-                          setLastReceiptInfo({ key: res.licenseKey, receiptPath: res.receiptPath, plan: 'Pro Lifetime ($29)' })
-                          showToast(`💎 Paid $29 & Activated OpenDesk PRO (${res.licenseKey})`)
-                        }
-                      }}
-                      className="w-full py-1.5 df-pill-active rounded-lg text-xs font-bold"
-                    >
-                      💳 Pay $29 & Unlock Pro
-                    </button>
-                  </div>
-
-                  <div className="p-3 rounded-xl df-subbar flex flex-col justify-between gap-2" style={{ border: '1px solid var(--df-border)' }}>
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs df-text-primary">Enterprise Site License</span>
-                        <span className="text-sm font-extrabold text-emerald-400">$79</span>
-                      </div>
-                      <div className="text-[10px] df-text-muted mt-0.5">
-                        Up to 5 Macs · Commercial Use · Full Security Packet & Audit · Priority Support
-                      </div>
-                    </div>
-                    <button
-                      onClick={async () => {
-                        const res = await window.electronAPI.licenseCompleteCheckout?.({
-                          tier: 'ENT',
-                          customerName: licensedToInput || checkoutEmailInput || 'OpenDesk Enterprise Customer',
-                          customerEmail: checkoutEmailInput,
-                          paymentMethod: checkoutMethod,
-                        })
-                        if (res?.success) {
-                          setLicenseStatus(res.status)
-                          setLicenseKeyInput(res.licenseKey)
-                          setLastReceiptInfo({ key: res.licenseKey, receiptPath: res.receiptPath, plan: 'Enterprise Site ($79)' })
-                          showToast(`🏢 Paid $79 & Activated Enterprise (${res.licenseKey})`)
-                        }
-                      }}
-                      className="w-full py-1.5 df-pill-active rounded-lg text-xs font-bold"
-                    >
-                      🏢 Pay $79 & Unlock Site
-                    </button>
-                  </div>
+                        showToast(`💎 Paid $${res.amountUsd || 9} & Auto-Activated Lifetime (${res.licenseKey})`)
+                      }
+                    }}
+                    className="flex-1 py-2 df-pill-active rounded-xl text-xs font-bold"
+                  >
+                    ⚡ Pay $9 & Auto-Unlock Lifetime Forever
+                  </button>
+                  <button
+                    onClick={() => window.electronAPI.openExternalUrl('http://localhost:4000')}
+                    title="Open Full Multi-Rail Payment Aggregator GUI (UPI / Visa / MasterCard / Razorpay / Global)"
+                    className="px-3 py-2 df-pill rounded-xl text-[10.5px] font-semibold shrink-0"
+                  >
+                    🌐 Gateway GUI ↗
+                  </button>
                 </div>
 
                 {lastReceiptInfo && (
                   <div className="p-2.5 rounded-lg bg-emerald-500/15 border border-emerald-500/40 text-[10.5px] space-y-1">
                     <div className="font-bold text-emerald-300">
-                      ✅ Payment Complete — {lastReceiptInfo.plan} Activated!
+                      ✅ Automated Payment Complete — {lastReceiptInfo.plan} Active!
                     </div>
                     <div className="font-mono text-[10px] df-text-primary select-text">
                       Key: {lastReceiptInfo.key} · Receipt saved to OpenDesk_License_Receipt.txt
@@ -6980,11 +6975,31 @@ const App = () => {
                 )}
               </div>
 
-              {/* STEP 2: ALREADY HAVE A LICENSE KEY? */}
-              <div className="df-card p-3.5 space-y-2">
+              {/* INSTANT KEY ENTRY & 1-CLICK RECALL */}
+              <div className="df-card p-3 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold df-text-primary">🔑 Step 2: Already Have a License Key? Enter Below</span>
-                  <span className="df-stat-badge">Offline HMAC-SHA256</span>
+                  <span className="font-semibold df-text-primary">🔑 Have a License Key or Receipt?</span>
+                  <button
+                    onClick={async () => {
+                      const res = await window.electronAPI.recallCommercialLicense?.({
+                        tier: 'ENT',
+                        licensedTo: licensedToInput || checkoutEmailInput || 'OpenDesk Commercial Enterprise',
+                      })
+                      if (res?.success) {
+                        setLicenseStatus(res.status)
+                        setLicenseKeyInput(res.licenseKey)
+                        setLastReceiptInfo({
+                          key: res.licenseKey,
+                          receiptPath: res.receiptPath,
+                          plan: `${res.licenseTier} ($9 Lifetime Recall)`,
+                        })
+                        showToast(`⏪ Recalled & Activated ${res.licenseTier} (${res.licenseKey})`)
+                      }
+                    }}
+                    className="px-2 py-0.5 df-pill-active rounded text-[10px] font-semibold"
+                  >
+                    ⏪ 1-Click Recall License
+                  </button>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
@@ -7016,33 +7031,12 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Collapsible Owner / Developer Trial Simulator Controls */}
-              <details className="df-subbar p-2.5 rounded-xl">
+              {/* Compact Owner / Developer Trial Simulator */}
+              <details className="df-subbar p-2 rounded-xl">
                 <summary className="cursor-pointer text-[10px] font-semibold df-text-secondary select-none">
-                  🛠️ Developer / Owner Trial Simulator & Key Generator
+                  🛠️ Owner Trial & Key Tools
                 </summary>
                 <div className="flex items-center gap-1.5 flex-wrap pt-2">
-                  <button
-                    onClick={async () => {
-                      const res = await window.electronAPI.recallCommercialLicense?.({
-                        tier: 'ENT',
-                        licensedTo: licensedToInput || checkoutEmailInput || 'OpenDesk Commercial Enterprise',
-                      })
-                      if (res?.success) {
-                        setLicenseStatus(res.status)
-                        setLicenseKeyInput(res.licenseKey)
-                        setLastReceiptInfo({
-                          key: res.licenseKey,
-                          receiptPath: res.receiptPath,
-                          plan: `${res.licenseTier} (Commercial Recall)`,
-                        })
-                        showToast(`⏪ Recalled & Activated ${res.licenseTier} (${res.licenseKey})`)
-                      }
-                    }}
-                    className="px-2 py-1 df-pill-active rounded text-[10px]"
-                  >
-                    ⏪ Recall Commercial License
-                  </button>
                   <button
                     onClick={async () => {
                       const gen = await window.electronAPI.licenseGenerateKey?.({ tier: 'ENT', seed: '2026' })
@@ -7053,28 +7047,28 @@ const App = () => {
                     }}
                     className="px-2 py-1 df-pill rounded text-[10px]"
                   >
-                    🔑 Generate New Key
+                    🔑 Generate Key
                   </button>
                   <button
                     onClick={async () => {
                       const res = await window.electronAPI.licenseSimulateTrial?.({ mode: 'expire_now' })
                       if (res?.status) setLicenseStatus(res.status)
-                      showToast('Simulated Day 8 (7-Day Trial Expired Paywall)')
+                      showToast('Simulated Day 16 (15-Day Trial Expired Paywall)')
                     }}
                     className="px-2 py-1 df-pill rounded text-[10px]"
                   >
-                    ⏳ Simulate Expired (Day 8)
+                    ⏳ Simulate Day 16 Expiry
                   </button>
                   <button
                     onClick={async () => {
                       const res = await window.electronAPI.licenseSimulateTrial?.({ mode: 'reset_trial' })
                       if (res?.status) setLicenseStatus(res.status)
                       setLastReceiptInfo(null)
-                      showToast('Reset to Fresh 7-Day Trial')
+                      showToast('Reset to Fresh 15-Day Trial')
                     }}
                     className="px-2 py-1 df-pill rounded text-[10px]"
                   >
-                    🔄 Reset 7-Day Trial
+                    🔄 Reset 15-Day Trial
                   </button>
                 </div>
               </details>

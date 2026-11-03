@@ -526,17 +526,21 @@ async function runTests() {
     auditRes.score === 100 && auditRes.license === 'MIT' && auditRes.checks.length >= 6
   )
 
-  // 6C. Verify 7-Day Commercial Trial, HMAC-SHA256 License Activation, Full-App Security Lock & Flagship Utilities
-  console.log('\n6C. Verifying 7-Day Commercial Trial, HMAC-SHA256 Licensing, Security Lock & Flagship Utilities...')
+  // 6C. Verify 15-Day Commercial Trial, $9 Automated Lifetime Checkout, HMAC-SHA256 Licensing, Security Lock & Flagship Utilities
+  console.log('\n6C. Verifying 15-Day Commercial Trial, $9 Automated Lifetime Checkout, HMAC-SHA256 Licensing, Security Lock & Flagship Utilities...')
   const initLicStatus = await ipcHandlers.get('license-get-status')({})
   check(
-    '7-Day Commercial Trial initializes at 7 days remaining (unexpired)',
-    !initLicStatus.isActivated && initLicStatus.trialDaysRemaining === 7 && !initLicStatus.isTrialExpired
+    '15-Day Commercial Trial initializes at 15 days remaining (unexpired, $9 lifetime plan)',
+    !initLicStatus.isActivated &&
+      initLicStatus.trialDaysRemaining === 15 &&
+      initLicStatus.trialDaysTotal === 15 &&
+      initLicStatus.lifetimePriceUsd === 9 &&
+      !initLicStatus.isTrialExpired
   )
 
   const simExp = await ipcHandlers.get('license-simulate-trial')({}, { mode: 'expire_now' })
   check(
-    '7-Day Trial Expiry Paywall triggers when trial period ends (Day 8 simulation)',
+    '15-Day Trial Expiry Paywall triggers when trial period ends (Day 16 simulation)',
     simExp.success && simExp.status.isTrialExpired === true && simExp.status.trialDaysRemaining === 0
   )
 
@@ -556,7 +560,7 @@ async function runTests() {
       goodKeyRes.status.licenseTier === 'Enterprise Site'
   )
 
-  // Test Customer Post-7-Day Checkout & Instant Key Delivery Flow ($29 Pro / $79 Enterprise)
+  // Test Customer Post-15-Day Automated Checkout & Instant Key Delivery Flow ($9 Lifetime)
   const checkoutRes = await ipcHandlers.get('license-complete-checkout')({}, {
     tier: 'PRO',
     customerName: 'Aarav Sharma',
@@ -564,14 +568,15 @@ async function runTests() {
     paymentMethod: 'UPI / Instant QR',
   })
   check(
-    'Customer Checkout (license-complete-checkout) processes $29 Pro payment, activates ODPRO key & writes receipt',
+    'Customer Automated Checkout (license-complete-checkout) processes $9 Lifetime payment, activates ODPRO key & writes receipt',
     checkoutRes.success &&
-      checkoutRes.amountUsd === 29 &&
+      checkoutRes.amountUsd === 9 &&
+      checkoutRes.automatedGateway === true &&
       checkoutRes.licenseKey.startsWith('ODPRO-') &&
       checkoutRes.status.isActivated === true
   )
 
-  // Reset back to active 7-day trial for default user experience
+  // Reset back to active 15-day trial for default user experience
   await ipcHandlers.get('license-simulate-trial')({}, { mode: 'reset_trial' })
 
   // Test Full-Workspace Encrypted Security Lockscreen (⌘+L)

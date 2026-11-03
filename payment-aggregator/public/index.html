@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusPay ~ Unified Payment Aggregator Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">NexusPay <span class="badge-rail">AGGREGATOR</span></span>
+          <span class="brand-sub">UPI • Visa • MasterCard • Razorpay • Global Rails</span>
+        </div>
+      </div>
+
+      <!-- Mode Switcher (Checkout Modal Demo vs Merchant Dashboard) -->
+      <div class="view-switcher">
+        <button id="btnViewCheckout" class="view-btn active" onclick="switchView('checkout')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Checkout Widget
+        </button>
+        <button id="btnViewDashboard" class="view-btn" onclick="switchView('dashboard')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Merchant Dashboard
+        </button>
+      </div>
+
+      <div class="nav-right">
+        <div class="env-badge">
+          <span class="pulse-dot"></span> Sandbox Mode
+        </div>
+        <div class="security-chip" title="PCI-DSS Level 1 Encrypted Card Vault">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          AES-256 Vault
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+
+    <!-- VIEW 1: CUSTOMER CHECKOUT WIDGET DEMO -->
+    <section id="viewCheckout" class="view-section active">
+      <div class="checkout-demo-grid">
+        <!-- Left: Merchant Order Summary & Settings -->
+        <div class="order-summary-panel">
+          <div class="panel-header">
+            <h3>OpenDesk PRO ~ Lifetime Plan</h3>
+            <span class="order-tag">15-Day Trial → $9 Lifetime</span>
+          </div>
+
+          <div class="order-items">
+            <div class="item-row">
+              <div class="item-icon">💎</div>
+              <div class="item-meta">
+                <h4>OpenDesk PRO Lifetime Subscription</h4>
+                <p>After 15-Day Free Trial • One-Time Unlock</p>
+              </div>
+              <div class="item-price" id="orderBasePrice">₹787.50 ($9)</div>
+            </div>
+            <div class="item-row">
+              <div class="item-icon">🛡️</div>
+              <div class="item-meta">
+                <h4>AES-256-GCM Vault & 14 Free AI Models</h4>
+                <p>Included Forever • Zero Recurring Fees</p>
+              </div>
+              <div class="item-price" id="orderAddonPrice">₹0.00</div>
+            </div>
+          </div>
+
+          <div class="currency-picker-wrap">
+            <label>Currency & Regional Rails:</label>
+            <div class="currency-pills">
+              <button class="curr-pill active" onclick="setCheckoutCurrency('INR')">INR (₹)</button>
+              <button class="curr-pill" onclick="setCheckoutCurrency('USD')">USD ($)</button>
+              <button class="curr-pill" onclick="setCheckoutCurrency('EUR')">EUR (€)</button>
+              <button class="curr-pill" onclick="setCheckoutCurrency('GBP')">GBP (£)</button>
+              <button class="curr-pill" onclick="setCheckoutCurrency('SGD')">SGD (S$)</button>
+              <button class="curr-pill" onclick="setCheckoutCurrency('AED')">AED (د.إ)</button>
+            </div>
+          </div>
+
+          <div class="order-totals">
+            <div class="total-line">
+              <span>15-Day Trial Status</span>
+              <span id="txtSubtotal">Full GUI Included</span>
+            </div>
+            <div class="total-line">
+              <span>MDR / Platform Fee</span>
+              <span id="txtFeeSchedule" class="text-green">0% (UPI) / Direct</span>
+            </div>
+            <div class="total-line grand-total">
+              <span>Lifetime Total ($9 USD)</span>
+              <span id="txtGrandTotal" class="total-highlight">₹787.50</span>
+            </div>
+          </div>
+
+          <button class="btn-primary" style="margin-bottom: 1rem;" onclick="triggerExpressLifetimeCheckout()">
+            ⚡ 1-Click Automated Checkout ($9 Lifetime + Instant License Key)
+          </button>
+
+          <div class="security-guarantee">
+            <div class="sec-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>RBI CoFT Tokenization & PCI-DSS Compliant</span>
+            </div>
+            <div class="sec-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <span>Smart Routing with 99.98% Rail Uptime</span>
+            </div>
+            <div class="sec-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <span>Instant Webhook Delivery & Idempotency Lock</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: NexusPay Unified Checkout Widget -->
+        <div class="checkout-widget-container">
+          <div class="widget-card">
+            <!-- Widget Header -->
+            <div class="widget-header">
+              <div class="widget-header-title">
+                <h3>Select Payment Method</h3>
+                <p>Secured by NexusPay Aggregator Multi-Rail Switch</p>
+              </div>
+              <div class="widget-amount-pill">
+                <span id="widgetDisplayAmount">₹5,499.00</span>
+              </div>
+            </div>
+
+            <!-- Payment Methods Tabs -->
+            <div class="method-tabs">
+              <button class="method-tab active" data-method="upi" onclick="switchMethodTab('upi')">
+                <span class="tab-badge-upi">UPI</span>
+                UPI 2.0
+              </button>
+              <button class="method-tab" data-method="card" onclick="switchMethodTab('card')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                Cards (Visa/MC)
+              </button>
+              <button class="method-tab" data-method="razorpay" onclick="switchMethodTab('razorpay')">
+                <span class="tab-badge-rzp">RZP</span>
+                Razorpay
+              </button>
+              <button class="method-tab" data-method="international" onclick="switchMethodTab('international')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Global / FX
+              </button>
+            </div>
+
+            <!-- Tab Content 1: UPI -->
+            <div id="tabContentUpi" class="tab-content active">
+              <div class="upi-modes-toggle">
+                <button class="mode-btn active" onclick="setUpiSubMode('qr')">Scan Dynamic QR</button>
+                <button class="mode-btn" onclick="setUpiSubMode('collect')">UPI ID / VPA Collect</button>
+                <button class="mode-btn" onclick="setUpiSubMode('intent')">Instant UPI Apps</button>
+              </div>
+
+              <!-- UPI QR Mode -->
+              <div id="upiModeQr" class="upi-sub-mode active">
+                <div class="qr-container">
+                  <div class="qr-box" id="upiQrTarget">
+                    <!-- SVG QR Code is injected here dynamically -->
+                    <div class="qr-loader">Generating Dynamic NPCI QR...</div>
+                  </div>
+                  <div class="qr-caption">
+                    <div class="timer-badge">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Valid for: <span id="qrTimer">04:59</span>
+                    </div>
+                    <p>Scan with Google Pay, PhonePe, Paytm, or any UPI app</p>
+                  </div>
+                  <button class="btn-primary" onclick="simulateUpiApproval()">
+                    ⚡ Simulate User Scanning & Paying on Phone
+                  </button>
+                </div>
+              </div>
+
+              <!-- UPI Collect Mode -->
+              <div id="upiModeCollect" class="upi-sub-mode">
+                <div class="form-group">
+                  <label for="upiVpaInput">Enter Virtual Payment Address (VPA)</label>
+                  <div class="input-with-icon">
+                    <input type="text" id="upiVpaInput" placeholder="username@okhdfcbank" value="shopper@okhdfcbank">
+                    <button class="btn-clear" onclick="document.getElementById('upiVpaInput').value=''">✕</button>
+                  </div>
+                  <div class="handle-suggestions">
+                    <span>Quick handles:</span>
+                    <button type="button" class="handle-chip" onclick="setVpaHandle('@okhdfcbank')">@okhdfcbank</button>
+                    <button type="button" class="handle-chip" onclick="setVpaHandle('@paytm')">@paytm</button>
+                    <button type="button" class="handle-chip" onclick="setVpaHandle('@ybl')">@ybl</button>
+                    <button type="button" class="handle-chip" onclick="setVpaHandle('@oksbi')">@oksbi</button>
+                  </div>
+                </div>
+
+                <div id="collectStatusBox" class="collect-status-box hidden">
+                  <div class="spinner"></div>
+                  <div class="status-meta">
+                    <h4>Collect Request Sent!</h4>
+                    <p id="collectStatusText">Check your UPI app to enter your 6-digit MPIN.</p>
+                  </div>
+                  <button class="btn-outline-sm" onclick="simulateUpiApproval()">Simulate Mobile Approval</button>
+                </div>
+
+                <button class="btn-primary" id="btnSendCollect" onclick="initiateUpiCollect()">
+                  Send Collect Request (₹<span class="btnPayAmount">5,499.00</span>)
+                </button>
+              </div>
+
+              <!-- UPI Intent Mode -->
+              <div id="upiModeIntent" class="upi-sub-mode">
+                <p class="intent-desc">Tap below to launch your installed UPI app directly on this device:</p>
+                <div class="intent-grid">
+                  <button class="intent-app-card" onclick="simulateUpiApproval('Google Pay')">
+                    <div class="app-icon gpay">GPay</div>
+                    <span>Google Pay</span>
+                  </button>
+                  <button class="intent-app-card" onclick="simulateUpiApproval('PhonePe')">
+                    <div class="app-icon phonepe">Pe</div>
+                    <span>PhonePe</span>
+                  </button>
+                  <button class="intent-app-card" onclick="simulateUpiApproval('Paytm')">
+                    <div class="app-icon paytm">Paytm</div>
+                    <span>Paytm UPI</span>
+                  </button>
+                  <button class="intent-app-card" onclick="simulateUpiApproval('BHIM')">
+                    <div class="app-icon bhim">BHIM</div>
+                    <span>BHIM NPCI</span>
+                  </button>
+                  <button class="intent-app-card" onclick="simulateUpiApproval('CRED')">
+                    <div class="app-icon cred">CRED</div>
+                    <span>CRED Pay</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Content 2: Cards (Visa / MasterCard / RuPay) -->
+            <div id="tabContentCard" class="tab-content">
+              <!-- Interactive 3D Card Graphic -->
+              <div class="card-visual-wrap">
+                <div class="credit-card" id="cardGraphic">
+                  <div class="card-front">
+                    <div class="card-top">
+                      <div class="card-chip"></div>
+                      <div class="card-brand-badge" id="cardBrandBadge">VISA</div>
+                    </div>
+                    <div class="card-number-display" id="dispCardNumber">•••• •••• •••• ••••</div>
+                    <div class="card-bottom">
+                      <div class="card-holder-wrap">
+                        <span class="label">CARDHOLDER</span>
+                        <span class="value" id="dispCardHolder">VALUED CUSTOMER</span>
+                      </div>
+                      <div class="card-expiry-wrap">
+                        <span class="label">EXPIRES</span>
+                        <span class="value" id="dispCardExpiry">MM/YY</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="mag-stripe"></div>
+                    <div class="cvv-band">
+                      <span class="label">CVV</span>
+                      <span class="cvv-val" id="dispCardCvv">•••</span>
+                    </div>
+                    <div class="back-footer">
+                      <span>Tokenized via RBI-compliant AES-256 Vault</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Input Form -->
+              <form id="cardPaymentForm" onsubmit="handleCardSubmit(event)">
+                <div class="form-group">
+                  <label for="cardholderName">Cardholder Name</label>
+                  <input type="text" id="cardholderName" placeholder="Full name on card" value="Rahul Sharma" oninput="updateCardPreview()">
+                </div>
+
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="cardNumber">Card Number</label>
+                    <span id="luhnFeedback" class="badge-valid">Valid Luhn</span>
+                  </div>
+                  <div class="input-with-brand">
+                    <input type="text" id="cardNumber" maxlength="19" placeholder="4111 1111 1111 1111" value="4111 1111 1111 1111" oninput="formatAndValidateCard(this)">
+                    <span class="input-brand-icon" id="inputBrandIcon">💳</span>
+                  </div>
+                  <div class="test-cards-hint">
+                    Test:
+                    <a href="#" onclick="fillTestCard('visa'); return false;">Visa</a> •
+                    <a href="#" onclick="fillTestCard('mastercard'); return false;">MasterCard</a> •
+                    <a href="#" onclick="fillTestCard('rupay'); return false;">RuPay</a>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="cardExpiry">Expiry (MM/YY)</label>
+                    <input type="text" id="cardExpiry" maxlength="5" placeholder="12/28" value="12/28" oninput="formatExpiry(this)">
+                  </div>
+                  <div class="form-group half">
+                    <label for="cardCvv">CVV / CVC</label>
+                    <input type="password" id="cardCvv" maxlength="4" placeholder="123" value="123" onfocus="flipCard(true)" onblur="flipCard(false)" oninput="updateCardPreview()">
+                  </div>
+                </div>
+
+                <div class="form-group tokenization-toggle">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="chkSaveCard" checked>
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-text">
+                      <strong>Securely save card as per RBI Guidelines</strong>
+                      <small>Generates a surrogate token in the PCI-DSS Level 1 Vault.</small>
+                    </span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-primary" id="btnPayCard">
+                  Pay Now (<span class="btnPayAmount">₹5,499.00</span>)
+                </button>
+              </form>
+            </div>
+
+            <!-- Tab Content 3: Razorpay -->
+            <div id="tabContentRazorpay" class="tab-content">
+              <div class="rzp-banner">
+                <div class="rzp-badge">Razorpay Standard Adapter</div>
+                <h4>Aggregated Gateway Rail</h4>
+                <p>Supports 50+ Netbanking banks, Wallets (Paytm, Mobikwik), and Indian payment rails with automated GST calculation.</p>
+              </div>
+
+              <div class="bank-grid">
+                <div class="bank-pill active" onclick="selectBank(this, 'HDFC')">
+                  <strong>HDFC Bank</strong>
+                </div>
+                <div class="bank-pill" onclick="selectBank(this, 'ICICI')">
+                  <strong>ICICI Bank</strong>
+                </div>
+                <div class="bank-pill" onclick="selectBank(this, 'SBI')">
+                  <strong>State Bank of India</strong>
+                </div>
+                <div class="bank-pill" onclick="selectBank(this, 'AXIS')">
+                  <strong>Axis Bank</strong>
+                </div>
+                <div class="bank-pill" onclick="selectBank(this, 'KOTAK')">
+                  <strong>Kotak Mahindra</strong>
+                </div>
+                <div class="bank-pill" onclick="selectBank(this, 'OTHER')">
+                  <strong>More Banks (50+)</strong>
+                </div>
+              </div>
+
+              <button class="btn-primary" onclick="initiateRazorpayPayment()">
+                Proceed with Razorpay Rail (<span class="btnPayAmount">₹5,499.00</span>)
+              </button>
+            </div>
+
+            <!-- Tab Content 4: International / Global Rails -->
+            <div id="tabContentInternational" class="tab-content">
+              <div class="intl-fx-card">
+                <div class="fx-header">
+                  <span class="fx-title">Cross-Border FX Conversion</span>
+                  <span class="fx-status">Live Dynamic Rate</span>
+                </div>
+                <div class="fx-calculator">
+                  <div class="fx-calc-row">
+                    <span>Source Payable:</span>
+                    <strong id="intlSourceAmount">$62.85 USD</strong>
+                  </div>
+                  <div class="fx-calc-row">
+                    <span>Exchange Rate:</span>
+                    <span id="intlExchangeRate">1 USD = ₹87.50 INR</span>
+                  </div>
+                  <div class="fx-calc-row">
+                    <span>Cross-Border Compliance:</span>
+                    <span class="compliance-tag">RBI Purpose Code: P0802</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="intl-channel-selector">
+                <label>Select Global Processing Rail:</label>
+                <div class="channel-options">
+                  <label class="channel-radio">
+                    <input type="radio" name="intlChannel" value="stripe" checked>
+                    <div class="channel-card">
+                      <div class="channel-title">Stripe Global Rail</div>
+                      <small>Worldwide Visa/MasterCard, Apple Pay, Google Pay</small>
+                    </div>
+                  </label>
+                  <label class="channel-radio">
+                    <input type="radio" name="intlChannel" value="paypal">
+                    <div class="channel-card">
+                      <div class="channel-title">PayPal One-Click</div>
+                      <small>200+ countries, PayPal Wallet & Pay in 4</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn-primary" onclick="initiateInternationalPayment()">
+                Pay with International Rail (<span id="btnIntlAmount">$62.85</span>)
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: MERCHANT & OPERATIONS DASHBOARD -->
+    <section id="viewDashboard" class="view-section">
+      <div class="dashboard-header">
+        <div class="dash-title">
+          <h2>Merchant Operations & Gateway Command Center</h2>
+          <p>Real-time transaction telemetry, smart routing rules, PCI vault, and cryptographic audit ledger</p>
+        </div>
+        <div class="dash-actions">
+          <button class="btn-outline" onclick="loadDashboardData()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Refresh Data
+          </button>
+          <button class="btn-primary" onclick="openSignatureTestModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Crypto Signature Tool
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Row -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total Processed Volume</div>
+          <div class="metric-value" id="kpiVolumeINR">₹0</div>
+          <div class="metric-sub" id="kpiVolumeUSD">≈ $0 USD</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Success Rate</div>
+          <div class="metric-value text-green" id="kpiSuccessRate">100.0%</div>
+          <div class="metric-sub" id="kpiTotalTxCount">0 Transactions</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Average Processing Latency</div>
+          <div class="metric-value" id="kpiLatency">240 ms</div>
+          <div class="metric-sub">P95 SLA: &lt; 450 ms</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Fraud & Risk Filter</div>
+          <div class="metric-value text-purple" id="kpiDeclinedCount">0 Blocked</div>
+          <div class="metric-sub">Velocity & Anomaly Engine</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Card Vault (PCI-DSS)</div>
+          <div class="metric-value text-blue" id="kpiVaultCount">0</div>
+          <div class="metric-sub">Active AES-256 Tokens</div>
+        </div>
+      </div>
+
+      <!-- Smart Routing & Health Panel -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <h3>Dynamic Smart Routing Engine & Rail Health</h3>
+            <p>Failover orchestration, cost-optimization, and circuit breaker health statuses</p>
+          </div>
+          <div class="routing-strategy-control">
+            <label for="selectRoutingStrategy">Strategy:</label>
+            <select id="selectRoutingStrategy" onchange="updateRoutingStrategy(this.value)">
+              <option value="SMART_AUTO">SMART_AUTO (Dynamic Hybrid)</option>
+              <option value="COST_OPTIMIZED">COST_OPTIMIZED (Prefer 0% MDR)</option>
+              <option value="SUCCESS_RATE">SUCCESS_RATE (Uptime Driven)</option>
+              <option value="FAILOVER">FAILOVER (Primary with Hot Standby)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="rails-grid" id="railsContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Live Transactions Ledger -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <h3>Real-Time Transactions Ledger</h3>
+            <p>Immutable double-entry state tracker with deep-dive inspection</p>
+          </div>
+          <div class="ledger-filters">
+            <input type="text" id="searchTxInput" placeholder="Search by payment ID or order..." oninput="filterTransactions()">
+            <select id="filterStatusSelect" onchange="filterTransactions()">
+              <option value="ALL">All Statuses</option>
+              <option value="CAPTURED">Captured</option>
+              <option value="REQUIRES_3DS2_AUTH">3DS Challenge</option>
+              <option value="REFUNDED">Refunded</option>
+              <option value="DECLINED_FRAUD">Declined / Blocked</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Payment ID</th>
+                <th>Order Ref</th>
+                <th>Method / Rail</th>
+                <th>Amount</th>
+                <th>MDR Fee</th>
+                <th>Gateway Used</th>
+                <th>Risk Score</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="txTableBody">
+              <tr>
+                <td colspan="10" class="text-center py-4">No transactions recorded yet. Initiate payments via the Checkout Widget to populate the ledger.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dual Lower Panels: Card Vault & Webhook Logs -->
+      <div class="dual-panel-grid">
+        <!-- Panel 1: PCI-DSS Token Vault -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <h3>PCI-DSS Card Vault (RBI Tokenization)</h3>
+              <p>Surrogate tokens with zero raw PAN exposure</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadTokenVault()">Refresh Vault</button>
+          </div>
+          <div class="vault-list" id="vaultListContainer">
+            <div class="empty-state">No vaulted card tokens yet. Complete a card payment with "Save card securely" checked.</div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Webhooks & Event Stream -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <h3>Webhook Event Stream</h3>
+              <p>Cryptographically signed HMAC-SHA256 dispatches</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadWebhooks()">Refresh Logs</button>
+          </div>
+          <div class="webhook-list" id="webhookListContainer">
+            <div class="empty-state">No webhook dispatches yet.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: 3D SECURE 2.0 (3DS2) BANKING CHALLENGE -->
+  <div id="modal3DS" class="modal-overlay">
+    <div class="modal-box challenge-modal">
+      <div class="modal-header">
+        <div class="bank-identity">
+          <span class="bank-logo">HDFC BANK</span>
+          <span class="auth-service-logo" id="acsNetworkLogo">Verified by VISA</span>
+        </div>
+        <button class="btn-close" onclick="close3DSModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="security-banner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <strong>Two-Factor Authentication (3DS 2.2.0)</strong>
+            <p>An OTP has been dispatched to your bank registered mobile number.</p>
+          </div>
+        </div>
+
+        <div class="challenge-details">
+          <div class="detail-row">
+            <span>Merchant:</span>
+            <strong>NexusPay Global Store</strong>
+          </div>
+          <div class="detail-row">
+            <span>Amount:</span>
+            <strong id="modal3DSAmount">₹5,499.00</strong>
+          </div>
+          <div class="detail-row">
+            <span>Card Number:</span>
+            <strong id="modal3DSCard">•••• •••• •••• 1111</strong>
+          </div>
+        </div>
+
+        <form onsubmit="handle3DSSubmit(event)">
+          <div class="otp-input-wrap">
+            <label for="otpInput">Enter 6-Digit One Time Password (OTP):</label>
+            <input type="text" id="otpInput" maxlength="6" placeholder="123456" autofocus>
+            <div class="test-otp-helper">
+              <span>Sandbox Test OTP: <strong>123456</strong></span>
+              <button type="button" class="btn-text-sm" onclick="document.getElementById('otpInput').value='123456'">Autofill OTP</button>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-outline" onclick="close3DSModal()">Cancel</button>
+            <button type="submit" class="btn-primary" id="btnSubmitOtp">Verify & Complete Payment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: TRANSACTION SUCCESS & RECEIPT -->
+  <div id="modalReceipt" class="modal-overlay">
+    <div class="modal-box receipt-modal">
+      <div class="receipt-header">
+        <div class="success-checkmark">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 id="receiptStatusTitle">Payment Successful!</h3>
+        <p id="receiptStatusSub">Transaction authorized and captured across payment rail.</p>
+      </div>
+
+      <div class="receipt-body">
+        <div class="receipt-amount-badge">
+          <span class="curr-sign" id="receiptCurrency">₹</span>
+          <span class="amount-val" id="receiptAmount">5,499.00</span>
+        </div>
+
+        <div class="state-stepper">
+          <div class="step completed">
+            <div class="step-dot">✓</div>
+            <span>Initiated</span>
+          </div>
+          <div class="step-line active"></div>
+          <div class="step completed">
+            <div class="step-dot">✓</div>
+            <span>Risk Screened</span>
+          </div>
+          <div class="step-line active"></div>
+          <div class="step completed">
+            <div class="step-dot">✓</div>
+            <span>3DS Verified</span>
+          </div>
+          <div class="step-line active"></div>
+          <div class="step completed">
+            <div class="step-dot">✓</div>
+            <span>Captured</span>
+          </div>
+        </div>
+
+        <div class="receipt-table">
+          <div class="rcpt-row">
+            <span>Payment ID:</span>
+            <strong id="rcptPaymentId" class="mono">pay_...</strong>
+          </div>
+          <div class="rcpt-row">
+            <span>Order Reference:</span>
+            <strong id="rcptOrderId" class="mono">order_...</strong>
+          </div>
+          <div class="rcpt-row">
+            <span>Rail & Gateway:</span>
+            <strong id="rcptGateway">UPI Direct (NPCI)</strong>
+          </div>
+          <div class="rcpt-row">
+            <span>Trace / RRN Ref:</span>
+            <strong id="rcptTraceRef" class="mono">847291847291</strong>
+          </div>
+          <div class="rcpt-row">
+            <span>MDR Fee Deducted:</span>
+            <span id="rcptFee" class="text-green">₹0.00 (0% MDR)</span>
+          </div>
+          <div class="rcpt-row">
+            <span>Captured At:</span>
+            <span id="rcptTime">2026-11-02 11:46</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="receipt-footer">
+        <button class="btn-outline" onclick="closeReceiptModal()">Close Window</button>
+        <button class="btn-primary" onclick="switchView('dashboard'); closeReceiptModal();">Open in Merchant Ledger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TRANSACTION INSPECTOR DRAWER -->
+  <div id="modalInspector" class="modal-overlay">
+    <div class="modal-box inspector-modal">
+      <div class="modal-header">
+        <div>
+          <h3>Transaction Telemetry Inspector</h3>
+          <p id="inspectPaymentId" class="mono text-muted">pay_...</p>
+        </div>
+        <button class="btn-close" onclick="closeInspectorModal()">✕</button>
+      </div>
+
+      <div class="modal-body" id="inspectorContent">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <div class="modal-footer" id="inspectorFooter">
+        <button class="btn-outline" onclick="closeInspectorModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: CRYPTO SIGNATURE & VERIFICATION TOOL -->
+  <div id="modalCryptoTool" class="modal-overlay">
+    <div class="modal-box crypto-modal">
+      <div class="modal-header">
+        <div>
+          <h3>Cryptographic Signature Testing & Audit Tool</h3>
+          <p>Verify HMAC-SHA256, Razorpay, or Stripe Webhook signatures</p>
+        </div>
+        <button class="btn-close" onclick="closeSignatureTestModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="cryptoTypeSelect">Algorithm / Protocol</label>
+          <select id="cryptoTypeSelect" onchange="toggleCryptoInputs()">
+            <option value="hmac">HMAC-SHA256 (Native Webhooks)</option>
+            <option value="razorpay">Razorpay Order & Payment Signature</option>
+            <option value="stripe">Stripe Signature Header (t=..., v1=...)</option>
+          </select>
+        </div>
+
+        <div id="cryptoPayloadWrap" class="form-group">
+          <label for="cryptoPayload">Payload / Request Body (JSON or String)</label>
+          <textarea id="cryptoPayload" rows="4">{"event":"payment.captured","amount":5499,"currency":"INR"}</textarea>
+        </div>
+
+        <div id="cryptoRazorpayWrap" class="form-row hidden">
+          <div class="form-group half">
+            <label for="cryptoOrderId">Razorpay Order ID</label>
+            <input type="text" id="cryptoOrderId" placeholder="order_rzp_..." value="order_rzp_998877">
+          </div>
+          <div class="form-group half">
+            <label for="cryptoPaymentId">Razorpay Payment ID</label>
+            <input type="text" id="cryptoPaymentId" placeholder="pay_rzp_..." value="pay_rzp_112233">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cryptoSecret">Secret Key (Defaults to configured webhook/gateway secret)</label>
+          <input type="text" id="cryptoSecret" placeholder="whsec_nexuspay_live_secret_..." value="whsec_nexuspay_live_secret_998877665544332211">
+        </div>
+
+        <div class="form-group">
+          <label for="cryptoSignature">Signature to Verify (Leave blank to generate signature)</label>
+          <input type="text" id="cryptoSignature" placeholder="Hex encoded signature string...">
+        </div>
+
+        <div id="cryptoResultBox" class="crypto-result-box hidden">
+          <div id="cryptoResultContent"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" onclick="closeSignatureTestModal()">Cancel</button>
+          <button type="button" class="btn-primary" onclick="executeCryptoSignatureTest()">Execute Cryptographic Verification</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

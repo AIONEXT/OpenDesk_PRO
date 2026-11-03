@@ -1,0 +1,24 @@
+{
+  "name": "nexuspay-payment-aggregator",
+  "version": "1.0.0",
+  "description": "Multi-rail Payment Aggregator for UPI, Visa, MasterCard, Razorpay, and International Rails with PCI-DSS Token Vault, 3DS2, and GUI",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node test/test-flows.js"
+  },
+  "keywords": [
+    "payment-aggregator",
+    "upi",
+    "visa",
+    "mastercard",
+    "razorpay",
+    "pci-dss",
+    "tokenization",
+    "3ds2",
+    "fintech"
+  ],
+  "author": "NexusPay Engineering",
+  "license": "MIT",
+  "type": "commonjs"
+}
