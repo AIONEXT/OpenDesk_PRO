@@ -6,7 +6,6 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$REPO_DIR"
 
 LOG_FILE="/tmp/opendesk-github-deploy.log"
-exec > >(tee "$LOG_FILE") 2>&1
 
 echo "================================================================"
 echo "🚀 Publishing OpenDesk PRO v3.1.0 to GitHub (AIONEXT/OpenDesk_PRO)"
