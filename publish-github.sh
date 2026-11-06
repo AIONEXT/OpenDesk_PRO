@@ -5,32 +5,55 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PAT
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$REPO_DIR"
 
-LOG_FILE="/tmp/opendesk-github-deploy.log"
-
 echo "================================================================"
 echo "🚀 Publishing OpenDesk PRO v3.1.0 to GitHub (AIONEXT/OpenDesk_PRO)"
 echo "================================================================"
 
+# Resolve GH_TOKEN from gh CLI or macOS Keychain if available
+if [ -z "${GH_TOKEN:-}" ] && command -v gh >/dev/null 2>&1; then
+  TOKEN_CANDIDATE="$(gh auth token 2>/dev/null || HOME=/Users/aio_x gh auth token 2>/dev/null || true)"
+  if [ -n "$TOKEN_CANDIDATE" ]; then
+    export GH_TOKEN="$TOKEN_CANDIDATE"
+  fi
+fi
+
+if [ -z "${GH_TOKEN:-}" ] && command -v security >/dev/null 2>&1; then
+  KEYCHAIN_TOKEN="$(security find-generic-password -s "gh:github.com" -w 2>/dev/null || true)"
+  if [ -n "$KEYCHAIN_TOKEN" ]; then
+    export GH_TOKEN="$KEYCHAIN_TOKEN"
+  fi
+fi
+
 # Ensure remote is configured
-git remote set-url origin https://github.com/AIONEXT/OpenDesk_PRO.git 2>/dev/null || \
-  git remote add origin https://github.com/AIONEXT/OpenDesk_PRO.git
+if [ -n "${GH_TOKEN:-}" ]; then
+  git remote set-url origin "https://AIONEXT:${GH_TOKEN}@github.com/AIONEXT/OpenDesk_PRO.git" 2>/dev/null || \
+    git remote add origin "https://AIONEXT:${GH_TOKEN}@github.com/AIONEXT/OpenDesk_PRO.git"
+else
+  git remote set-url origin https://github.com/AIONEXT/OpenDesk_PRO.git 2>/dev/null || \
+    git remote add origin https://github.com/AIONEXT/OpenDesk_PRO.git
+fi
 
 # Ensure gh git credential helper is wired if gh is authenticated
-if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+if command -v gh >/dev/null 2>&1; then
   gh auth setup-git 2>/dev/null || true
 fi
 
-# Push main branch (or create public repo via GitHub CLI if it doesn't exist yet)
-if git push -u origin main; then
-  echo "✅ Pushed main branch to https://github.com/AIONEXT/OpenDesk_PRO"
-elif command -v gh >/dev/null 2>&1; then
-  echo "ℹ️ Creating public repository AIONEXT/OpenDesk_PRO via GitHub CLI and pushing..."
-  gh repo create AIONEXT/OpenDesk_PRO --public --source=. --remote=origin \
-    --description "OpenDesk PRO v3.1 — macOS Liquid Glass top-edge workspace drawer with Power Clipboard, Staging Shelf, Markdown Notes, AES-256-GCM Vault & Zero-Telemetry AI Studio." \
-    --push || git push -u origin main
+# Create public repo if it doesn't exist yet, then push main branch
+if command -v gh >/dev/null 2>&1; then
+  if ! gh repo view AIONEXT/OpenDesk_PRO >/dev/null 2>&1; then
+    echo "ℹ️ Creating public repository AIONEXT/OpenDesk_PRO via GitHub CLI..."
+    gh repo create AIONEXT/OpenDesk_PRO --public \
+      --description "OpenDesk PRO v3.1 — macOS Liquid Glass top-edge workspace drawer with Power Clipboard, Staging Shelf, Markdown Notes, AES-256-GCM Vault & Zero-Telemetry AI Studio." || true
+  fi
 fi
 
-# Configure GitHub description, topics & v3.1.0 DMG release via gh CLI if authenticated
+git push -u origin main --force
+echo "✅ Pushed main branch to https://github.com/AIONEXT/OpenDesk_PRO"
+
+# Reset remote URL to clean HTTPS URL (without embedded token)
+git remote set-url origin https://github.com/AIONEXT/OpenDesk_PRO.git 2>/dev/null || true
+
+# Configure GitHub description, topics & v3.1.0 DMG release via gh CLI
 if command -v gh >/dev/null 2>&1; then
   gh repo edit AIONEXT/OpenDesk_PRO --visibility public --accept-visibility-change-consequences 2>/dev/null || true
   gh repo edit AIONEXT/OpenDesk_PRO \
