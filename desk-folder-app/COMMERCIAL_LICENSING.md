@@ -8,15 +8,18 @@
 
 ---
 
-## 2. How the 15-Day Commercial Trial, $9 Automated Express Checkout, Recall & Offline HMAC-SHA256 Lifetime Licensing Works
+## 2. How the 15-Day Commercial Trial, Email Auth Credentials, Fresh QR / One-Time URL, OTT Certificate Update & $9 Lifetime Licensing Works
 
 1. **Zero-Lag Hardware-Bound Encrypted Trial Ledger (`license-ledger.dfsec`)**:
    - Stored in `~/Library/Application Support/DeskFolder/license-ledger.dfsec` and encrypted with **AES-256-GCM** using a machine-bound key derived via **PBKDF2-HMAC-SHA512 (100,000 iterations)** from the Mac's hostname, username, and architecture.
    - **In-Memory Ledger & Key Caching**: Caches the hardware seal key and trial state in memory so reviewing trial status is instantaneous (`< 0.05ms`) with zero UI lag, keeping the full GUI smooth and responsive.
-   - **Monotonic Anti-Clock-Tamper Guard**: Tracks `firstLaunchAt` and `lastSeenAt` across the **15-day (360-hour)** trial window. If the system clock is rolled backward to bypass the 15-day window, `clockTamperDetected` triggers immediately and locks the trial until activated.
-2. **$9 One-Time Lifetime Subscription & Automated Payment Gateway (`ODPRO-XXXX-XXXX-XXXX-XXXX` / `ODENT-XXXX-XXXX-XXXX-XXXX`)**:
-   - Verified 100% offline using `HMAC-SHA256` with `crypto.timingSafeEqual` and `Ed25519` asymmetric certificates (`ODCERT1.`), backward-compatible with `FZPRO-`/`FZENT-` and `DFPRO-`/`DFENT-` keys.
-   - **1-Click Automated Customer Checkout (`$9` Lifetime after 15 Days)**: Connects automatically to the built-in **NexusPay Multi-Rail Payment Aggregator** (`POST /api/checkout/express` across UPI 2.0 / Instant QR, Visa/MasterCard/Apple Pay, Razorpay, and Global Stripe/PayPal rails), generating a signed `ODPRO-` / `ODENT-` key, saving `OpenDesk_License_Receipt.txt`, and unlocking the app in one click without removing the GUI.
+   - **Monotonic Anti-Clock-Tamper Guard**: Tracks `firstLaunchAt` and `lastSeenAt` across the **15-day (360-hour)** trial window. After 15 days (or if the system clock is tampered with), the app locks and automatically pops up the **Fresh QR Code & One-Time Payment URL** activation modal.
+2. **Email Authentication & Per-Customer Cryptographic Credentials (`VAULT_MASTER_KEY`, `WEBHOOK_SECRET`, etc.)**:
+   - Every customer authenticates with their **Email ID** (`customerEmail`).
+   - Upon authentication (`POST /api/auth/provision` or `license-create-payment-session` / `license-complete-checkout`), the system provisions a dedicated per-customer cryptographic credentials bundle (`VAULT_MASTER_KEY`, `WEBHOOK_SECRET`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `API_ACCESS_TOKEN`) and saves it to `OpenDesk_Customer_Credentials.env` and `OpenDesk_License_Receipt.txt`.
+3. **Fresh QR Code / One-Time URL Payment → OTT Update → Ed25519 App Certificate Activated (`ODCERT1.`)**:
+   - The locked 15-day trial modal displays a **Fresh Vector QR Code** and a **One-Time Payment URL** (`http://localhost:4000/api/checkout/one-time/ott_sess_...`).
+   - Once the customer completes the **$9 one-time payment** (across UPI 2.0 / Instant QR, Visa/MasterCard/Apple Pay, Razorpay, or Global Stripe/PayPal rails), the app receives an **OTT (Over-The-Top / One-Time Token) Update** containing an **Ed25519 asymmetrically signed App Certificate (`ODCERT1.<payloadB64Url>.<sigB64Url>`)** and an offline `ODPRO-` / `ODENT-` license key, activating the lifetime subscription immediately.
    - **1-Click Commercial License Recall (`⏪ 1-Click Recall License` / `recall-commercial-license`)**: Automatically scans `OpenDesk_License_Receipt.txt` or activates the verified commercial Enterprise Site key (`ODENT-2026-AEGS-...`) to restore full commercial activation immediately.
 
 ---

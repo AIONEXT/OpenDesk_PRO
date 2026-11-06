@@ -560,19 +560,40 @@ async function runTests() {
       goodKeyRes.status.licenseTier === 'Enterprise Site'
   )
 
-  // Test Customer Post-15-Day Automated Checkout & Instant Key Delivery Flow ($9 Lifetime)
+  // Test Customer Post-15-Day Automated Checkout, Fresh QR / One-Time URL, OTT Certificate & Email Auth Credentials Flow ($9 Lifetime)
+  const sessRes = await ipcHandlers.get('license-create-payment-session')({}, {
+    tier: 'PRO',
+    customerName: 'Aarav Sharma',
+    customerEmail: 'aarav@opendesk.app',
+  })
+  check(
+    '15-Day Trial Lock Session (license-create-payment-session) authenticates Email ID, generates fresh QR SVG, One-Time URL & provisions VAULT_MASTER_KEY + WEBHOOK_SECRET',
+    sessRes.success &&
+      sessRes.qrSvg.includes('<svg') &&
+      sessRes.oneTimeUrl.includes('/api/checkout/one-time/') &&
+      sessRes.customerCredentials.customerEmail === 'aarav@opendesk.app' &&
+      sessRes.customerCredentials.VAULT_MASTER_KEY.length === 64 &&
+      sessRes.customerCredentials.WEBHOOK_SECRET.startsWith('whsec_od_')
+  )
+
   const checkoutRes = await ipcHandlers.get('license-complete-checkout')({}, {
     tier: 'PRO',
     customerName: 'Aarav Sharma',
     customerEmail: 'aarav@opendesk.app',
     paymentMethod: 'UPI / Instant QR',
   })
+  const issuedCertCheck = exportedMain.verifyAsymmetricLicenseCertificate(checkoutRes.appCertificate)
   check(
-    'Customer Automated Checkout (license-complete-checkout) processes $9 Lifetime payment, activates ODPRO key & writes receipt',
+    'Customer Automated Checkout (license-complete-checkout) processes $9 Lifetime payment, delivers OTT Ed25519 App Certificate (ODCERT1.), activates ODPRO key & writes credentials',
     checkoutRes.success &&
       checkoutRes.amountUsd === 9 &&
       checkoutRes.automatedGateway === true &&
       checkoutRes.licenseKey.startsWith('ODPRO-') &&
+      checkoutRes.appCertificate.startsWith('ODCERT1.') &&
+      issuedCertCheck.valid === true &&
+      checkoutRes.ottUpdate?.status === 'OTT_CERTIFICATE_ACTIVATED' &&
+      checkoutRes.customerCredentials?.VAULT_MASTER_KEY?.length === 64 &&
+      checkoutRes.customerCredentials?.WEBHOOK_SECRET?.startsWith('whsec_od_') &&
       checkoutRes.status.isActivated === true
   )
 

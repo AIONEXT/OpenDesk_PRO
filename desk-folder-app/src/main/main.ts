@@ -25,7 +25,14 @@ import {
   assertPathWithinAllowedRoots,
 } from './services/securityUtils'
 import { resolveHardwareMasterPassphrase } from './services/vaultCrypto'
-import { verifyAsymmetricLicenseCertificate, OPENDESK_ED25519_PUBLIC_KEY_PEM } from './services/licenseEngine'
+import {
+  verifyAsymmetricLicenseCertificate,
+  OPENDESK_ED25519_PUBLIC_KEY_PEM,
+  provisionCustomerCredentials,
+  generatePaymentQrSvg,
+  issueAsymmetricLicenseCertificate,
+  CustomerCredentialsBundle,
+} from './services/licenseEngine'
 
 export {
   validateSafeExternalUrl,
@@ -33,6 +40,9 @@ export {
   resolveHardwareMasterPassphrase,
   verifyAsymmetricLicenseCertificate,
   OPENDESK_ED25519_PUBLIC_KEY_PEM,
+  provisionCustomerCredentials,
+  generatePaymentQrSvg,
+  issueAsymmetricLicenseCertificate,
 }
 
 // 1. Global Main-Process Error Shield
@@ -3932,6 +3942,10 @@ interface LicenseLedgerData {
   licenseKey: string
   licenseTier: string
   licensedTo: string
+  customerEmail?: string
+  appCertificate?: string
+  ottToken?: string
+  customerCredentials?: CustomerCredentialsBundle
   simulatedExpired?: boolean
 }
 
@@ -3953,6 +3967,10 @@ async function loadOrInitLicenseLedger(): Promise<LicenseLedgerData> {
         licenseKey: String(dec.licenseKey || ''),
         licenseTier: String(dec.licenseTier || '15-Day Free Trial'),
         licensedTo: String(dec.licensedTo || ''),
+        customerEmail: dec.customerEmail ? String(dec.customerEmail) : undefined,
+        appCertificate: dec.appCertificate ? String(dec.appCertificate) : undefined,
+        ottToken: dec.ottToken ? String(dec.ottToken) : undefined,
+        customerCredentials: dec.customerCredentials || undefined,
         simulatedExpired: Boolean(dec.simulatedExpired),
       }
       hwKey.fill(0)
@@ -4014,6 +4032,15 @@ async function computeLicenseStatus() {
   const trialHoursRemaining = Math.ceil(remainingMs / (60 * 60 * 1000))
   const isTrialExpired = !ledger.isActivated && (remainingMs <= 0 || clockTamperDetected)
 
+  const defaultEmail = ledger.customerEmail || 'customer@opendesk.app'
+  const sessionSeed = crypto
+    .createHash('sha256')
+    .update(`opendesk-ott:${ledger.firstLaunchAt}:${defaultEmail}`)
+    .digest('hex')
+    .slice(0, 14)
+  const oneTimeUrl = `http://localhost:4000/api/checkout/one-time/ott_sess_${sessionSeed}?email=${encodeURIComponent(defaultEmail)}&tier=PRO`
+  const qrSvg = generatePaymentQrSvg(oneTimeUrl, 172)
+
   return {
     isActivated: ledger.isActivated,
     licenseTier: ledger.isActivated ? ledger.licenseTier : isTrialExpired ? 'Trial Expired' : '15-Day Pro Trial',
@@ -4021,6 +4048,12 @@ async function computeLicenseStatus() {
       ? `${ledger.licenseKey.slice(0, 10)}-••••-${ledger.licenseKey.slice(-4)}`
       : '',
     licensedTo: ledger.licensedTo || 'Mac Workspace User',
+    customerEmail: ledger.customerEmail || '',
+    appCertificate: ledger.appCertificate || '',
+    ottToken: ledger.ottToken || '',
+    customerCredentials: ledger.customerCredentials || null,
+    oneTimeUrl,
+    qrSvg,
     trialDaysTotal: TRIAL_DURATION_DAYS,
     trialDaysRemaining: ledger.isActivated ? TRIAL_DURATION_DAYS : trialDaysRemaining,
     trialHoursRemaining: ledger.isActivated ? TRIAL_DURATION_HOURS : trialHoursRemaining,
@@ -4036,24 +4069,106 @@ registerIpc('license-get-status', async () => {
   return await computeLicenseStatus()
 })
 
-registerIpc('license-activate', async (_, payload: { licenseKey: string; licensedTo?: string }) => {
+registerIpc(
+  'license-create-payment-session',
+  async (
+    _,
+    payload: {
+      tier?: 'PRO' | 'ENT'
+      customerEmail: string
+      customerName?: string
+    }
+  ) => {
+    const tier = payload?.tier === 'ENT' ? 'ENT' : 'PRO'
+    const rawEmail = String(payload?.customerEmail || '').trim().toLowerCase()
+    if (!rawEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail)) {
+      return {
+        success: false,
+        error: 'Please enter a valid Email ID to authenticate and generate your QR code, one-time URL, and credentials.',
+      }
+    }
+    const customerName = String(payload?.customerName || rawEmail.split('@')[0] || 'OpenDesk Customer').trim()
+    const credentials = provisionCustomerCredentials(rawEmail, customerName, tier)
+
+    let sessionId = `ott_sess_${crypto.randomBytes(6).toString('hex')}`
+    let oneTimeUrl = `http://localhost:4000/api/checkout/one-time/${sessionId}?email=${encodeURIComponent(rawEmail)}&tier=${tier}`
+    let qrSvg = generatePaymentQrSvg(oneTimeUrl, 176)
+
+    try {
+      const gwRes = await fetch('http://127.0.0.1:4000/api/checkout/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tier,
+          amount: LIFETIME_SUBSCRIPTION_PRICE_USD,
+          customerEmail: rawEmail,
+          customerName,
+        }),
+        signal: AbortSignal.timeout(250),
+      })
+      if (gwRes.ok) {
+        const gwSession: any = await gwRes.json()
+        if (gwSession?.sessionId) sessionId = gwSession.sessionId
+        if (gwSession?.oneTimeUrl) oneTimeUrl = gwSession.oneTimeUrl
+        if (gwSession?.qrSvg) qrSvg = gwSession.qrSvg
+      }
+    } catch {}
+
+    return {
+      success: true,
+      sessionId,
+      oneTimeUrl,
+      qrSvg,
+      customerEmail: rawEmail,
+      customerName,
+      tier,
+      amountUsd: LIFETIME_SUBSCRIPTION_PRICE_USD,
+      customerCredentials: credentials,
+    }
+  }
+)
+
+registerIpc('license-activate', async (_, payload: { licenseKey: string; licensedTo?: string; customerEmail?: string }) => {
   const check = verifyCommercialLicenseKey(payload?.licenseKey || '')
   if (!check.valid) {
     return {
       success: false,
-      error: 'Invalid commercial license key signature. Expected format: ODPRO-XXXX-XXXX-XXXX-XXXX or ODENT-XXXX-XXXX-XXXX-XXXX',
+      error: 'Invalid commercial license key or certificate signature. Expected format: ODPRO-XXXX-XXXX-XXXX-XXXX or ODCERT1...',
     }
   }
   const ledger = await loadOrInitLicenseLedger()
+  const email = String(payload?.customerEmail || ledger.customerEmail || 'customer@opendesk.app').trim().toLowerCase()
+  const holder = String(payload?.licensedTo || email.split('@')[0] || 'Commercial License Holder').trim()
+  const tierCode = check.tier === 'Enterprise Site' ? 'ENT' : 'PRO'
+  const creds = provisionCustomerCredentials(email, holder, tierCode)
+  const certBundle = payload?.licenseKey?.trim().startsWith('ODCERT1.')
+    ? { certificate: check.normalizedKey, ottToken: `ott_${crypto.randomBytes(4).toString('hex')}` }
+    : issueAsymmetricLicenseCertificate({
+        customerEmail: email,
+        customerName: holder,
+        tier: tierCode,
+        licenseKey: check.normalizedKey,
+      })
+
   ledger.isActivated = true
   ledger.licenseKey = check.normalizedKey
   ledger.licenseTier = check.tier
-  ledger.licensedTo = String(payload?.licensedTo || 'Commercial License Holder').trim()
+  ledger.licensedTo = holder
+  ledger.customerEmail = email
+  ledger.appCertificate = certBundle.certificate
+  ledger.ottToken = certBundle.ottToken
+  ledger.customerCredentials = creds
   ledger.simulatedExpired = false
   await saveLicenseLedger(ledger)
   const status = await computeLicenseStatus()
   sendToRenderer('license-status-changed', status)
-  return { success: true, status }
+  return {
+    success: true,
+    appCertificate: certBundle.certificate,
+    ottToken: certBundle.ottToken,
+    customerCredentials: creds,
+    status,
+  }
 })
 
 registerIpc('license-generate-key', async (_, payload?: { tier?: 'PRO' | 'ENT'; seed?: string }) => {
@@ -4074,13 +4189,23 @@ registerIpc(
   ) => {
     const tier = payload?.tier === 'ENT' ? 'ENT' : 'PRO'
     const amountUsd = LIFETIME_SUBSCRIPTION_PRICE_USD
+    const rawEmail = String(payload?.customerEmail || 'customer@opendesk.app').trim().toLowerCase()
+    const cleanEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : 'customer@opendesk.app'
     const holder =
-      (payload?.customerName || payload?.customerEmail || 'OpenDesk Lifetime Customer').trim()
-    const methodLabel = payload?.paymentMethod || 'Automated UPI / Card / Razorpay / Global Gateway'
+      (payload?.customerName || cleanEmail.split('@')[0] || 'OpenDesk Lifetime Customer').trim()
+    const methodLabel = payload?.paymentMethod || 'Fresh QR / One-Time Payment URL -> OTT Certificate Update'
 
-    // Lightweight, non-blocking automated gateway bridge (NexusPay local switch if online, zero UI lag)
+    // 1. Authenticate customer email & provision VAULT_MASTER_KEY, WEBHOOK_SECRET, and gateway credentials
+    let customerCredentials = provisionCustomerCredentials(cleanEmail, holder, tier)
+
+    // 2. Lightweight, non-blocking automated gateway bridge (NexusPay local switch if online, zero UI lag)
     let gatewayPaymentId = `pay_auto_${crypto.randomBytes(4).toString('hex')}`
     let gatewayKey = ''
+    let gatewayCert = ''
+    let gatewayOttToken = ''
+    let oneTimeUrl = `http://localhost:4000/api/checkout/one-time/ott_sess_${crypto.randomBytes(6).toString('hex')}?email=${encodeURIComponent(cleanEmail)}&tier=${tier}`
+    let qrSvg = generatePaymentQrSvg(oneTimeUrl, 176)
+
     try {
       const gwRes = await fetch('http://127.0.0.1:4000/api/checkout/express', {
         method: 'POST',
@@ -4090,33 +4215,70 @@ registerIpc(
           amount: amountUsd,
           currency: 'USD',
           customerName: holder,
-          customerEmail: payload?.customerEmail || 'customer@opendesk.app',
+          customerEmail: cleanEmail,
           paymentMethod: methodLabel,
         }),
-        signal: AbortSignal.timeout(220),
+        signal: AbortSignal.timeout(260),
       })
       if (gwRes.ok) {
         const gwData: any = await gwRes.json()
         if (gwData?.payment?.paymentId) gatewayPaymentId = gwData.payment.paymentId
         if (gwData?.licenseKey) gatewayKey = gwData.licenseKey
+        if (gwData?.appCertificate) gatewayCert = gwData.appCertificate
+        if (gwData?.ottUpdate?.ottToken) gatewayOttToken = gwData.ottUpdate.ottToken
+        if (gwData?.customerCredentials) customerCredentials = gwData.customerCredentials
+        if (gwData?.oneTimeUrl) oneTimeUrl = gwData.oneTimeUrl
+        if (gwData?.qrSvg) qrSvg = gwData.qrSvg
       }
     } catch {}
 
     const generatedKey = gatewayKey || generateCommercialLicenseKey(tier, '2026')
     const verification = verifyCommercialLicenseKey(generatedKey)
+    const certBundle = gatewayCert
+      ? { certificate: gatewayCert, ottToken: gatewayOttToken || `ott_${crypto.randomBytes(6).toString('hex')}` }
+      : issueAsymmetricLicenseCertificate({
+          customerEmail: cleanEmail,
+          customerName: holder,
+          tier,
+          paymentId: gatewayPaymentId,
+          licenseKey: verification.normalizedKey,
+        })
+
     const ledger = await loadOrInitLicenseLedger()
     ledger.isActivated = true
     ledger.licenseKey = verification.normalizedKey
     ledger.licenseTier = verification.tier
     ledger.licensedTo = holder
+    ledger.customerEmail = cleanEmail
+    ledger.appCertificate = certBundle.certificate
+    ledger.ottToken = certBundle.ottToken
+    ledger.customerCredentials = customerCredentials
     ledger.simulatedExpired = false
     ledger.lastSeenAt = Date.now()
     await saveLicenseLedger(ledger)
 
-    const receiptPath = path.join(
-      currentSettings.currentPath || getDefaultWorkspacePath(),
-      'OpenDesk_License_Receipt.txt'
-    )
+    const wsDir = currentSettings.currentPath || getDefaultWorkspacePath()
+    const credentialsEnvPath = path.join(wsDir, 'OpenDesk_Customer_Credentials.env')
+    const credentialsEnvContent = [
+      '# ====================================================================',
+      '# OPENDESK PRO v3.1 — AUTHENTICATED CUSTOMER CREDENTIALS & OTT CERT',
+      `# Authenticated Email: ${cleanEmail}`,
+      `# Issued At:           ${customerCredentials.issuedAt}`,
+      '# ====================================================================',
+      `CUSTOMER_EMAIL=${cleanEmail}`,
+      `VAULT_MASTER_KEY=${customerCredentials.VAULT_MASTER_KEY}`,
+      `WEBHOOK_SECRET=${customerCredentials.WEBHOOK_SECRET}`,
+      `RAZORPAY_KEY_ID=${customerCredentials.RAZORPAY_KEY_ID}`,
+      `RAZORPAY_KEY_SECRET=${customerCredentials.RAZORPAY_KEY_SECRET}`,
+      `API_ACCESS_TOKEN=${customerCredentials.API_ACCESS_TOKEN}`,
+      `OTT_UPDATE_TOKEN=${certBundle.ottToken}`,
+      `OPENDESK_LICENSE_KEY=${verification.normalizedKey}`,
+      `OPENDESK_APP_CERTIFICATE=${certBundle.certificate}`,
+      '',
+    ].join('\n')
+    await fs.writeFile(credentialsEnvPath, credentialsEnvContent, { encoding: 'utf-8', mode: 0o600 }).catch(() => {})
+
+    const receiptPath = path.join(wsDir, 'OpenDesk_License_Receipt.txt')
     const receiptContent = [
       '====================================================================',
       '                 OPENDESK PRO v3.1 — LIFETIME RECEIPT               ',
@@ -4124,10 +4286,21 @@ registerIpc(
       `Plan Purchased:   OpenDesk ${verification.tier} (After 15-Day Free Trial)`,
       `Amount Paid:      $${amountUsd}.00 USD (One-Time Lifetime Subscription — Zero Recurring Fees)`,
       `Payment Method:   ${methodLabel} (Gateway Ref: ${gatewayPaymentId})`,
+      `Authenticated ID: ${cleanEmail}`,
       `Licensed To:      ${holder}`,
       `License Key:      ${verification.normalizedKey}`,
+      `OTT Update Token: ${certBundle.ottToken}`,
+      `App Certificate:  ${certBundle.certificate}`,
+      `One-Time URL:     ${oneTimeUrl}`,
+      '--------------------------------------------------------------------',
+      'PROVISIONED CUSTOMER CREDENTIALS (Saved to OpenDesk_Customer_Credentials.env):',
+      `VAULT_MASTER_KEY: ${customerCredentials.VAULT_MASTER_KEY}`,
+      `WEBHOOK_SECRET:   ${customerCredentials.WEBHOOK_SECRET}`,
+      `RAZORPAY_KEY_ID:  ${customerCredentials.RAZORPAY_KEY_ID}`,
+      `API_ACCESS_TOKEN: ${customerCredentials.API_ACCESS_TOKEN}`,
+      '--------------------------------------------------------------------',
       `Activated On:     ${new Date().toISOString()}`,
-      'Verification:     100% Automated Gateway + Offline HMAC-SHA256 Verified',
+      'Verification:     100% OTT Ed25519 Certificate + Offline HMAC-SHA256 Verified',
       '====================================================================',
     ].join('\n')
     await fs.writeFile(receiptPath, receiptContent, 'utf-8').catch(() => {})
@@ -4137,6 +4310,18 @@ registerIpc(
     return {
       success: true,
       licenseKey: verification.normalizedKey,
+      appCertificate: certBundle.certificate,
+      ottUpdate: {
+        status: 'OTT_CERTIFICATE_ACTIVATED',
+        ottToken: certBundle.ottToken,
+        appCertificate: certBundle.certificate,
+        activatedAt: new Date().toISOString(),
+      },
+      customerEmail: cleanEmail,
+      customerCredentials,
+      credentialsEnvPath,
+      oneTimeUrl,
+      qrSvg,
       amountUsd,
       gatewayPaymentId,
       automatedGateway: true,

@@ -288,6 +288,12 @@ interface ElectronAPI {
     licenseTier: string
     licenseKeyMasked: string
     licensedTo: string
+    customerEmail?: string
+    appCertificate?: string
+    ottToken?: string
+    customerCredentials?: any
+    oneTimeUrl?: string
+    qrSvg?: string
     trialDaysTotal: number
     trialDaysRemaining: number
     trialHoursRemaining: number
@@ -296,9 +302,28 @@ interface ElectronAPI {
     firstLaunchAt: string
     masterDemoKey: string
   }>
-  licenseActivate?: (payload: { licenseKey: string; licensedTo?: string }) => Promise<{
+  licenseActivate?: (payload: { licenseKey: string; licensedTo?: string; customerEmail?: string }) => Promise<{
     success: boolean
+    appCertificate?: string
+    ottToken?: string
+    customerCredentials?: any
     status?: any
+    error?: string
+  }>
+  licenseCreatePaymentSession?: (payload: {
+    tier?: 'PRO' | 'ENT'
+    customerEmail: string
+    customerName?: string
+  }) => Promise<{
+    success: boolean
+    sessionId?: string
+    oneTimeUrl?: string
+    qrSvg?: string
+    customerEmail?: string
+    customerName?: string
+    tier?: string
+    amountUsd?: number
+    customerCredentials?: any
     error?: string
   }>
   licenseCompleteCheckout?: (payload: {
@@ -309,6 +334,13 @@ interface ElectronAPI {
   }) => Promise<{
     success: boolean
     licenseKey: string
+    appCertificate?: string
+    ottUpdate?: any
+    customerEmail?: string
+    customerCredentials?: any
+    credentialsEnvPath?: string
+    oneTimeUrl?: string
+    qrSvg?: string
     amountUsd: number
     receiptPath: string
     status: any
@@ -1315,9 +1347,18 @@ const App = () => {
   const [showLicenseModal, setShowLicenseModal] = useState(false)
   const [licenseKeyInput, setLicenseKeyInput] = useState('')
   const [licensedToInput, setLicensedToInput] = useState('')
-  const [checkoutEmailInput, setCheckoutEmailInput] = useState('')
+  const [checkoutEmailInput, setCheckoutEmailInput] = useState('customer@opendesk.app')
   const [checkoutMethod, setCheckoutMethod] = useState<'UPI / Instant QR' | 'Card / Apple Pay' | 'Razorpay / Global'>('UPI / Instant QR')
-  const [lastReceiptInfo, setLastReceiptInfo] = useState<{ key: string; receiptPath: string; plan: string } | null>(null)
+  const [paymentSession, setPaymentSession] = useState<any>(null)
+  const [lastReceiptInfo, setLastReceiptInfo] = useState<{
+    key: string
+    appCertificate?: string
+    ottToken?: string
+    customerCredentials?: any
+    oneTimeUrl?: string
+    receiptPath: string
+    plan: string
+  } | null>(null)
 
   // Full-Workspace Encrypted Security Lock State (⌘+L)
   const [isAppSecurityLocked, setIsAppSecurityLocked] = useState(false)
@@ -6822,17 +6863,17 @@ const App = () => {
           </div>
         )}
 
-        {/* 15-DAY FREE TRIAL & STREAMLINED $9 AUTOMATED LIFETIME SUBSCRIPTION MODAL */}
+        {/* 15-DAY FREE TRIAL LOCK -> EMAIL AUTH + FRESH QR CODE / ONE-TIME URL -> OTT APP CERTIFICATE ACTIVATION MODAL */}
         {(showLicenseModal || licenseStatus?.isTrialExpired) && (
           <div
             onClick={() => {
               if (!licenseStatus?.isTrialExpired) setShowLicenseModal(false)
             }}
-            className="absolute inset-0 bg-black/75 flex items-center justify-center p-4 z-50 no-drag"
+            className="absolute inset-0 bg-black/80 flex items-center justify-center p-4 z-50 no-drag"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="df-modal rounded-2xl w-full max-w-lg max-h-[92%] overflow-y-auto p-5 shadow-2xl space-y-3 text-xs"
+              className="df-modal rounded-2xl w-full max-w-xl max-h-[94%] overflow-y-auto p-5 shadow-2xl space-y-3 text-xs"
             >
               <div className="flex items-center justify-between pb-2.5" style={{ borderBottom: '1px solid var(--df-border)' }}>
                 <div className="flex items-center gap-2.5">
@@ -6840,13 +6881,13 @@ const App = () => {
                   <div>
                     <h3 className="font-bold text-sm df-text-primary">
                       {licenseStatus?.isActivated
-                        ? `OpenDesk PRO Lifetime Activated (${licenseStatus.licenseTier})`
+                        ? `OpenDesk PRO Lifetime Certificate Activated (${licenseStatus.licenseTier})`
                         : licenseStatus?.isTrialExpired
-                        ? '15-Day Free Trial Ended — Unlock Lifetime Access for $9'
+                        ? '🔒 15-Day Trial Ended — Scan Fresh QR / One-Time URL for OTT Lifetime Certificate'
                         : `OpenDesk PRO 15-Day Free Trial (${licenseStatus?.trialDaysRemaining ?? 15} Days Left) · $9 Lifetime`}
                     </h3>
                     <div className="text-[10px] df-text-muted">
-                      15-Day Free Trial → $9 One-Time Lifetime Subscription · Instant Automated Gateway & Zero Lag
+                      15-Day Trial Lock → Email ID Auth → Fresh QR / One-Time URL Payment → OTT App Certificate + Vault & Webhook Credentials
                     </div>
                   </div>
                 </div>
@@ -6863,9 +6904,9 @@ const App = () => {
                   <span className="df-text-secondary">Status:</span>
                   <span className="font-bold df-text-primary">
                     {licenseStatus?.isActivated
-                      ? `✅ ${licenseStatus.licenseTier} (${licenseStatus.licenseKeyMasked})`
+                      ? `✅ ${licenseStatus.licenseTier} · OTT Certificate Active (${licenseStatus.licenseKeyMasked})`
                       : licenseStatus?.isTrialExpired
-                      ? '🔒 15-Day Trial Ended — Complete 1-Click $9 Lifetime Unlock Below'
+                      ? '🔒 App Locked After 15-Day Trial — Authenticate Email & Pay via QR / One-Time URL Below'
                       : `⏳ ${licenseStatus?.trialDaysRemaining ?? 15} days (${licenseStatus?.trialHoursRemaining ?? 360} hours) remaining in 15-Day Free Trial`}
                   </span>
                 </div>
@@ -6881,104 +6922,232 @@ const App = () => {
                 </div>
               </div>
 
-              {/* STREAMLINED 1-CLICK $9 LIFETIME AUTOMATED CHECKOUT */}
+              {/* STEP 1 & 2: EMAIL AUTHENTICATION + FRESH QR CODE & ONE-TIME PAYMENT URL -> OTT CERTIFICATE UPDATE */}
               <div className="df-card p-3.5 space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="font-bold df-text-primary text-xs">
-                      ⚡ 1-Click Automated Lifetime Subscription
+                      📲 Step 1 & 2: Email ID Auth · Fresh QR Code & One-Time URL ($9 Lifetime)
                     </span>
                     <div className="text-[10px] df-text-muted">
-                      Full GUI + AES-256-GCM Vault + All 14 Free/Local AI Models · Own Forever
+                      Authenticate with your Email ID to generate a fresh QR code, One-Time URL, VAULT_MASTER_KEY & WEBHOOK_SECRET
                     </div>
                   </div>
                   <div className="text-right">
                     <span className="text-base font-extrabold text-emerald-400">$9</span>
-                    <span className="text-[10px] df-text-muted block">one-time · after 15d</span>
+                    <span className="text-[10px] df-text-muted block">one-time · lifetime</span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <input
-                    type="text"
-                    placeholder="Name or Organization (optional)..."
-                    value={licensedToInput}
-                    onChange={(e) => setLicensedToInput(e.target.value)}
-                    className="df-input px-2.5 py-1.5 text-xs"
-                  />
+                <div className="grid grid-cols-12 gap-2 items-center">
                   <input
                     type="email"
-                    placeholder="Email for Receipt & Key..."
+                    placeholder="Customer Email ID (Required for Auth & Credentials)..."
                     value={checkoutEmailInput}
                     onChange={(e) => setCheckoutEmailInput(e.target.value)}
-                    className="df-input px-2.5 py-1.5 text-xs"
+                    className="col-span-5 df-input px-2.5 py-1.5 text-xs font-mono"
                   />
-                </div>
-
-                <div className="flex items-center gap-1.5 text-[10.5px]">
-                  <span className="df-text-muted shrink-0">Rail:</span>
-                  {(['UPI / Instant QR', 'Card / Apple Pay', 'Razorpay / Global'] as const).map((pm) => (
-                    <button
-                      key={pm}
-                      onClick={() => setCheckoutMethod(pm)}
-                      className={`px-2.5 py-1 rounded-lg transition-all ${
-                        checkoutMethod === pm ? 'df-pill-active' : 'df-pill'
-                      }`}
-                    >
-                      {pm}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    placeholder="Name / Org (optional)..."
+                    value={licensedToInput}
+                    onChange={(e) => setLicensedToInput(e.target.value)}
+                    className="col-span-4 df-input px-2.5 py-1.5 text-xs"
+                  />
                   <button
                     onClick={async () => {
-                      const res = await window.electronAPI.licenseCompleteCheckout?.({
+                      const sess = await window.electronAPI.licenseCreatePaymentSession?.({
                         tier: 'PRO',
-                        customerName: licensedToInput || checkoutEmailInput || 'OpenDesk PRO Customer',
-                        customerEmail: checkoutEmailInput,
-                        paymentMethod: checkoutMethod,
+                        customerEmail: checkoutEmailInput || 'customer@opendesk.app',
+                        customerName: licensedToInput || undefined,
                       })
-                      if (res?.success) {
-                        setLicenseStatus(res.status)
-                        setLicenseKeyInput(res.licenseKey)
-                        setLastReceiptInfo({
-                          key: res.licenseKey,
-                          receiptPath: res.receiptPath,
-                          plan: `OpenDesk PRO Lifetime ($${res.amountUsd || 9})`,
-                        })
-                        showToast(`💎 Paid $${res.amountUsd || 9} & Auto-Activated Lifetime (${res.licenseKey})`)
+                      if (sess?.success) {
+                        setPaymentSession(sess)
+                        showToast(`🔐 Email Authenticated (${sess.customerEmail}) — Fresh QR & One-Time URL Ready`)
+                      } else {
+                        showToast(sess?.error || 'Enter a valid Email ID')
                       }
                     }}
-                    className="flex-1 py-2 df-pill-active rounded-xl text-xs font-bold"
+                    className="col-span-3 py-1.5 df-pill-active rounded-lg text-[10px] font-bold"
                   >
-                    ⚡ Pay $9 & Auto-Unlock Lifetime Forever
-                  </button>
-                  <button
-                    onClick={() => window.electronAPI.openExternalUrl('http://localhost:4000')}
-                    title="Open Full Multi-Rail Payment Aggregator GUI (UPI / Visa / MasterCard / Razorpay / Global)"
-                    className="px-3 py-2 df-pill rounded-xl text-[10.5px] font-semibold shrink-0"
-                  >
-                    🌐 Gateway GUI ↗
+                    🔄 Refresh QR & Auth
                   </button>
                 </div>
 
-                {lastReceiptInfo && (
-                  <div className="p-2.5 rounded-lg bg-emerald-500/15 border border-emerald-500/40 text-[10.5px] space-y-1">
-                    <div className="font-bold text-emerald-300">
-                      ✅ Automated Payment Complete — {lastReceiptInfo.plan} Active!
+                {/* Fresh QR Code & One-Time Payment URL Display */}
+                <div className="grid grid-cols-12 gap-3 items-center p-2.5 rounded-xl df-subbar" style={{ border: '1px solid var(--df-border-subtle)' }}>
+                  <div className="col-span-4 flex flex-col items-center justify-center">
+                    <div
+                      className="rounded-xl overflow-hidden shadow-md bg-white p-1"
+                      style={{ width: 124, height: 124 }}
+                      dangerouslySetInnerHTML={{
+                        __html: (paymentSession?.qrSvg || licenseStatus?.qrSvg || '').replace(
+                          /width="\d+" height="\d+"/,
+                          'width="116" height="116"'
+                        ),
+                      }}
+                    />
+                    <span className="text-[9px] df-text-muted mt-1 font-mono">Scan Fresh UPI / Payment QR</span>
+                  </div>
+                  <div className="col-span-8 space-y-2">
+                    <div>
+                      <div className="text-[10px] font-bold df-text-secondary">🔗 One-Time Payment & OTT Activation URL:</div>
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <input
+                          readOnly
+                          value={
+                            paymentSession?.oneTimeUrl ||
+                            licenseStatus?.oneTimeUrl ||
+                            `http://localhost:4000/api/checkout/one-time/ott_live?email=${encodeURIComponent(checkoutEmailInput || 'customer@opendesk.app')}`
+                          }
+                          className="flex-1 df-input px-2 py-1 text-[10px] font-mono select-all"
+                        />
+                        <button
+                          onClick={() => {
+                            const targetUrl =
+                              paymentSession?.oneTimeUrl ||
+                              licenseStatus?.oneTimeUrl ||
+                              `http://localhost:4000/api/checkout/one-time/ott_live?email=${encodeURIComponent(checkoutEmailInput || 'customer@opendesk.app')}`
+                            window.electronAPI.openExternalUrl(targetUrl)
+                          }}
+                          className="px-2 py-1 df-pill rounded text-[10px] font-semibold shrink-0"
+                        >
+                          Open URL ↗
+                        </button>
+                      </div>
                     </div>
-                    <div className="font-mono text-[10px] df-text-primary select-text">
-                      Key: {lastReceiptInfo.key} · Receipt saved to OpenDesk_License_Receipt.txt
+
+                    <div className="flex items-center gap-1 text-[10px]">
+                      <span className="df-text-muted shrink-0">Rail:</span>
+                      {(['UPI / Instant QR', 'Card / Apple Pay', 'Razorpay / Global'] as const).map((pm) => (
+                        <button
+                          key={pm}
+                          onClick={() => setCheckoutMethod(pm)}
+                          className={`px-2 py-0.5 rounded-md transition-all ${
+                            checkoutMethod === pm ? 'df-pill-active' : 'df-pill'
+                          }`}
+                        >
+                          {pm}
+                        </button>
+                      ))}
                     </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={async () => {
+                          const res = await window.electronAPI.licenseCompleteCheckout?.({
+                            tier: 'PRO',
+                            customerName: licensedToInput || checkoutEmailInput || 'OpenDesk PRO Customer',
+                            customerEmail: checkoutEmailInput || 'customer@opendesk.app',
+                            paymentMethod: checkoutMethod,
+                          })
+                          if (res?.success) {
+                            setLicenseStatus(res.status)
+                            setLicenseKeyInput(res.licenseKey)
+                            setLastReceiptInfo({
+                              key: res.licenseKey,
+                              appCertificate: res.appCertificate,
+                              ottToken: res.ottUpdate?.ottToken,
+                              customerCredentials: res.customerCredentials,
+                              oneTimeUrl: res.oneTimeUrl,
+                              receiptPath: res.receiptPath,
+                              plan: `OpenDesk PRO Lifetime ($${res.amountUsd || 9})`,
+                            })
+                            showToast(
+                              `💎 Payment Complete → OTT Update & Ed25519 Certificate Activated (${res.customerEmail})`
+                            )
+                          }
+                        }}
+                        className="flex-1 py-2 df-pill-active rounded-xl text-xs font-bold"
+                      >
+                        ⚡ Complete $9 Payment → Get OTT Update & Activate Certificate
+                      </button>
+                      <button
+                        onClick={() => window.electronAPI.openExternalUrl('http://localhost:4000')}
+                        title="Open Full Multi-Rail Payment Aggregator GUI"
+                        className="px-2.5 py-2 df-pill rounded-xl text-[10px] font-semibold shrink-0"
+                      >
+                        🌐 Gateway ↗
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* STEP 3: OTT APP CERTIFICATE & EMAIL-AUTHENTICATED CUSTOMER CREDENTIALS (VAULT_MASTER_KEY, WEBHOOK_SECRET, ETC.) */}
+                {(lastReceiptInfo || licenseStatus?.customerCredentials || paymentSession?.customerCredentials) && (
+                  <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-[10px] space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-emerald-300">
+                        {licenseStatus?.isActivated
+                          ? `✅ OTT Certificate Activated — ${lastReceiptInfo?.plan || licenseStatus.licenseTier}`
+                          : '🔐 Authenticated Customer Credentials Ready (Activates on Payment)'}
+                      </span>
+                      <button
+                        onClick={() => {
+                          const creds =
+                            lastReceiptInfo?.customerCredentials ||
+                            licenseStatus?.customerCredentials ||
+                            paymentSession?.customerCredentials
+                          const cert = lastReceiptInfo?.appCertificate || licenseStatus?.appCertificate || ''
+                          const copyBlock = [
+                            `CUSTOMER_EMAIL=${creds?.customerEmail || checkoutEmailInput}`,
+                            `VAULT_MASTER_KEY=${creds?.VAULT_MASTER_KEY || ''}`,
+                            `WEBHOOK_SECRET=${creds?.WEBHOOK_SECRET || ''}`,
+                            `RAZORPAY_KEY_ID=${creds?.RAZORPAY_KEY_ID || ''}`,
+                            `RAZORPAY_KEY_SECRET=${creds?.RAZORPAY_KEY_SECRET || ''}`,
+                            `API_ACCESS_TOKEN=${creds?.API_ACCESS_TOKEN || ''}`,
+                            `OPENDESK_APP_CERTIFICATE=${cert}`,
+                          ].join('\n')
+                          window.electronAPI.writeClipboardText(copyBlock)
+                          showToast('📋 Copied VAULT_MASTER_KEY, WEBHOOK_SECRET & App Certificate')
+                        }}
+                        className="px-2 py-0.5 df-pill-active rounded text-[9.5px] font-bold"
+                      >
+                        📋 Copy Credentials & Cert
+                      </button>
+                    </div>
+                    {(() => {
+                      const creds =
+                        lastReceiptInfo?.customerCredentials ||
+                        licenseStatus?.customerCredentials ||
+                        paymentSession?.customerCredentials
+                      const cert = lastReceiptInfo?.appCertificate || licenseStatus?.appCertificate
+                      const ott = lastReceiptInfo?.ottToken || licenseStatus?.ottToken
+                      return (
+                        <div className="font-mono text-[9.5px] df-text-primary space-y-0.5 select-text break-all">
+                          <div>
+                            <strong>Email ID:</strong> {creds?.customerEmail || checkoutEmailInput} ·{' '}
+                            <strong>OTT Token:</strong> {ott || 'ott_ready'}
+                          </div>
+                          {cert && (
+                            <div>
+                              <strong>App Certificate:</strong> {cert.slice(0, 44)}…{cert.slice(-16)}
+                            </div>
+                          )}
+                          <div>
+                            <strong>VAULT_MASTER_KEY:</strong> {creds?.VAULT_MASTER_KEY}
+                          </div>
+                          <div>
+                            <strong>WEBHOOK_SECRET:</strong> {creds?.WEBHOOK_SECRET}
+                          </div>
+                          <div>
+                            <strong>RAZORPAY_KEY_ID:</strong> {creds?.RAZORPAY_KEY_ID} ·{' '}
+                            <strong>API_TOKEN:</strong> {creds?.API_ACCESS_TOKEN?.slice(0, 22)}…
+                          </div>
+                          <div className="text-[9px] text-emerald-300/90 pt-0.5">
+                            Saved to OpenDesk_Customer_Credentials.env & OpenDesk_License_Receipt.txt
+                          </div>
+                        </div>
+                      )
+                    })()}
                   </div>
                 )}
               </div>
 
-              {/* INSTANT KEY ENTRY & 1-CLICK RECALL */}
+              {/* INSTANT KEY / CERTIFICATE ENTRY & 1-CLICK RECALL */}
               <div className="df-card p-3 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold df-text-primary">🔑 Have a License Key or Receipt?</span>
+                  <span className="font-semibold df-text-primary">🔑 Have an App Certificate (ODCERT1.) or License Key?</span>
                   <button
                     onClick={async () => {
                       const res = await window.electronAPI.recallCommercialLicense?.({
@@ -6990,6 +7159,9 @@ const App = () => {
                         setLicenseKeyInput(res.licenseKey)
                         setLastReceiptInfo({
                           key: res.licenseKey,
+                          appCertificate: res.status?.appCertificate,
+                          ottToken: res.status?.ottToken,
+                          customerCredentials: res.status?.customerCredentials,
                           receiptPath: res.receiptPath,
                           plan: `${res.licenseTier} ($9 Lifetime Recall)`,
                         })
@@ -7004,24 +7176,25 @@ const App = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
-                    placeholder="ODPRO-XXXX-XXXX-XXXX-XXXX or ODENT-..."
+                    placeholder="ODCERT1.... or ODPRO-XXXX-XXXX-XXXX-XXXX"
                     value={licenseKeyInput}
                     onChange={(e) => setLicenseKeyInput(e.target.value)}
-                    className="flex-1 df-input px-2.5 py-1.5 text-xs font-mono uppercase"
+                    className="flex-1 df-input px-2.5 py-1.5 text-xs font-mono"
                   />
                   <button
                     onClick={async () => {
                       const res = await window.electronAPI.licenseActivate?.({
                         licenseKey: licenseKeyInput,
                         licensedTo: licensedToInput || checkoutEmailInput || 'Lifetime License Holder',
+                        customerEmail: checkoutEmailInput || 'customer@opendesk.app',
                       })
                       if (res?.success) {
                         setLicenseStatus(res.status)
                         setLicenseKeyInput('')
                         setShowLicenseModal(false)
-                        showToast('💎 One-Time Lifetime License Activated!')
+                        showToast('💎 OTT App Certificate & Lifetime Subscription Activated!')
                       } else {
-                        showToast(res?.error || 'Invalid license key')
+                        showToast(res?.error || 'Invalid license key or certificate')
                       }
                     }}
                     className="px-3.5 py-1.5 df-pill-active rounded-lg text-xs font-bold shrink-0"
@@ -7053,7 +7226,7 @@ const App = () => {
                     onClick={async () => {
                       const res = await window.electronAPI.licenseSimulateTrial?.({ mode: 'expire_now' })
                       if (res?.status) setLicenseStatus(res.status)
-                      showToast('Simulated Day 16 (15-Day Trial Expired Paywall)')
+                      showToast('Simulated Day 16 (15-Day Trial Expired Lock & QR Popup)')
                     }}
                     className="px-2 py-1 df-pill rounded text-[10px]"
                   >

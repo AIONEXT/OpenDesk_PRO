@@ -37,6 +37,25 @@
         "phone": "+91 9876543210"
       },
       "createdAt": "2026-11-03T06:36:03.798Z"
+    },
+    {
+      "orderId": "order_56312e8ddf90ee6c",
+      "amount": 9,
+      "currency": "USD",
+      "receipt": "rcpt_b661248365d73b25",
+      "status": "PAID",
+      "items": [
+        {
+          "name": "OpenDesk PRO Lifetime Subscription (After 15-Day Free Trial)",
+          "price": 9
+        }
+      ],
+      "customer": {
+        "name": "Aarav Sharma",
+        "email": "aarav@opendesk.app",
+        "phone": "+91 9876543210"
+      },
+      "createdAt": "2026-11-06T18:15:31.633Z"
     }
   ],
   "transactions": [
@@ -2547,6 +2566,384 @@
       "refundedAmount": 0,
       "initiatedAt": "2026-11-03T06:36:03.800Z",
       "capturedAt": "2026-11-03T06:36:03.803Z"
+    },
+    {
+      "paymentId": "pay_upi_721749a2b3641012",
+      "orderId": "order_upi_fa3d55643a5253ee",
+      "gateway": "UPI Direct (NPCI)",
+      "rail": "NPCI_UPI_2.0",
+      "method": "upi",
+      "amount": 1999,
+      "currency": "INR",
+      "fee": 0,
+      "net": 1999,
+      "status": "AWAITING_PAYMENT",
+      "riskAssessment": {
+        "score": 0,
+        "tier": "LOW",
+        "action": "ALLOW",
+        "reasons": [
+          "UPI rail: Hardware-bound mobile MPIN protection applied."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.583Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Native NPCI UPI Switch selected for instant clearing & 0% MDR.",
+        "selectedGateway": "UPI Direct (NPCI)"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_upi_721749a2b3641012",
+        "orderId": "order_upi_fa3d55643a5253ee",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "mode": "qr",
+        "amount": 1999,
+        "currency": "INR",
+        "fee": 0,
+        "transactionRef": "tr_npci_76aa3a583677437d",
+        "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+        "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M79.2,0.0h8.8v8.8h-8.8z M88.0,0.0h8.8v8.8h-8.8z M96.8,0.0h8.8v8.8h-8.8z M123.2,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M79.2,8.8h8.8v8.8h-8.8z M88.0,8.8h8.8v8.8h-8.8z M96.8,8.8h8.8v8.8h-8.8z M105.6,8.8h8.8v8.8h-8.8z M114.4,8.8h8.8v8.8h-8.8z M123.2,8.8h8.8v8.8h-8.8z M140.8,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M96.8,17.6h8.8v8.8h-8.8z M114.4,17.6h8.8v8.8h-8.8z M140.8,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M79.2,26.4h8.8v8.8h-8.8z M105.6,26.4h8.8v8.8h-8.8z M123.2,26.4h8.8v8.8h-8.8z M132.0,26.4h8.8v8.8h-8.8z M140.8,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M96.8,35.2h8.8v8.8h-8.8z M132.0,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M70.4,44.0h8.8v8.8h-8.8z M88.0,44.0h8.8v8.8h-8.8z M105.6,44.0h8.8v8.8h-8.8z M123.2,44.0h8.8v8.8h-8.8z M132.0,44.0h8.8v8.8h-8.8z M140.8,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M70.4,61.6h8.8v8.8h-8.8z M88.0,61.6h8.8v8.8h-8.8z M96.8,61.6h8.8v8.8h-8.8z M114.4,61.6h8.8v8.8h-8.8z M8.8,70.4h8.8v8.8h-8.8z M17.6,70.4h8.8v8.8h-8.8z M26.4,70.4h8.8v8.8h-8.8z M35.2,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M61.6,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M158.4,70.4h8.8v8.8h-8.8z M167.2,70.4h8.8v8.8h-8.8z M193.6,70.4h8.8v8.8h-8.8z M202.4,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M8.8,79.2h8.8v8.8h-8.8z M17.6,79.2h8.8v8.8h-8.8z M44.0,79.2h8.8v8.8h-8.8z M70.4,79.2h8.8v8.8h-8.8z M96.8,79.2h8.8v8.8h-8.8z M105.6,79.2h8.8v8.8h-8.8z M123.2,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M140.8,79.2h8.8v8.8h-8.8z M149.6,79.2h8.8v8.8h-8.8z M158.4,79.2h8.8v8.8h-8.8z M167.2,79.2h8.8v8.8h-8.8z M176.0,79.2h8.8v8.8h-8.8z M184.8,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M211.2,79.2h8.8v8.8h-8.8z M17.6,88.0h8.8v8.8h-8.8z M26.4,88.0h8.8v8.8h-8.8z M35.2,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M70.4,88.0h8.8v8.8h-8.8z M79.2,88.0h8.8v8.8h-8.8z M96.8,88.0h8.8v8.8h-8.8z M105.6,88.0h8.8v8.8h-8.8z M114.4,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M167.2,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M211.2,88.0h8.8v8.8h-8.8z M17.6,96.8h8.8v8.8h-8.8z M61.6,96.8h8.8v8.8h-8.8z M70.4,96.8h8.8v8.8h-8.8z M88.0,96.8h8.8v8.8h-8.8z M96.8,96.8h8.8v8.8h-8.8z M105.6,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M123.2,96.8h8.8v8.8h-8.8z M149.6,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M193.6,96.8h8.8v8.8h-8.8z M202.4,96.8h8.8v8.8h-8.8z M0.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M61.6,105.6h8.8v8.8h-8.8z M70.4,105.6h8.8v8.8h-8.8z M88.0,105.6h8.8v8.8h-8.8z M96.8,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M123.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M211.2,105.6h8.8v8.8h-8.8z M35.2,114.4h8.8v8.8h-8.8z M79.2,114.4h8.8v8.8h-8.8z M88.0,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M105.6,114.4h8.8v8.8h-8.8z M114.4,114.4h8.8v8.8h-8.8z M132.0,114.4h8.8v8.8h-8.8z M140.8,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M176.0,114.4h8.8v8.8h-8.8z M211.2,114.4h8.8v8.8h-8.8z M35.2,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M61.6,123.2h8.8v8.8h-8.8z M70.4,123.2h8.8v8.8h-8.8z M79.2,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M114.4,123.2h8.8v8.8h-8.8z M132.0,123.2h8.8v8.8h-8.8z M140.8,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M176.0,123.2h8.8v8.8h-8.8z M184.8,123.2h8.8v8.8h-8.8z M193.6,123.2h8.8v8.8h-8.8z M202.4,123.2h8.8v8.8h-8.8z M211.2,123.2h8.8v8.8h-8.8z M17.6,132.0h8.8v8.8h-8.8z M26.4,132.0h8.8v8.8h-8.8z M70.4,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M88.0,132.0h8.8v8.8h-8.8z M105.6,132.0h8.8v8.8h-8.8z M123.2,132.0h8.8v8.8h-8.8z M132.0,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M158.4,132.0h8.8v8.8h-8.8z M167.2,132.0h8.8v8.8h-8.8z M176.0,132.0h8.8v8.8h-8.8z M202.4,132.0h8.8v8.8h-8.8z M211.2,132.0h8.8v8.8h-8.8z M35.2,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M61.6,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M88.0,140.8h8.8v8.8h-8.8z M96.8,140.8h8.8v8.8h-8.8z M105.6,140.8h8.8v8.8h-8.8z M123.2,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M167.2,140.8h8.8v8.8h-8.8z M176.0,140.8h8.8v8.8h-8.8z M193.6,140.8h8.8v8.8h-8.8z M202.4,140.8h8.8v8.8h-8.8z M70.4,149.6h8.8v8.8h-8.8z M79.2,149.6h8.8v8.8h-8.8z M88.0,149.6h8.8v8.8h-8.8z M114.4,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M140.8,149.6h8.8v8.8h-8.8z M158.4,149.6h8.8v8.8h-8.8z M176.0,149.6h8.8v8.8h-8.8z M184.8,149.6h8.8v8.8h-8.8z M211.2,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M88.0,158.4h8.8v8.8h-8.8z M96.8,158.4h8.8v8.8h-8.8z M105.6,158.4h8.8v8.8h-8.8z M114.4,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M140.8,158.4h8.8v8.8h-8.8z M158.4,158.4h8.8v8.8h-8.8z M167.2,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M88.0,167.2h8.8v8.8h-8.8z M105.6,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M123.2,167.2h8.8v8.8h-8.8z M132.0,167.2h8.8v8.8h-8.8z M149.6,167.2h8.8v8.8h-8.8z M158.4,167.2h8.8v8.8h-8.8z M193.6,167.2h8.8v8.8h-8.8z M211.2,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M70.4,176.0h8.8v8.8h-8.8z M96.8,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M193.6,176.0h8.8v8.8h-8.8z M202.4,176.0h8.8v8.8h-8.8z M211.2,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M88.0,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M105.6,184.8h8.8v8.8h-8.8z M132.0,184.8h8.8v8.8h-8.8z M176.0,184.8h8.8v8.8h-8.8z M184.8,184.8h8.8v8.8h-8.8z M193.6,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M79.2,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M105.6,193.6h8.8v8.8h-8.8z M114.4,193.6h8.8v8.8h-8.8z M132.0,193.6h8.8v8.8h-8.8z M193.6,193.6h8.8v8.8h-8.8z M211.2,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M70.4,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M88.0,202.4h8.8v8.8h-8.8z M96.8,202.4h8.8v8.8h-8.8z M105.6,202.4h8.8v8.8h-8.8z M114.4,202.4h8.8v8.8h-8.8z M123.2,202.4h8.8v8.8h-8.8z M132.0,202.4h8.8v8.8h-8.8z M158.4,202.4h8.8v8.8h-8.8z M184.8,202.4h8.8v8.8h-8.8z M202.4,202.4h8.8v8.8h-8.8z M211.2,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M96.8,211.2h8.8v8.8h-8.8z M123.2,211.2h8.8v8.8h-8.8z M158.4,211.2h8.8v8.8h-8.8z M184.8,211.2h8.8v8.8h-8.8z M193.6,211.2h8.8v8.8h-8.8z M202.4,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+        "intentLinks": {
+          "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR"
+        },
+        "status": "AWAITING_PAYMENT",
+        "customerVpa": null,
+        "expiryTimestamp": 1793989231584,
+        "initiatedAt": "2026-11-06T18:15:31.584Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.584Z",
+      "capturedAt": null
+    },
+    {
+      "paymentId": "pay_upi_0a14c9f7a0911ae8",
+      "orderId": "order_upi_13e0829b77da5293",
+      "gateway": "UPI Direct (NPCI)",
+      "rail": "NPCI_UPI_2.0",
+      "method": "upi",
+      "amount": 2499,
+      "currency": "INR",
+      "fee": 0,
+      "net": 2499,
+      "status": "CAPTURED",
+      "riskAssessment": {
+        "score": 0,
+        "tier": "LOW",
+        "action": "ALLOW",
+        "reasons": [
+          "UPI rail: Hardware-bound mobile MPIN protection applied."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.589Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Native NPCI UPI Switch selected for instant clearing & 0% MDR.",
+        "selectedGateway": "UPI Direct (NPCI)"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_upi_0a14c9f7a0911ae8",
+        "orderId": "order_upi_13e0829b77da5293",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "mode": "qr",
+        "amount": 2499,
+        "currency": "INR",
+        "fee": 0,
+        "transactionRef": "tr_npci_02fea2a17326ca1a",
+        "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+        "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M88.0,0.0h8.8v8.8h-8.8z M105.6,0.0h8.8v8.8h-8.8z M123.2,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M79.2,8.8h8.8v8.8h-8.8z M105.6,8.8h8.8v8.8h-8.8z M114.4,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M88.0,17.6h8.8v8.8h-8.8z M96.8,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M140.8,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M132.0,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M70.4,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M140.8,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M70.4,44.0h8.8v8.8h-8.8z M140.8,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M96.8,61.6h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M17.6,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M105.6,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M158.4,70.4h8.8v8.8h-8.8z M176.0,70.4h8.8v8.8h-8.8z M193.6,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M8.8,79.2h8.8v8.8h-8.8z M26.4,79.2h8.8v8.8h-8.8z M44.0,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M105.6,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M149.6,79.2h8.8v8.8h-8.8z M176.0,79.2h8.8v8.8h-8.8z M184.8,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M26.4,88.0h8.8v8.8h-8.8z M35.2,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M70.4,88.0h8.8v8.8h-8.8z M88.0,88.0h8.8v8.8h-8.8z M96.8,88.0h8.8v8.8h-8.8z M105.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M158.4,88.0h8.8v8.8h-8.8z M167.2,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M211.2,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M8.8,96.8h8.8v8.8h-8.8z M17.6,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M61.6,96.8h8.8v8.8h-8.8z M79.2,96.8h8.8v8.8h-8.8z M88.0,96.8h8.8v8.8h-8.8z M96.8,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M202.4,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M88.0,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M123.2,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M140.8,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M61.6,114.4h8.8v8.8h-8.8z M79.2,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M114.4,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M140.8,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M202.4,114.4h8.8v8.8h-8.8z M211.2,114.4h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M35.2,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M61.6,123.2h8.8v8.8h-8.8z M70.4,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M123.2,123.2h8.8v8.8h-8.8z M132.0,123.2h8.8v8.8h-8.8z M140.8,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M176.0,123.2h8.8v8.8h-8.8z M202.4,123.2h8.8v8.8h-8.8z M211.2,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M26.4,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M44.0,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M114.4,132.0h8.8v8.8h-8.8z M123.2,132.0h8.8v8.8h-8.8z M132.0,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M167.2,132.0h8.8v8.8h-8.8z M184.8,132.0h8.8v8.8h-8.8z M202.4,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M88.0,140.8h8.8v8.8h-8.8z M123.2,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M193.6,140.8h8.8v8.8h-8.8z M79.2,149.6h8.8v8.8h-8.8z M96.8,149.6h8.8v8.8h-8.8z M114.4,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M167.2,149.6h8.8v8.8h-8.8z M176.0,149.6h8.8v8.8h-8.8z M184.8,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M96.8,158.4h8.8v8.8h-8.8z M105.6,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M140.8,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M167.2,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M79.2,167.2h8.8v8.8h-8.8z M88.0,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M132.0,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M158.4,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M140.8,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M193.6,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M184.8,184.8h8.8v8.8h-8.8z M202.4,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M105.6,193.6h8.8v8.8h-8.8z M123.2,193.6h8.8v8.8h-8.8z M132.0,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M211.2,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M96.8,202.4h8.8v8.8h-8.8z M123.2,202.4h8.8v8.8h-8.8z M132.0,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M202.4,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M105.6,211.2h8.8v8.8h-8.8z M123.2,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M158.4,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M176.0,211.2h8.8v8.8h-8.8z M184.8,211.2h8.8v8.8h-8.8z M193.6,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+        "intentLinks": {
+          "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR"
+        },
+        "status": "CAPTURED",
+        "customerVpa": null,
+        "expiryTimestamp": 1793989231590,
+        "initiatedAt": "2026-11-06T18:15:31.590Z",
+        "gatewayResponse": "00 - SUCCESS",
+        "npciRrn": "401975417802",
+        "payerVpa": "payer@okhdfcbank",
+        "capturedAt": "2026-11-06T18:15:31.593Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.590Z",
+      "capturedAt": "2026-11-06T18:15:31.593Z"
+    },
+    {
+      "paymentId": "pay_visa_695214e1f6a83209",
+      "orderId": "order_card_705a6d39a785d713",
+      "gateway": "Visa / MasterCard Direct Rail",
+      "rail": "VISA",
+      "method": "card",
+      "amount": 4500,
+      "currency": "INR",
+      "fee": 56.25,
+      "net": 4443.75,
+      "status": "CAPTURED",
+      "riskAssessment": {
+        "score": 5,
+        "tier": "LOW",
+        "action": "ALLOW",
+        "reasons": [],
+        "evaluatedAt": "2026-11-06T18:15:31.602Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Direct Visa/MasterCard 3DS2 processing rail selected.",
+        "selectedGateway": "Visa / MasterCard Direct Rail"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_visa_695214e1f6a83209",
+        "orderId": "order_card_705a6d39a785d713",
+        "gateway": "Visa / MasterCard Direct Rail",
+        "network": "VISA",
+        "amount": 4500,
+        "currency": "INR",
+        "fee": 56.25,
+        "maskedPan": "4111 •••• •••• 1111",
+        "cardholder": "ANANYA ROY",
+        "status": "CAPTURED",
+        "threeDSecure": {
+          "challengeId": "3ds_28c05706cb44a2b5",
+          "acsUrl": "/api/payments/verify-3ds",
+          "message": "3D Secure 2.0 Challenge Required. Bank OTP sent to registered mobile.",
+          "maskedPhone": "+91 ••••• ••429",
+          "testOtpHint": "Use sandbox OTP: 123456",
+          "expiresInSeconds": 300
+        },
+        "initiatedAt": "2026-11-06T18:15:31.602Z",
+        "eci": "05",
+        "cavv": "1g3yplgum3w",
+        "networkAuthCode": "ZGP65E",
+        "stan": "451558",
+        "capturedAt": "2026-11-06T18:15:31.608Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.602Z",
+      "capturedAt": "2026-11-06T18:15:31.608Z"
+    },
+    {
+      "paymentId": "pay_rzp_714dfb6a9a8cb118",
+      "orderId": "order_rzp_d97f49e2890cb8fc",
+      "gateway": "Razorpay Payment Gateway",
+      "rail": "RAZORPAY_AGGREGATED",
+      "method": "razorpay",
+      "amount": 3200,
+      "currency": "INR",
+      "fee": 59.2,
+      "net": 3130.14,
+      "status": "CAPTURED",
+      "riskAssessment": {
+        "score": 25,
+        "tier": "ELEVATED",
+        "action": "ALLOW_MONITORED",
+        "reasons": [
+          "Moderate velocity: 3 attempts detected recently."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.613Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Method requires Razorpay aggregator rail.",
+        "selectedGateway": "Razorpay Payment Gateway"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_rzp_714dfb6a9a8cb118",
+        "orderId": "order_rzp_d97f49e2890cb8fc",
+        "gateway": "Razorpay Payment Gateway",
+        "rail": "RAZORPAY_AGGREGATED",
+        "amount": 3200,
+        "currency": "INR",
+        "fee": 59.2,
+        "tax": 10.66,
+        "net": 3130.14,
+        "method": "razorpay",
+        "status": "CAPTURED",
+        "razorpay_payment_id": "pay_rzp_714dfb6a9a8cb118",
+        "razorpay_order_id": "order_rzp_d97f49e2890cb8fc",
+        "razorpay_signature": "62fc3a246abcc306c9b26196bf73d312c131ecdf04b4f5b39f46af71f3da7e8b",
+        "signatureVerified": true,
+        "capturedAt": "2026-11-06T18:15:31.613Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.613Z",
+      "capturedAt": "2026-11-06T18:15:31.613Z"
+    },
+    {
+      "paymentId": "pay_intl_stripe_bcd09e636bff06b7",
+      "orderId": "order_intl_787eea0583b05394",
+      "gateway": "NexusPay International (Global Rails)",
+      "rail": "STRIPE_CROSS_BORDER",
+      "method": "international",
+      "amount": 99,
+      "currency": "USD",
+      "fee": 3.17,
+      "net": 95.83,
+      "status": "CAPTURED",
+      "riskAssessment": {
+        "score": 40,
+        "tier": "MEDIUM",
+        "action": "CHALLENGE_3DS",
+        "reasons": [
+          "Moderate velocity: 4 attempts detected recently.",
+          "Cross-border rail: Currency exchange and international risk factor applied."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.616Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Cross-border currency (USD): routed to Global Rails with dynamic FX matrix.",
+        "selectedGateway": "NexusPay International (Global Rails)"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_intl_stripe_bcd09e636bff06b7",
+        "orderId": "order_intl_787eea0583b05394",
+        "gateway": "NexusPay International (Global Rails)",
+        "rail": "STRIPE_CROSS_BORDER",
+        "channel": "stripe",
+        "amount": 99,
+        "currency": "USD",
+        "fee": 3.17,
+        "net": 95.83,
+        "status": "CAPTURED",
+        "cardholderCountry": "US",
+        "crossBorderCompliance": {
+          "exportCode": "P0802",
+          "rbiReportingRequired": true,
+          "amlScreening": "PASSED",
+          "sanctionsCheck": "PASSED"
+        },
+        "fxDetails": {
+          "sourceAmount": 99,
+          "sourceCurrency": "USD",
+          "targetAmount": 8662.5,
+          "targetCurrency": "INR",
+          "effectiveExchangeRate": 87.5,
+          "fxSpreadFee": 86.63
+        },
+        "externalTransactionId": "ch_live_3k16yjs7fjp",
+        "stripeSignatureHeader": "t=1793988931,v1=2e06b05b4ad48b94c7eeb3b7764f07288931337f05529b131e135749ba09e0b8",
+        "capturedAt": "2026-11-06T18:15:31.616Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.616Z",
+      "capturedAt": "2026-11-06T18:15:31.616Z"
+    },
+    {
+      "paymentId": "pay_rzp_fa5f272af42b892e",
+      "orderId": "order_rzp_d0306e2e68308a0b",
+      "gateway": "Razorpay Payment Gateway",
+      "rail": "RAZORPAY_AGGREGATED",
+      "method": "razorpay",
+      "amount": 1000,
+      "currency": "INR",
+      "fee": 18.5,
+      "net": 978.17,
+      "status": "REFUNDED",
+      "riskAssessment": {
+        "score": 50,
+        "tier": "MEDIUM",
+        "action": "CHALLENGE_3DS",
+        "reasons": [
+          "High velocity detected: 5 attempts within 60 seconds."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.620Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Method requires Razorpay aggregator rail.",
+        "selectedGateway": "Razorpay Payment Gateway"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "orderId": "order_rzp_d0306e2e68308a0b",
+        "gateway": "Razorpay Payment Gateway",
+        "rail": "RAZORPAY_AGGREGATED",
+        "amount": 1000,
+        "currency": "INR",
+        "fee": 18.5,
+        "tax": 3.33,
+        "net": 978.17,
+        "method": "razorpay",
+        "status": "CAPTURED",
+        "razorpay_payment_id": "pay_rzp_fa5f272af42b892e",
+        "razorpay_order_id": "order_rzp_d0306e2e68308a0b",
+        "razorpay_signature": "b83d0f79f2b994ee19a160b6caa2f538b541529ac2fdcfc1c3166fc611cb6d37",
+        "signatureVerified": true,
+        "capturedAt": "2026-11-06T18:15:31.620Z"
+      },
+      "refundedAmount": 1000,
+      "initiatedAt": "2026-11-06T18:15:31.620Z",
+      "capturedAt": "2026-11-06T18:15:31.620Z"
+    },
+    {
+      "paymentId": "pay_upi_76173924adef555e",
+      "orderId": "order_56312e8ddf90ee6c",
+      "gateway": "UPI Direct (NPCI)",
+      "rail": "NPCI_UPI_2.0",
+      "method": "upi",
+      "amount": 9,
+      "currency": "INR",
+      "fee": 0,
+      "net": 9,
+      "status": "CAPTURED",
+      "riskAssessment": {
+        "score": 40,
+        "tier": "MEDIUM",
+        "action": "CHALLENGE_3DS",
+        "reasons": [
+          "High velocity detected: 6 attempts within 60 seconds.",
+          "UPI rail: Hardware-bound mobile MPIN protection applied."
+        ],
+        "evaluatedAt": "2026-11-06T18:15:31.635Z"
+      },
+      "routing": {
+        "strategy": "SMART_AUTO",
+        "reason": "Cross-border currency (USD): routed to Global Rails with dynamic FX matrix.",
+        "selectedGateway": "NexusPay International (Global Rails)"
+      },
+      "gatewayDetails": {
+        "paymentId": "pay_upi_76173924adef555e",
+        "orderId": "order_56312e8ddf90ee6c",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "mode": "qr",
+        "amount": 9,
+        "currency": "INR",
+        "fee": 0,
+        "transactionRef": "tr_npci_bdf2a69e48f1b4f9",
+        "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+        "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M114.4,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M96.8,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M70.4,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M105.6,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M79.2,26.4h8.8v8.8h-8.8z M88.0,26.4h8.8v8.8h-8.8z M96.8,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M79.2,35.2h8.8v8.8h-8.8z M88.0,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M123.2,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M79.2,44.0h8.8v8.8h-8.8z M114.4,44.0h8.8v8.8h-8.8z M132.0,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M114.4,61.6h8.8v8.8h-8.8z M123.2,61.6h8.8v8.8h-8.8z M132.0,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M35.2,70.4h8.8v8.8h-8.8z M44.0,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M88.0,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M114.4,70.4h8.8v8.8h-8.8z M123.2,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M184.8,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M35.2,79.2h8.8v8.8h-8.8z M79.2,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M96.8,79.2h8.8v8.8h-8.8z M114.4,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M167.2,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M0.0,88.0h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M17.6,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M140.8,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M176.0,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M26.4,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M132.0,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M149.6,96.8h8.8v8.8h-8.8z M158.4,96.8h8.8v8.8h-8.8z M167.2,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M0.0,105.6h8.8v8.8h-8.8z M8.8,105.6h8.8v8.8h-8.8z M17.6,105.6h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M70.4,105.6h8.8v8.8h-8.8z M79.2,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M149.6,105.6h8.8v8.8h-8.8z M158.4,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M193.6,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M211.2,105.6h8.8v8.8h-8.8z M0.0,114.4h8.8v8.8h-8.8z M8.8,114.4h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M44.0,114.4h8.8v8.8h-8.8z M70.4,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M132.0,114.4h8.8v8.8h-8.8z M149.6,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M184.8,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M0.0,123.2h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M105.6,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M193.6,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M61.6,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M96.8,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M193.6,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M17.6,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M35.2,140.8h8.8v8.8h-8.8z M44.0,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M105.6,140.8h8.8v8.8h-8.8z M114.4,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M158.4,140.8h8.8v8.8h-8.8z M176.0,140.8h8.8v8.8h-8.8z M184.8,140.8h8.8v8.8h-8.8z M105.6,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M149.6,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M70.4,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M88.0,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M158.4,158.4h8.8v8.8h-8.8z M176.0,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M211.2,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M96.8,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M149.6,167.2h8.8v8.8h-8.8z M167.2,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M202.4,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M70.4,176.0h8.8v8.8h-8.8z M79.2,176.0h8.8v8.8h-8.8z M88.0,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M123.2,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M149.6,176.0h8.8v8.8h-8.8z M158.4,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M211.2,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M70.4,184.8h8.8v8.8h-8.8z M79.2,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M114.4,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M132.0,184.8h8.8v8.8h-8.8z M140.8,184.8h8.8v8.8h-8.8z M149.6,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M211.2,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M70.4,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M140.8,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M176.0,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M193.6,193.6h8.8v8.8h-8.8z M202.4,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M114.4,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M167.2,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M184.8,202.4h8.8v8.8h-8.8z M193.6,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M88.0,211.2h8.8v8.8h-8.8z M114.4,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+        "intentLinks": {
+          "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR"
+        },
+        "status": "CAPTURED",
+        "customerVpa": null,
+        "expiryTimestamp": 1793989231635,
+        "initiatedAt": "2026-11-06T18:15:31.635Z",
+        "gatewayResponse": "00 - SUCCESS",
+        "npciRrn": "228356842429",
+        "payerVpa": "payer@okhdfcbank",
+        "capturedAt": "2026-11-06T18:15:31.639Z"
+      },
+      "refundedAmount": 0,
+      "initiatedAt": "2026-11-06T18:15:31.635Z",
+      "capturedAt": "2026-11-06T18:15:31.639Z"
     }
   ],
   "refunds": [
@@ -2780,9 +3177,771 @@
         "processedAt": "2026-11-03T06:36:03.794Z"
       },
       "createdAt": "2026-11-03T06:36:03.794Z"
+    },
+    {
+      "refundId": "rfnd_rzp_dc61aae984328673",
+      "paymentId": "pay_rzp_fa5f272af42b892e",
+      "orderId": "order_rzp_d0306e2e68308a0b",
+      "amount": 400,
+      "currency": "INR",
+      "status": "PROCESSED",
+      "reason": "Partial return",
+      "gatewayResponse": {
+        "refundId": "rfnd_rzp_dc61aae984328673",
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "gateway": "Razorpay Payment Gateway",
+        "amount": 400,
+        "currency": "INR",
+        "status": "PROCESSED",
+        "acquirerRefNumber": "442956428465",
+        "notes": {},
+        "processedAt": "2026-11-06T18:15:31.623Z"
+      },
+      "createdAt": "2026-11-06T18:15:31.623Z"
+    },
+    {
+      "refundId": "rfnd_rzp_b9b79959327e971b",
+      "paymentId": "pay_rzp_fa5f272af42b892e",
+      "orderId": "order_rzp_d0306e2e68308a0b",
+      "amount": 600,
+      "currency": "INR",
+      "status": "PROCESSED",
+      "reason": "Remaining return",
+      "gatewayResponse": {
+        "refundId": "rfnd_rzp_b9b79959327e971b",
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "gateway": "Razorpay Payment Gateway",
+        "amount": 600,
+        "currency": "INR",
+        "status": "PROCESSED",
+        "acquirerRefNumber": "637506201550",
+        "notes": {},
+        "processedAt": "2026-11-06T18:15:31.628Z"
+      },
+      "createdAt": "2026-11-06T18:15:31.628Z"
     }
   ],
   "webhooks": [
+    {
+      "webhookId": "whk_bd83497c6e0df38e",
+      "event": "license.lifetime.activated",
+      "timestamp": "2026-11-06T18:15:31.649Z",
+      "signatureHeader": "dc4f4dcf3139177b429ba4132c5e330225c2a75c526aaa58282cb5dbffcc7e6e",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "orderId": "order_56312e8ddf90ee6c",
+        "paymentId": "pay_upi_76173924adef555e",
+        "plan": "15-Day Free Trial -> $9 Lifetime Subscription",
+        "amountUsd": 9,
+        "tier": "PRO",
+        "customerName": "Aarav Sharma",
+        "customerEmail": "aarav@opendesk.app",
+        "licenseKey": "ODPRO-2026-9648-6A8C-2398",
+        "appCertificate": "ODCERT1.eyJpc3MiOiJPcGVuRGVzayBDb21tZXJjaWFsIENBIiwic3ViIjoiQWFyYXYgU2hhcm1hIiwiZW1haWwiOiJhYXJhdkBvcGVuZGVzay5hcHAiLCJ0aWVyIjoiUFJPIiwicGxhbiI6IjE1LURheSBUcmlhbCAtPiAkOSBMaWZldGltZSBTdWJzY3JpcHRpb24iLCJwYXltZW50SWQiOiJwYXlfdXBpXzc2MTczOTI0YWRlZjU1NWUiLCJvcmRlcklkIjoib3JkZXJfNTYzMTJlOGRkZjkwZWU2YyIsImxpY2Vuc2VLZXkiOiJPRFBSTy0yMDI2LTk2NDgtNkE4Qy0yMzk4Iiwib3R0Ijoib3R0X2IxMTdhN2YyYjQxMyIsImlhdCI6MTc5Mzk4ODkzMSwibGlmZXRpbWUiOnRydWV9.EwcZr62ORZJ6HsTklOC30X26Dvcc5cGH0Y3QKPvfBdakvb0bbqV9Ivv2k-93HlcniDOYcxRRj84ERbIW2C4vAg",
+        "ottToken": "ott_b117a7f2b413",
+        "oneTimeUrl": "http://localhost:4000/api/checkout/one-time/ott_sess_a20d9cb21231beb6?email=aarav%40opendesk.app&tier=PRO",
+        "customerCredentials": {
+          "authenticated": true,
+          "customerEmail": "aarav@opendesk.app",
+          "customerName": "Aarav Sharma",
+          "tier": "PRO",
+          "VAULT_MASTER_KEY": "26720ad49a84def70c0863ed22ed9682b3bd939704418e5163fbcc052a5f502b",
+          "WEBHOOK_SECRET": "whsec_od_1e64088e722b2138b397052f32c1638777e64418",
+          "RAZORPAY_KEY_ID": "rzp_live_od_e2dfe7c68c6b2464",
+          "RAZORPAY_KEY_SECRET": "rzp_sec_91eb137fc06387d3c487349e05729ad6",
+          "API_ACCESS_TOKEN": "od_live_d206e9fa73493cdcd3fb0a776fa13375f2cd",
+          "issuedAt": "2026-11-06T18:15:31.633Z"
+        },
+        "deepLink": "opendesk://activate?key=ODPRO-2026-9648-6A8C-2398&cert=ODCERT1.eyJpc3MiOiJPcGVuRGVzayBDb21tZXJjaWFsIENBIiwic3ViIjoiQWFyYXYgU2hhcm1hIiwiZW1haWwiOiJhYXJhdkBvcGVuZGVzay5hcHAiLCJ0aWVyIjoiUFJPIiwicGxhbiI6IjE1LURheSBUcmlhbCAtPiAkOSBMaWZldGltZSBTdWJzY3JpcHRpb24iLCJwYXltZW50SWQiOiJwYXlfdXBpXzc2MTczOTI0YWRlZjU1NWUiLCJvcmRlcklkIjoib3JkZXJfNTYzMTJlOGRkZjkwZWU2YyIsImxpY2Vuc2VLZXkiOiJPRFBSTy0yMDI2LTk2NDgtNkE4Qy0yMzk4Iiwib3R0Ijoib3R0X2IxMTdhN2YyYjQxMyIsImlhdCI6MTc5Mzk4ODkzMSwibGlmZXRpbWUiOnRydWV9.EwcZr62ORZJ6HsTklOC30X26Dvcc5cGH0Y3QKPvfBdakvb0bbqV9Ivv2k-93HlcniDOYcxRRj84ERbIW2C4vAg&email=aarav%40opendesk.app&tier=PRO&amount=9"
+      }
+    },
+    {
+      "webhookId": "whk_af6d118d57ed4f5e",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.642Z",
+      "signatureHeader": "6155ef4f2a2bd2da339a5dcef9bd14b5d7b76d701ae6768dd16a260864cf1644",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_upi_76173924adef555e",
+        "orderId": "order_56312e8ddf90ee6c",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "method": "upi",
+        "amount": 9,
+        "currency": "INR",
+        "fee": 0,
+        "net": 9,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 40,
+          "tier": "MEDIUM",
+          "action": "CHALLENGE_3DS",
+          "reasons": [
+            "High velocity detected: 6 attempts within 60 seconds.",
+            "UPI rail: Hardware-bound mobile MPIN protection applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.635Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Cross-border currency (USD): routed to Global Rails with dynamic FX matrix.",
+          "selectedGateway": "NexusPay International (Global Rails)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_upi_76173924adef555e",
+          "orderId": "order_56312e8ddf90ee6c",
+          "gateway": "UPI Direct (NPCI)",
+          "rail": "NPCI_UPI_2.0",
+          "mode": "qr",
+          "amount": 9,
+          "currency": "INR",
+          "fee": 0,
+          "transactionRef": "tr_npci_bdf2a69e48f1b4f9",
+          "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M114.4,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M96.8,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M70.4,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M105.6,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M79.2,26.4h8.8v8.8h-8.8z M88.0,26.4h8.8v8.8h-8.8z M96.8,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M79.2,35.2h8.8v8.8h-8.8z M88.0,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M123.2,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M79.2,44.0h8.8v8.8h-8.8z M114.4,44.0h8.8v8.8h-8.8z M132.0,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M114.4,61.6h8.8v8.8h-8.8z M123.2,61.6h8.8v8.8h-8.8z M132.0,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M35.2,70.4h8.8v8.8h-8.8z M44.0,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M88.0,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M114.4,70.4h8.8v8.8h-8.8z M123.2,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M184.8,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M35.2,79.2h8.8v8.8h-8.8z M79.2,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M96.8,79.2h8.8v8.8h-8.8z M114.4,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M167.2,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M0.0,88.0h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M17.6,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M140.8,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M176.0,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M26.4,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M132.0,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M149.6,96.8h8.8v8.8h-8.8z M158.4,96.8h8.8v8.8h-8.8z M167.2,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M0.0,105.6h8.8v8.8h-8.8z M8.8,105.6h8.8v8.8h-8.8z M17.6,105.6h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M70.4,105.6h8.8v8.8h-8.8z M79.2,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M149.6,105.6h8.8v8.8h-8.8z M158.4,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M193.6,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M211.2,105.6h8.8v8.8h-8.8z M0.0,114.4h8.8v8.8h-8.8z M8.8,114.4h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M44.0,114.4h8.8v8.8h-8.8z M70.4,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M132.0,114.4h8.8v8.8h-8.8z M149.6,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M184.8,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M0.0,123.2h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M105.6,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M193.6,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M61.6,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M96.8,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M193.6,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M17.6,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M35.2,140.8h8.8v8.8h-8.8z M44.0,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M105.6,140.8h8.8v8.8h-8.8z M114.4,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M158.4,140.8h8.8v8.8h-8.8z M176.0,140.8h8.8v8.8h-8.8z M184.8,140.8h8.8v8.8h-8.8z M105.6,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M149.6,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M70.4,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M88.0,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M158.4,158.4h8.8v8.8h-8.8z M176.0,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M211.2,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M96.8,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M149.6,167.2h8.8v8.8h-8.8z M167.2,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M202.4,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M70.4,176.0h8.8v8.8h-8.8z M79.2,176.0h8.8v8.8h-8.8z M88.0,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M123.2,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M149.6,176.0h8.8v8.8h-8.8z M158.4,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M211.2,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M70.4,184.8h8.8v8.8h-8.8z M79.2,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M114.4,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M132.0,184.8h8.8v8.8h-8.8z M140.8,184.8h8.8v8.8h-8.8z M149.6,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M211.2,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M70.4,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M140.8,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M176.0,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M193.6,193.6h8.8v8.8h-8.8z M202.4,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M114.4,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M167.2,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M184.8,202.4h8.8v8.8h-8.8z M193.6,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M88.0,211.2h8.8v8.8h-8.8z M114.4,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+          "intentLinks": {
+            "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR"
+          },
+          "status": "CAPTURED",
+          "customerVpa": null,
+          "expiryTimestamp": 1793989231635,
+          "initiatedAt": "2026-11-06T18:15:31.635Z",
+          "gatewayResponse": "00 - SUCCESS",
+          "npciRrn": "228356842429",
+          "payerVpa": "payer@okhdfcbank",
+          "capturedAt": "2026-11-06T18:15:31.639Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.635Z",
+        "capturedAt": "2026-11-06T18:15:31.639Z"
+      }
+    },
+    {
+      "webhookId": "whk_9650260d4ff67acb",
+      "event": "payment.created",
+      "timestamp": "2026-11-06T18:15:31.637Z",
+      "signatureHeader": "c54a2c0c484a199e291ce43ae9be2c1f63600b7302c4fa0a02b511e781d134db",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_upi_76173924adef555e",
+        "orderId": "order_56312e8ddf90ee6c",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "method": "upi",
+        "amount": 9,
+        "currency": "INR",
+        "fee": 0,
+        "net": 9,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 40,
+          "tier": "MEDIUM",
+          "action": "CHALLENGE_3DS",
+          "reasons": [
+            "High velocity detected: 6 attempts within 60 seconds.",
+            "UPI rail: Hardware-bound mobile MPIN protection applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.635Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Cross-border currency (USD): routed to Global Rails with dynamic FX matrix.",
+          "selectedGateway": "NexusPay International (Global Rails)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_upi_76173924adef555e",
+          "orderId": "order_56312e8ddf90ee6c",
+          "gateway": "UPI Direct (NPCI)",
+          "rail": "NPCI_UPI_2.0",
+          "mode": "qr",
+          "amount": 9,
+          "currency": "INR",
+          "fee": 0,
+          "transactionRef": "tr_npci_bdf2a69e48f1b4f9",
+          "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+          "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M114.4,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M96.8,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M70.4,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M105.6,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M79.2,26.4h8.8v8.8h-8.8z M88.0,26.4h8.8v8.8h-8.8z M96.8,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M79.2,35.2h8.8v8.8h-8.8z M88.0,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M123.2,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M79.2,44.0h8.8v8.8h-8.8z M114.4,44.0h8.8v8.8h-8.8z M132.0,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M114.4,61.6h8.8v8.8h-8.8z M123.2,61.6h8.8v8.8h-8.8z M132.0,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M35.2,70.4h8.8v8.8h-8.8z M44.0,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M88.0,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M114.4,70.4h8.8v8.8h-8.8z M123.2,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M184.8,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M35.2,79.2h8.8v8.8h-8.8z M79.2,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M96.8,79.2h8.8v8.8h-8.8z M114.4,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M167.2,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M0.0,88.0h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M17.6,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M140.8,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M176.0,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M26.4,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M132.0,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M149.6,96.8h8.8v8.8h-8.8z M158.4,96.8h8.8v8.8h-8.8z M167.2,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M0.0,105.6h8.8v8.8h-8.8z M8.8,105.6h8.8v8.8h-8.8z M17.6,105.6h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M70.4,105.6h8.8v8.8h-8.8z M79.2,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M149.6,105.6h8.8v8.8h-8.8z M158.4,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M193.6,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M211.2,105.6h8.8v8.8h-8.8z M0.0,114.4h8.8v8.8h-8.8z M8.8,114.4h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M44.0,114.4h8.8v8.8h-8.8z M70.4,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M132.0,114.4h8.8v8.8h-8.8z M149.6,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M184.8,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M0.0,123.2h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M105.6,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M193.6,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M61.6,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M96.8,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M193.6,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M17.6,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M35.2,140.8h8.8v8.8h-8.8z M44.0,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M105.6,140.8h8.8v8.8h-8.8z M114.4,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M158.4,140.8h8.8v8.8h-8.8z M176.0,140.8h8.8v8.8h-8.8z M184.8,140.8h8.8v8.8h-8.8z M105.6,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M149.6,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M70.4,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M88.0,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M158.4,158.4h8.8v8.8h-8.8z M176.0,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M211.2,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M96.8,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M149.6,167.2h8.8v8.8h-8.8z M167.2,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M202.4,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M70.4,176.0h8.8v8.8h-8.8z M79.2,176.0h8.8v8.8h-8.8z M88.0,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M123.2,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M149.6,176.0h8.8v8.8h-8.8z M158.4,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M211.2,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M70.4,184.8h8.8v8.8h-8.8z M79.2,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M114.4,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M132.0,184.8h8.8v8.8h-8.8z M140.8,184.8h8.8v8.8h-8.8z M149.6,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M211.2,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M70.4,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M140.8,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M176.0,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M193.6,193.6h8.8v8.8h-8.8z M202.4,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M114.4,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M167.2,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M184.8,202.4h8.8v8.8h-8.8z M193.6,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M88.0,211.2h8.8v8.8h-8.8z M114.4,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+          "intentLinks": {
+            "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR",
+            "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_bdf2a69e48f1b4f9&tn=OpenDesk+PRO+%249+Lifetime+Subscription+%28aarav%40opendesk.app%29&am=9.00&cu=INR"
+          },
+          "status": "CAPTURED",
+          "customerVpa": null,
+          "expiryTimestamp": 1793989231635,
+          "initiatedAt": "2026-11-06T18:15:31.635Z",
+          "gatewayResponse": "00 - SUCCESS",
+          "npciRrn": "228356842429",
+          "payerVpa": "payer@okhdfcbank",
+          "capturedAt": "2026-11-06T18:15:31.639Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.635Z",
+        "capturedAt": "2026-11-06T18:15:31.639Z"
+      }
+    },
+    {
+      "webhookId": "whk_9d8e10e59bc1a2b6",
+      "event": "refund.processed",
+      "timestamp": "2026-11-06T18:15:31.631Z",
+      "signatureHeader": "ba4bc8c90d0c2ade1fceaac7293473f98de41d7ffce5345b7eae1149c56d76f1",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "refundId": "rfnd_rzp_b9b79959327e971b",
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "orderId": "order_rzp_d0306e2e68308a0b",
+        "amount": 600,
+        "currency": "INR",
+        "status": "PROCESSED",
+        "reason": "Remaining return",
+        "gatewayResponse": {
+          "refundId": "rfnd_rzp_b9b79959327e971b",
+          "paymentId": "pay_rzp_fa5f272af42b892e",
+          "gateway": "Razorpay Payment Gateway",
+          "amount": 600,
+          "currency": "INR",
+          "status": "PROCESSED",
+          "acquirerRefNumber": "637506201550",
+          "notes": {},
+          "processedAt": "2026-11-06T18:15:31.628Z"
+        },
+        "createdAt": "2026-11-06T18:15:31.628Z"
+      }
+    },
+    {
+      "webhookId": "whk_88b23924af6e17f8",
+      "event": "refund.processed",
+      "timestamp": "2026-11-06T18:15:31.626Z",
+      "signatureHeader": "0724cb3a7adaf9aae56e2add4701e784b7592b63cbd40f2038adf35d9a9b7134",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "refundId": "rfnd_rzp_dc61aae984328673",
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "orderId": "order_rzp_d0306e2e68308a0b",
+        "amount": 400,
+        "currency": "INR",
+        "status": "PROCESSED",
+        "reason": "Partial return",
+        "gatewayResponse": {
+          "refundId": "rfnd_rzp_dc61aae984328673",
+          "paymentId": "pay_rzp_fa5f272af42b892e",
+          "gateway": "Razorpay Payment Gateway",
+          "amount": 400,
+          "currency": "INR",
+          "status": "PROCESSED",
+          "acquirerRefNumber": "442956428465",
+          "notes": {},
+          "processedAt": "2026-11-06T18:15:31.623Z"
+        },
+        "createdAt": "2026-11-06T18:15:31.623Z"
+      }
+    },
+    {
+      "webhookId": "whk_bd5ceac567e8286c",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.621Z",
+      "signatureHeader": "3edbc51fc9c6f12b3ee275ffe1f9177cba6f8d46e6bac256a5487350eb854223",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_rzp_fa5f272af42b892e",
+        "orderId": "order_rzp_d0306e2e68308a0b",
+        "gateway": "Razorpay Payment Gateway",
+        "rail": "RAZORPAY_AGGREGATED",
+        "method": "razorpay",
+        "amount": 1000,
+        "currency": "INR",
+        "fee": 18.5,
+        "net": 978.17,
+        "status": "REFUNDED",
+        "riskAssessment": {
+          "score": 50,
+          "tier": "MEDIUM",
+          "action": "CHALLENGE_3DS",
+          "reasons": [
+            "High velocity detected: 5 attempts within 60 seconds."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.620Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Method requires Razorpay aggregator rail.",
+          "selectedGateway": "Razorpay Payment Gateway"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_rzp_fa5f272af42b892e",
+          "orderId": "order_rzp_d0306e2e68308a0b",
+          "gateway": "Razorpay Payment Gateway",
+          "rail": "RAZORPAY_AGGREGATED",
+          "amount": 1000,
+          "currency": "INR",
+          "fee": 18.5,
+          "tax": 3.33,
+          "net": 978.17,
+          "method": "razorpay",
+          "status": "CAPTURED",
+          "razorpay_payment_id": "pay_rzp_fa5f272af42b892e",
+          "razorpay_order_id": "order_rzp_d0306e2e68308a0b",
+          "razorpay_signature": "b83d0f79f2b994ee19a160b6caa2f538b541529ac2fdcfc1c3166fc611cb6d37",
+          "signatureVerified": true,
+          "capturedAt": "2026-11-06T18:15:31.620Z"
+        },
+        "refundedAmount": 1000,
+        "initiatedAt": "2026-11-06T18:15:31.620Z",
+        "capturedAt": "2026-11-06T18:15:31.620Z"
+      }
+    },
+    {
+      "webhookId": "whk_25572b0d602f1784",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.618Z",
+      "signatureHeader": "c98bd7f2158214b90a0101ceca3471ffe97e844e8088b271985ae32cabab0e27",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_intl_stripe_bcd09e636bff06b7",
+        "orderId": "order_intl_787eea0583b05394",
+        "gateway": "NexusPay International (Global Rails)",
+        "rail": "STRIPE_CROSS_BORDER",
+        "method": "international",
+        "amount": 99,
+        "currency": "USD",
+        "fee": 3.17,
+        "net": 95.83,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 40,
+          "tier": "MEDIUM",
+          "action": "CHALLENGE_3DS",
+          "reasons": [
+            "Moderate velocity: 4 attempts detected recently.",
+            "Cross-border rail: Currency exchange and international risk factor applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.616Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Cross-border currency (USD): routed to Global Rails with dynamic FX matrix.",
+          "selectedGateway": "NexusPay International (Global Rails)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_intl_stripe_bcd09e636bff06b7",
+          "orderId": "order_intl_787eea0583b05394",
+          "gateway": "NexusPay International (Global Rails)",
+          "rail": "STRIPE_CROSS_BORDER",
+          "channel": "stripe",
+          "amount": 99,
+          "currency": "USD",
+          "fee": 3.17,
+          "net": 95.83,
+          "status": "CAPTURED",
+          "cardholderCountry": "US",
+          "crossBorderCompliance": {
+            "exportCode": "P0802",
+            "rbiReportingRequired": true,
+            "amlScreening": "PASSED",
+            "sanctionsCheck": "PASSED"
+          },
+          "fxDetails": {
+            "sourceAmount": 99,
+            "sourceCurrency": "USD",
+            "targetAmount": 8662.5,
+            "targetCurrency": "INR",
+            "effectiveExchangeRate": 87.5,
+            "fxSpreadFee": 86.63
+          },
+          "externalTransactionId": "ch_live_3k16yjs7fjp",
+          "stripeSignatureHeader": "t=1793988931,v1=2e06b05b4ad48b94c7eeb3b7764f07288931337f05529b131e135749ba09e0b8",
+          "capturedAt": "2026-11-06T18:15:31.616Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.616Z",
+        "capturedAt": "2026-11-06T18:15:31.616Z"
+      }
+    },
+    {
+      "webhookId": "whk_887de395d3c5a777",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.615Z",
+      "signatureHeader": "58113f81b7639ec48ced2a4c0e278d2f2ab322070ed38fa998d26ffb03e2aff2",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_rzp_714dfb6a9a8cb118",
+        "orderId": "order_rzp_d97f49e2890cb8fc",
+        "gateway": "Razorpay Payment Gateway",
+        "rail": "RAZORPAY_AGGREGATED",
+        "method": "razorpay",
+        "amount": 3200,
+        "currency": "INR",
+        "fee": 59.2,
+        "net": 3130.14,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 25,
+          "tier": "ELEVATED",
+          "action": "ALLOW_MONITORED",
+          "reasons": [
+            "Moderate velocity: 3 attempts detected recently."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.613Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Method requires Razorpay aggregator rail.",
+          "selectedGateway": "Razorpay Payment Gateway"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_rzp_714dfb6a9a8cb118",
+          "orderId": "order_rzp_d97f49e2890cb8fc",
+          "gateway": "Razorpay Payment Gateway",
+          "rail": "RAZORPAY_AGGREGATED",
+          "amount": 3200,
+          "currency": "INR",
+          "fee": 59.2,
+          "tax": 10.66,
+          "net": 3130.14,
+          "method": "razorpay",
+          "status": "CAPTURED",
+          "razorpay_payment_id": "pay_rzp_714dfb6a9a8cb118",
+          "razorpay_order_id": "order_rzp_d97f49e2890cb8fc",
+          "razorpay_signature": "62fc3a246abcc306c9b26196bf73d312c131ecdf04b4f5b39f46af71f3da7e8b",
+          "signatureVerified": true,
+          "capturedAt": "2026-11-06T18:15:31.613Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.613Z",
+        "capturedAt": "2026-11-06T18:15:31.613Z"
+      }
+    },
+    {
+      "webhookId": "whk_8755795e36798726",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.611Z",
+      "signatureHeader": "aa124b2e1b043c87508ed536497b4e34abdcf9ec58d585915b236d5b26c5f70e",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_visa_695214e1f6a83209",
+        "orderId": "order_card_705a6d39a785d713",
+        "gateway": "Visa / MasterCard Direct Rail",
+        "rail": "VISA",
+        "method": "card",
+        "amount": 4500,
+        "currency": "INR",
+        "fee": 56.25,
+        "net": 4443.75,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 5,
+          "tier": "LOW",
+          "action": "ALLOW",
+          "reasons": [],
+          "evaluatedAt": "2026-11-06T18:15:31.602Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Direct Visa/MasterCard 3DS2 processing rail selected.",
+          "selectedGateway": "Visa / MasterCard Direct Rail"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_visa_695214e1f6a83209",
+          "orderId": "order_card_705a6d39a785d713",
+          "gateway": "Visa / MasterCard Direct Rail",
+          "network": "VISA",
+          "amount": 4500,
+          "currency": "INR",
+          "fee": 56.25,
+          "maskedPan": "4111 •••• •••• 1111",
+          "cardholder": "ANANYA ROY",
+          "status": "CAPTURED",
+          "threeDSecure": {
+            "challengeId": "3ds_28c05706cb44a2b5",
+            "acsUrl": "/api/payments/verify-3ds",
+            "message": "3D Secure 2.0 Challenge Required. Bank OTP sent to registered mobile.",
+            "maskedPhone": "+91 ••••• ••429",
+            "testOtpHint": "Use sandbox OTP: 123456",
+            "expiresInSeconds": 300
+          },
+          "initiatedAt": "2026-11-06T18:15:31.602Z",
+          "eci": "05",
+          "cavv": "1g3yplgum3w",
+          "networkAuthCode": "ZGP65E",
+          "stan": "451558",
+          "capturedAt": "2026-11-06T18:15:31.608Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.602Z",
+        "capturedAt": "2026-11-06T18:15:31.608Z"
+      }
+    },
+    {
+      "webhookId": "whk_f98fa0f5631a608d",
+      "event": "payment.created",
+      "timestamp": "2026-11-06T18:15:31.606Z",
+      "signatureHeader": "a7207e89503c7dc7f0054d8647e3fc226c2d2e513ec808f9f8634bbf82b514ad",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_visa_695214e1f6a83209",
+        "orderId": "order_card_705a6d39a785d713",
+        "gateway": "Visa / MasterCard Direct Rail",
+        "rail": "VISA",
+        "method": "card",
+        "amount": 4500,
+        "currency": "INR",
+        "fee": 56.25,
+        "net": 4443.75,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 5,
+          "tier": "LOW",
+          "action": "ALLOW",
+          "reasons": [],
+          "evaluatedAt": "2026-11-06T18:15:31.602Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Direct Visa/MasterCard 3DS2 processing rail selected.",
+          "selectedGateway": "Visa / MasterCard Direct Rail"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_visa_695214e1f6a83209",
+          "orderId": "order_card_705a6d39a785d713",
+          "gateway": "Visa / MasterCard Direct Rail",
+          "network": "VISA",
+          "amount": 4500,
+          "currency": "INR",
+          "fee": 56.25,
+          "maskedPan": "4111 •••• •••• 1111",
+          "cardholder": "ANANYA ROY",
+          "status": "CAPTURED",
+          "threeDSecure": {
+            "challengeId": "3ds_28c05706cb44a2b5",
+            "acsUrl": "/api/payments/verify-3ds",
+            "message": "3D Secure 2.0 Challenge Required. Bank OTP sent to registered mobile.",
+            "maskedPhone": "+91 ••••• ••429",
+            "testOtpHint": "Use sandbox OTP: 123456",
+            "expiresInSeconds": 300
+          },
+          "initiatedAt": "2026-11-06T18:15:31.602Z",
+          "eci": "05",
+          "cavv": "1g3yplgum3w",
+          "networkAuthCode": "ZGP65E",
+          "stan": "451558",
+          "capturedAt": "2026-11-06T18:15:31.608Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.602Z",
+        "capturedAt": "2026-11-06T18:15:31.608Z"
+      }
+    },
+    {
+      "webhookId": "whk_1180ecb384819b5c",
+      "event": "payment.captured",
+      "timestamp": "2026-11-06T18:15:31.595Z",
+      "signatureHeader": "6c9bc576d59795c5d9dc455b420e70f6e87408c6a085a7a14b950936ab8f8c83",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_upi_0a14c9f7a0911ae8",
+        "orderId": "order_upi_13e0829b77da5293",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "method": "upi",
+        "amount": 2499,
+        "currency": "INR",
+        "fee": 0,
+        "net": 2499,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 0,
+          "tier": "LOW",
+          "action": "ALLOW",
+          "reasons": [
+            "UPI rail: Hardware-bound mobile MPIN protection applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.589Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Native NPCI UPI Switch selected for instant clearing & 0% MDR.",
+          "selectedGateway": "UPI Direct (NPCI)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_upi_0a14c9f7a0911ae8",
+          "orderId": "order_upi_13e0829b77da5293",
+          "gateway": "UPI Direct (NPCI)",
+          "rail": "NPCI_UPI_2.0",
+          "mode": "qr",
+          "amount": 2499,
+          "currency": "INR",
+          "fee": 0,
+          "transactionRef": "tr_npci_02fea2a17326ca1a",
+          "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M88.0,0.0h8.8v8.8h-8.8z M105.6,0.0h8.8v8.8h-8.8z M123.2,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M79.2,8.8h8.8v8.8h-8.8z M105.6,8.8h8.8v8.8h-8.8z M114.4,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M88.0,17.6h8.8v8.8h-8.8z M96.8,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M140.8,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M132.0,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M70.4,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M140.8,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M70.4,44.0h8.8v8.8h-8.8z M140.8,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M96.8,61.6h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M17.6,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M105.6,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M158.4,70.4h8.8v8.8h-8.8z M176.0,70.4h8.8v8.8h-8.8z M193.6,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M8.8,79.2h8.8v8.8h-8.8z M26.4,79.2h8.8v8.8h-8.8z M44.0,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M105.6,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M149.6,79.2h8.8v8.8h-8.8z M176.0,79.2h8.8v8.8h-8.8z M184.8,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M26.4,88.0h8.8v8.8h-8.8z M35.2,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M70.4,88.0h8.8v8.8h-8.8z M88.0,88.0h8.8v8.8h-8.8z M96.8,88.0h8.8v8.8h-8.8z M105.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M158.4,88.0h8.8v8.8h-8.8z M167.2,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M211.2,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M8.8,96.8h8.8v8.8h-8.8z M17.6,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M61.6,96.8h8.8v8.8h-8.8z M79.2,96.8h8.8v8.8h-8.8z M88.0,96.8h8.8v8.8h-8.8z M96.8,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M202.4,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M88.0,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M123.2,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M140.8,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M61.6,114.4h8.8v8.8h-8.8z M79.2,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M114.4,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M140.8,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M202.4,114.4h8.8v8.8h-8.8z M211.2,114.4h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M35.2,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M61.6,123.2h8.8v8.8h-8.8z M70.4,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M123.2,123.2h8.8v8.8h-8.8z M132.0,123.2h8.8v8.8h-8.8z M140.8,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M176.0,123.2h8.8v8.8h-8.8z M202.4,123.2h8.8v8.8h-8.8z M211.2,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M26.4,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M44.0,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M114.4,132.0h8.8v8.8h-8.8z M123.2,132.0h8.8v8.8h-8.8z M132.0,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M167.2,132.0h8.8v8.8h-8.8z M184.8,132.0h8.8v8.8h-8.8z M202.4,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M88.0,140.8h8.8v8.8h-8.8z M123.2,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M193.6,140.8h8.8v8.8h-8.8z M79.2,149.6h8.8v8.8h-8.8z M96.8,149.6h8.8v8.8h-8.8z M114.4,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M167.2,149.6h8.8v8.8h-8.8z M176.0,149.6h8.8v8.8h-8.8z M184.8,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M96.8,158.4h8.8v8.8h-8.8z M105.6,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M140.8,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M167.2,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M79.2,167.2h8.8v8.8h-8.8z M88.0,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M132.0,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M158.4,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M140.8,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M193.6,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M184.8,184.8h8.8v8.8h-8.8z M202.4,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M105.6,193.6h8.8v8.8h-8.8z M123.2,193.6h8.8v8.8h-8.8z M132.0,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M211.2,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M96.8,202.4h8.8v8.8h-8.8z M123.2,202.4h8.8v8.8h-8.8z M132.0,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M202.4,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M105.6,211.2h8.8v8.8h-8.8z M123.2,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M158.4,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M176.0,211.2h8.8v8.8h-8.8z M184.8,211.2h8.8v8.8h-8.8z M193.6,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+          "intentLinks": {
+            "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR"
+          },
+          "status": "CAPTURED",
+          "customerVpa": null,
+          "expiryTimestamp": 1793989231590,
+          "initiatedAt": "2026-11-06T18:15:31.590Z",
+          "gatewayResponse": "00 - SUCCESS",
+          "npciRrn": "401975417802",
+          "payerVpa": "payer@okhdfcbank",
+          "capturedAt": "2026-11-06T18:15:31.593Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.590Z",
+        "capturedAt": "2026-11-06T18:15:31.593Z"
+      }
+    },
+    {
+      "webhookId": "whk_709281a9c006e912",
+      "event": "payment.created",
+      "timestamp": "2026-11-06T18:15:31.592Z",
+      "signatureHeader": "c530a8eaaa25a4152eab621bb69ca5ec4f6b338807da4c7703f837191e8d7342",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_upi_0a14c9f7a0911ae8",
+        "orderId": "order_upi_13e0829b77da5293",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "method": "upi",
+        "amount": 2499,
+        "currency": "INR",
+        "fee": 0,
+        "net": 2499,
+        "status": "CAPTURED",
+        "riskAssessment": {
+          "score": 0,
+          "tier": "LOW",
+          "action": "ALLOW",
+          "reasons": [
+            "UPI rail: Hardware-bound mobile MPIN protection applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.589Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Native NPCI UPI Switch selected for instant clearing & 0% MDR.",
+          "selectedGateway": "UPI Direct (NPCI)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_upi_0a14c9f7a0911ae8",
+          "orderId": "order_upi_13e0829b77da5293",
+          "gateway": "UPI Direct (NPCI)",
+          "rail": "NPCI_UPI_2.0",
+          "mode": "qr",
+          "amount": 2499,
+          "currency": "INR",
+          "fee": 0,
+          "transactionRef": "tr_npci_02fea2a17326ca1a",
+          "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+          "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M88.0,0.0h8.8v8.8h-8.8z M105.6,0.0h8.8v8.8h-8.8z M123.2,0.0h8.8v8.8h-8.8z M132.0,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M70.4,8.8h8.8v8.8h-8.8z M79.2,8.8h8.8v8.8h-8.8z M105.6,8.8h8.8v8.8h-8.8z M114.4,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M79.2,17.6h8.8v8.8h-8.8z M88.0,17.6h8.8v8.8h-8.8z M96.8,17.6h8.8v8.8h-8.8z M132.0,17.6h8.8v8.8h-8.8z M140.8,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M70.4,26.4h8.8v8.8h-8.8z M132.0,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M70.4,35.2h8.8v8.8h-8.8z M114.4,35.2h8.8v8.8h-8.8z M140.8,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M70.4,44.0h8.8v8.8h-8.8z M140.8,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M96.8,61.6h8.8v8.8h-8.8z M105.6,61.6h8.8v8.8h-8.8z M140.8,61.6h8.8v8.8h-8.8z M17.6,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M79.2,70.4h8.8v8.8h-8.8z M96.8,70.4h8.8v8.8h-8.8z M105.6,70.4h8.8v8.8h-8.8z M132.0,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M149.6,70.4h8.8v8.8h-8.8z M158.4,70.4h8.8v8.8h-8.8z M176.0,70.4h8.8v8.8h-8.8z M193.6,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M0.0,79.2h8.8v8.8h-8.8z M8.8,79.2h8.8v8.8h-8.8z M26.4,79.2h8.8v8.8h-8.8z M44.0,79.2h8.8v8.8h-8.8z M88.0,79.2h8.8v8.8h-8.8z M105.6,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M149.6,79.2h8.8v8.8h-8.8z M176.0,79.2h8.8v8.8h-8.8z M184.8,79.2h8.8v8.8h-8.8z M193.6,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M8.8,88.0h8.8v8.8h-8.8z M26.4,88.0h8.8v8.8h-8.8z M35.2,88.0h8.8v8.8h-8.8z M44.0,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M61.6,88.0h8.8v8.8h-8.8z M70.4,88.0h8.8v8.8h-8.8z M88.0,88.0h8.8v8.8h-8.8z M96.8,88.0h8.8v8.8h-8.8z M105.6,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M132.0,88.0h8.8v8.8h-8.8z M149.6,88.0h8.8v8.8h-8.8z M158.4,88.0h8.8v8.8h-8.8z M167.2,88.0h8.8v8.8h-8.8z M184.8,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M202.4,88.0h8.8v8.8h-8.8z M211.2,88.0h8.8v8.8h-8.8z M0.0,96.8h8.8v8.8h-8.8z M8.8,96.8h8.8v8.8h-8.8z M17.6,96.8h8.8v8.8h-8.8z M35.2,96.8h8.8v8.8h-8.8z M61.6,96.8h8.8v8.8h-8.8z M79.2,96.8h8.8v8.8h-8.8z M88.0,96.8h8.8v8.8h-8.8z M96.8,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M140.8,96.8h8.8v8.8h-8.8z M176.0,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M202.4,96.8h8.8v8.8h-8.8z M211.2,96.8h8.8v8.8h-8.8z M26.4,105.6h8.8v8.8h-8.8z M44.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M88.0,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M114.4,105.6h8.8v8.8h-8.8z M123.2,105.6h8.8v8.8h-8.8z M132.0,105.6h8.8v8.8h-8.8z M140.8,105.6h8.8v8.8h-8.8z M167.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M184.8,105.6h8.8v8.8h-8.8z M202.4,105.6h8.8v8.8h-8.8z M17.6,114.4h8.8v8.8h-8.8z M61.6,114.4h8.8v8.8h-8.8z M79.2,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M114.4,114.4h8.8v8.8h-8.8z M123.2,114.4h8.8v8.8h-8.8z M140.8,114.4h8.8v8.8h-8.8z M158.4,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M193.6,114.4h8.8v8.8h-8.8z M202.4,114.4h8.8v8.8h-8.8z M211.2,114.4h8.8v8.8h-8.8z M8.8,123.2h8.8v8.8h-8.8z M26.4,123.2h8.8v8.8h-8.8z M35.2,123.2h8.8v8.8h-8.8z M44.0,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M61.6,123.2h8.8v8.8h-8.8z M70.4,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M96.8,123.2h8.8v8.8h-8.8z M123.2,123.2h8.8v8.8h-8.8z M132.0,123.2h8.8v8.8h-8.8z M140.8,123.2h8.8v8.8h-8.8z M149.6,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M167.2,123.2h8.8v8.8h-8.8z M176.0,123.2h8.8v8.8h-8.8z M202.4,123.2h8.8v8.8h-8.8z M211.2,123.2h8.8v8.8h-8.8z M0.0,132.0h8.8v8.8h-8.8z M26.4,132.0h8.8v8.8h-8.8z M35.2,132.0h8.8v8.8h-8.8z M44.0,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M114.4,132.0h8.8v8.8h-8.8z M123.2,132.0h8.8v8.8h-8.8z M132.0,132.0h8.8v8.8h-8.8z M140.8,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M167.2,132.0h8.8v8.8h-8.8z M184.8,132.0h8.8v8.8h-8.8z M202.4,132.0h8.8v8.8h-8.8z M8.8,140.8h8.8v8.8h-8.8z M26.4,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M79.2,140.8h8.8v8.8h-8.8z M88.0,140.8h8.8v8.8h-8.8z M123.2,140.8h8.8v8.8h-8.8z M132.0,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M149.6,140.8h8.8v8.8h-8.8z M193.6,140.8h8.8v8.8h-8.8z M79.2,149.6h8.8v8.8h-8.8z M96.8,149.6h8.8v8.8h-8.8z M114.4,149.6h8.8v8.8h-8.8z M123.2,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M167.2,149.6h8.8v8.8h-8.8z M176.0,149.6h8.8v8.8h-8.8z M184.8,149.6h8.8v8.8h-8.8z M193.6,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M79.2,158.4h8.8v8.8h-8.8z M96.8,158.4h8.8v8.8h-8.8z M105.6,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M132.0,158.4h8.8v8.8h-8.8z M140.8,158.4h8.8v8.8h-8.8z M149.6,158.4h8.8v8.8h-8.8z M167.2,158.4h8.8v8.8h-8.8z M184.8,158.4h8.8v8.8h-8.8z M202.4,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M70.4,167.2h8.8v8.8h-8.8z M79.2,167.2h8.8v8.8h-8.8z M88.0,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M132.0,167.2h8.8v8.8h-8.8z M140.8,167.2h8.8v8.8h-8.8z M158.4,167.2h8.8v8.8h-8.8z M176.0,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M114.4,176.0h8.8v8.8h-8.8z M132.0,176.0h8.8v8.8h-8.8z M140.8,176.0h8.8v8.8h-8.8z M167.2,176.0h8.8v8.8h-8.8z M184.8,176.0h8.8v8.8h-8.8z M193.6,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M123.2,184.8h8.8v8.8h-8.8z M158.4,184.8h8.8v8.8h-8.8z M184.8,184.8h8.8v8.8h-8.8z M202.4,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M96.8,193.6h8.8v8.8h-8.8z M105.6,193.6h8.8v8.8h-8.8z M123.2,193.6h8.8v8.8h-8.8z M132.0,193.6h8.8v8.8h-8.8z M149.6,193.6h8.8v8.8h-8.8z M167.2,193.6h8.8v8.8h-8.8z M184.8,193.6h8.8v8.8h-8.8z M211.2,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M96.8,202.4h8.8v8.8h-8.8z M123.2,202.4h8.8v8.8h-8.8z M132.0,202.4h8.8v8.8h-8.8z M140.8,202.4h8.8v8.8h-8.8z M176.0,202.4h8.8v8.8h-8.8z M202.4,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M79.2,211.2h8.8v8.8h-8.8z M105.6,211.2h8.8v8.8h-8.8z M123.2,211.2h8.8v8.8h-8.8z M132.0,211.2h8.8v8.8h-8.8z M149.6,211.2h8.8v8.8h-8.8z M158.4,211.2h8.8v8.8h-8.8z M167.2,211.2h8.8v8.8h-8.8z M176.0,211.2h8.8v8.8h-8.8z M184.8,211.2h8.8v8.8h-8.8z M193.6,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+          "intentLinks": {
+            "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR",
+            "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_02fea2a17326ca1a&tn=Subscription+order&am=2499.00&cu=INR"
+          },
+          "status": "CAPTURED",
+          "customerVpa": null,
+          "expiryTimestamp": 1793989231590,
+          "initiatedAt": "2026-11-06T18:15:31.590Z",
+          "gatewayResponse": "00 - SUCCESS",
+          "npciRrn": "401975417802",
+          "payerVpa": "payer@okhdfcbank",
+          "capturedAt": "2026-11-06T18:15:31.593Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.590Z",
+        "capturedAt": "2026-11-06T18:15:31.593Z"
+      }
+    },
+    {
+      "webhookId": "whk_f0294994bcf97bb8",
+      "event": "payment.created",
+      "timestamp": "2026-11-06T18:15:31.586Z",
+      "signatureHeader": "b6e0117be35bd8e79830943df0c100d8dd7b54d208ef7e075733ee8ee87c2795",
+      "deliveryStatus": "DELIVERED",
+      "httpStatusCode": 200,
+      "payload": {
+        "paymentId": "pay_upi_721749a2b3641012",
+        "orderId": "order_upi_fa3d55643a5253ee",
+        "gateway": "UPI Direct (NPCI)",
+        "rail": "NPCI_UPI_2.0",
+        "method": "upi",
+        "amount": 1999,
+        "currency": "INR",
+        "fee": 0,
+        "net": 1999,
+        "status": "AWAITING_PAYMENT",
+        "riskAssessment": {
+          "score": 0,
+          "tier": "LOW",
+          "action": "ALLOW",
+          "reasons": [
+            "UPI rail: Hardware-bound mobile MPIN protection applied."
+          ],
+          "evaluatedAt": "2026-11-06T18:15:31.583Z"
+        },
+        "routing": {
+          "strategy": "SMART_AUTO",
+          "reason": "Native NPCI UPI Switch selected for instant clearing & 0% MDR.",
+          "selectedGateway": "UPI Direct (NPCI)"
+        },
+        "gatewayDetails": {
+          "paymentId": "pay_upi_721749a2b3641012",
+          "orderId": "order_upi_fa3d55643a5253ee",
+          "gateway": "UPI Direct (NPCI)",
+          "rail": "NPCI_UPI_2.0",
+          "mode": "qr",
+          "amount": 1999,
+          "currency": "INR",
+          "fee": 0,
+          "transactionRef": "tr_npci_76aa3a583677437d",
+          "upiUri": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+          "qrSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" shape-rendering=\"crispEdges\">\n    <rect width=\"220\" height=\"220\" fill=\"#ffffff\" rx=\"10\" />\n    <path d=\"M0.0,0.0h8.8v8.8h-8.8z M8.8,0.0h8.8v8.8h-8.8z M17.6,0.0h8.8v8.8h-8.8z M26.4,0.0h8.8v8.8h-8.8z M35.2,0.0h8.8v8.8h-8.8z M44.0,0.0h8.8v8.8h-8.8z M52.8,0.0h8.8v8.8h-8.8z M79.2,0.0h8.8v8.8h-8.8z M88.0,0.0h8.8v8.8h-8.8z M96.8,0.0h8.8v8.8h-8.8z M123.2,0.0h8.8v8.8h-8.8z M158.4,0.0h8.8v8.8h-8.8z M167.2,0.0h8.8v8.8h-8.8z M176.0,0.0h8.8v8.8h-8.8z M184.8,0.0h8.8v8.8h-8.8z M193.6,0.0h8.8v8.8h-8.8z M202.4,0.0h8.8v8.8h-8.8z M211.2,0.0h8.8v8.8h-8.8z M0.0,8.8h8.8v8.8h-8.8z M52.8,8.8h8.8v8.8h-8.8z M79.2,8.8h8.8v8.8h-8.8z M88.0,8.8h8.8v8.8h-8.8z M96.8,8.8h8.8v8.8h-8.8z M105.6,8.8h8.8v8.8h-8.8z M114.4,8.8h8.8v8.8h-8.8z M123.2,8.8h8.8v8.8h-8.8z M140.8,8.8h8.8v8.8h-8.8z M158.4,8.8h8.8v8.8h-8.8z M211.2,8.8h8.8v8.8h-8.8z M0.0,17.6h8.8v8.8h-8.8z M17.6,17.6h8.8v8.8h-8.8z M26.4,17.6h8.8v8.8h-8.8z M35.2,17.6h8.8v8.8h-8.8z M52.8,17.6h8.8v8.8h-8.8z M96.8,17.6h8.8v8.8h-8.8z M114.4,17.6h8.8v8.8h-8.8z M140.8,17.6h8.8v8.8h-8.8z M158.4,17.6h8.8v8.8h-8.8z M176.0,17.6h8.8v8.8h-8.8z M184.8,17.6h8.8v8.8h-8.8z M193.6,17.6h8.8v8.8h-8.8z M211.2,17.6h8.8v8.8h-8.8z M0.0,26.4h8.8v8.8h-8.8z M17.6,26.4h8.8v8.8h-8.8z M26.4,26.4h8.8v8.8h-8.8z M35.2,26.4h8.8v8.8h-8.8z M52.8,26.4h8.8v8.8h-8.8z M79.2,26.4h8.8v8.8h-8.8z M105.6,26.4h8.8v8.8h-8.8z M123.2,26.4h8.8v8.8h-8.8z M132.0,26.4h8.8v8.8h-8.8z M140.8,26.4h8.8v8.8h-8.8z M158.4,26.4h8.8v8.8h-8.8z M176.0,26.4h8.8v8.8h-8.8z M184.8,26.4h8.8v8.8h-8.8z M193.6,26.4h8.8v8.8h-8.8z M211.2,26.4h8.8v8.8h-8.8z M0.0,35.2h8.8v8.8h-8.8z M17.6,35.2h8.8v8.8h-8.8z M26.4,35.2h8.8v8.8h-8.8z M35.2,35.2h8.8v8.8h-8.8z M52.8,35.2h8.8v8.8h-8.8z M96.8,35.2h8.8v8.8h-8.8z M132.0,35.2h8.8v8.8h-8.8z M158.4,35.2h8.8v8.8h-8.8z M176.0,35.2h8.8v8.8h-8.8z M184.8,35.2h8.8v8.8h-8.8z M193.6,35.2h8.8v8.8h-8.8z M211.2,35.2h8.8v8.8h-8.8z M0.0,44.0h8.8v8.8h-8.8z M52.8,44.0h8.8v8.8h-8.8z M70.4,44.0h8.8v8.8h-8.8z M88.0,44.0h8.8v8.8h-8.8z M105.6,44.0h8.8v8.8h-8.8z M123.2,44.0h8.8v8.8h-8.8z M132.0,44.0h8.8v8.8h-8.8z M140.8,44.0h8.8v8.8h-8.8z M158.4,44.0h8.8v8.8h-8.8z M211.2,44.0h8.8v8.8h-8.8z M0.0,52.8h8.8v8.8h-8.8z M8.8,52.8h8.8v8.8h-8.8z M17.6,52.8h8.8v8.8h-8.8z M26.4,52.8h8.8v8.8h-8.8z M35.2,52.8h8.8v8.8h-8.8z M44.0,52.8h8.8v8.8h-8.8z M52.8,52.8h8.8v8.8h-8.8z M70.4,52.8h8.8v8.8h-8.8z M88.0,52.8h8.8v8.8h-8.8z M105.6,52.8h8.8v8.8h-8.8z M123.2,52.8h8.8v8.8h-8.8z M140.8,52.8h8.8v8.8h-8.8z M158.4,52.8h8.8v8.8h-8.8z M167.2,52.8h8.8v8.8h-8.8z M176.0,52.8h8.8v8.8h-8.8z M184.8,52.8h8.8v8.8h-8.8z M193.6,52.8h8.8v8.8h-8.8z M202.4,52.8h8.8v8.8h-8.8z M211.2,52.8h8.8v8.8h-8.8z M70.4,61.6h8.8v8.8h-8.8z M88.0,61.6h8.8v8.8h-8.8z M96.8,61.6h8.8v8.8h-8.8z M114.4,61.6h8.8v8.8h-8.8z M8.8,70.4h8.8v8.8h-8.8z M17.6,70.4h8.8v8.8h-8.8z M26.4,70.4h8.8v8.8h-8.8z M35.2,70.4h8.8v8.8h-8.8z M52.8,70.4h8.8v8.8h-8.8z M61.6,70.4h8.8v8.8h-8.8z M140.8,70.4h8.8v8.8h-8.8z M158.4,70.4h8.8v8.8h-8.8z M167.2,70.4h8.8v8.8h-8.8z M193.6,70.4h8.8v8.8h-8.8z M202.4,70.4h8.8v8.8h-8.8z M211.2,70.4h8.8v8.8h-8.8z M8.8,79.2h8.8v8.8h-8.8z M17.6,79.2h8.8v8.8h-8.8z M44.0,79.2h8.8v8.8h-8.8z M70.4,79.2h8.8v8.8h-8.8z M96.8,79.2h8.8v8.8h-8.8z M105.6,79.2h8.8v8.8h-8.8z M123.2,79.2h8.8v8.8h-8.8z M132.0,79.2h8.8v8.8h-8.8z M140.8,79.2h8.8v8.8h-8.8z M149.6,79.2h8.8v8.8h-8.8z M158.4,79.2h8.8v8.8h-8.8z M167.2,79.2h8.8v8.8h-8.8z M176.0,79.2h8.8v8.8h-8.8z M184.8,79.2h8.8v8.8h-8.8z M202.4,79.2h8.8v8.8h-8.8z M211.2,79.2h8.8v8.8h-8.8z M17.6,88.0h8.8v8.8h-8.8z M26.4,88.0h8.8v8.8h-8.8z M35.2,88.0h8.8v8.8h-8.8z M52.8,88.0h8.8v8.8h-8.8z M70.4,88.0h8.8v8.8h-8.8z M79.2,88.0h8.8v8.8h-8.8z M96.8,88.0h8.8v8.8h-8.8z M105.6,88.0h8.8v8.8h-8.8z M114.4,88.0h8.8v8.8h-8.8z M123.2,88.0h8.8v8.8h-8.8z M167.2,88.0h8.8v8.8h-8.8z M193.6,88.0h8.8v8.8h-8.8z M211.2,88.0h8.8v8.8h-8.8z M17.6,96.8h8.8v8.8h-8.8z M61.6,96.8h8.8v8.8h-8.8z M70.4,96.8h8.8v8.8h-8.8z M88.0,96.8h8.8v8.8h-8.8z M96.8,96.8h8.8v8.8h-8.8z M105.6,96.8h8.8v8.8h-8.8z M114.4,96.8h8.8v8.8h-8.8z M123.2,96.8h8.8v8.8h-8.8z M149.6,96.8h8.8v8.8h-8.8z M184.8,96.8h8.8v8.8h-8.8z M193.6,96.8h8.8v8.8h-8.8z M202.4,96.8h8.8v8.8h-8.8z M0.0,105.6h8.8v8.8h-8.8z M52.8,105.6h8.8v8.8h-8.8z M61.6,105.6h8.8v8.8h-8.8z M70.4,105.6h8.8v8.8h-8.8z M88.0,105.6h8.8v8.8h-8.8z M96.8,105.6h8.8v8.8h-8.8z M105.6,105.6h8.8v8.8h-8.8z M123.2,105.6h8.8v8.8h-8.8z M176.0,105.6h8.8v8.8h-8.8z M211.2,105.6h8.8v8.8h-8.8z M35.2,114.4h8.8v8.8h-8.8z M79.2,114.4h8.8v8.8h-8.8z M88.0,114.4h8.8v8.8h-8.8z M96.8,114.4h8.8v8.8h-8.8z M105.6,114.4h8.8v8.8h-8.8z M114.4,114.4h8.8v8.8h-8.8z M132.0,114.4h8.8v8.8h-8.8z M140.8,114.4h8.8v8.8h-8.8z M167.2,114.4h8.8v8.8h-8.8z M176.0,114.4h8.8v8.8h-8.8z M211.2,114.4h8.8v8.8h-8.8z M35.2,123.2h8.8v8.8h-8.8z M52.8,123.2h8.8v8.8h-8.8z M61.6,123.2h8.8v8.8h-8.8z M70.4,123.2h8.8v8.8h-8.8z M79.2,123.2h8.8v8.8h-8.8z M88.0,123.2h8.8v8.8h-8.8z M114.4,123.2h8.8v8.8h-8.8z M132.0,123.2h8.8v8.8h-8.8z M140.8,123.2h8.8v8.8h-8.8z M158.4,123.2h8.8v8.8h-8.8z M176.0,123.2h8.8v8.8h-8.8z M184.8,123.2h8.8v8.8h-8.8z M193.6,123.2h8.8v8.8h-8.8z M202.4,123.2h8.8v8.8h-8.8z M211.2,123.2h8.8v8.8h-8.8z M17.6,132.0h8.8v8.8h-8.8z M26.4,132.0h8.8v8.8h-8.8z M70.4,132.0h8.8v8.8h-8.8z M79.2,132.0h8.8v8.8h-8.8z M88.0,132.0h8.8v8.8h-8.8z M105.6,132.0h8.8v8.8h-8.8z M123.2,132.0h8.8v8.8h-8.8z M132.0,132.0h8.8v8.8h-8.8z M149.6,132.0h8.8v8.8h-8.8z M158.4,132.0h8.8v8.8h-8.8z M167.2,132.0h8.8v8.8h-8.8z M176.0,132.0h8.8v8.8h-8.8z M202.4,132.0h8.8v8.8h-8.8z M211.2,132.0h8.8v8.8h-8.8z M35.2,140.8h8.8v8.8h-8.8z M52.8,140.8h8.8v8.8h-8.8z M61.6,140.8h8.8v8.8h-8.8z M70.4,140.8h8.8v8.8h-8.8z M88.0,140.8h8.8v8.8h-8.8z M96.8,140.8h8.8v8.8h-8.8z M105.6,140.8h8.8v8.8h-8.8z M123.2,140.8h8.8v8.8h-8.8z M140.8,140.8h8.8v8.8h-8.8z M167.2,140.8h8.8v8.8h-8.8z M176.0,140.8h8.8v8.8h-8.8z M193.6,140.8h8.8v8.8h-8.8z M202.4,140.8h8.8v8.8h-8.8z M70.4,149.6h8.8v8.8h-8.8z M79.2,149.6h8.8v8.8h-8.8z M88.0,149.6h8.8v8.8h-8.8z M114.4,149.6h8.8v8.8h-8.8z M132.0,149.6h8.8v8.8h-8.8z M140.8,149.6h8.8v8.8h-8.8z M158.4,149.6h8.8v8.8h-8.8z M176.0,149.6h8.8v8.8h-8.8z M184.8,149.6h8.8v8.8h-8.8z M211.2,149.6h8.8v8.8h-8.8z M0.0,158.4h8.8v8.8h-8.8z M8.8,158.4h8.8v8.8h-8.8z M17.6,158.4h8.8v8.8h-8.8z M26.4,158.4h8.8v8.8h-8.8z M35.2,158.4h8.8v8.8h-8.8z M44.0,158.4h8.8v8.8h-8.8z M52.8,158.4h8.8v8.8h-8.8z M88.0,158.4h8.8v8.8h-8.8z M96.8,158.4h8.8v8.8h-8.8z M105.6,158.4h8.8v8.8h-8.8z M114.4,158.4h8.8v8.8h-8.8z M123.2,158.4h8.8v8.8h-8.8z M140.8,158.4h8.8v8.8h-8.8z M158.4,158.4h8.8v8.8h-8.8z M167.2,158.4h8.8v8.8h-8.8z M0.0,167.2h8.8v8.8h-8.8z M52.8,167.2h8.8v8.8h-8.8z M88.0,167.2h8.8v8.8h-8.8z M105.6,167.2h8.8v8.8h-8.8z M114.4,167.2h8.8v8.8h-8.8z M123.2,167.2h8.8v8.8h-8.8z M132.0,167.2h8.8v8.8h-8.8z M149.6,167.2h8.8v8.8h-8.8z M158.4,167.2h8.8v8.8h-8.8z M193.6,167.2h8.8v8.8h-8.8z M211.2,167.2h8.8v8.8h-8.8z M0.0,176.0h8.8v8.8h-8.8z M17.6,176.0h8.8v8.8h-8.8z M26.4,176.0h8.8v8.8h-8.8z M35.2,176.0h8.8v8.8h-8.8z M52.8,176.0h8.8v8.8h-8.8z M70.4,176.0h8.8v8.8h-8.8z M96.8,176.0h8.8v8.8h-8.8z M105.6,176.0h8.8v8.8h-8.8z M193.6,176.0h8.8v8.8h-8.8z M202.4,176.0h8.8v8.8h-8.8z M211.2,176.0h8.8v8.8h-8.8z M0.0,184.8h8.8v8.8h-8.8z M17.6,184.8h8.8v8.8h-8.8z M26.4,184.8h8.8v8.8h-8.8z M35.2,184.8h8.8v8.8h-8.8z M52.8,184.8h8.8v8.8h-8.8z M88.0,184.8h8.8v8.8h-8.8z M96.8,184.8h8.8v8.8h-8.8z M105.6,184.8h8.8v8.8h-8.8z M132.0,184.8h8.8v8.8h-8.8z M176.0,184.8h8.8v8.8h-8.8z M184.8,184.8h8.8v8.8h-8.8z M193.6,184.8h8.8v8.8h-8.8z M0.0,193.6h8.8v8.8h-8.8z M17.6,193.6h8.8v8.8h-8.8z M26.4,193.6h8.8v8.8h-8.8z M35.2,193.6h8.8v8.8h-8.8z M52.8,193.6h8.8v8.8h-8.8z M79.2,193.6h8.8v8.8h-8.8z M88.0,193.6h8.8v8.8h-8.8z M105.6,193.6h8.8v8.8h-8.8z M114.4,193.6h8.8v8.8h-8.8z M132.0,193.6h8.8v8.8h-8.8z M193.6,193.6h8.8v8.8h-8.8z M211.2,193.6h8.8v8.8h-8.8z M0.0,202.4h8.8v8.8h-8.8z M52.8,202.4h8.8v8.8h-8.8z M70.4,202.4h8.8v8.8h-8.8z M79.2,202.4h8.8v8.8h-8.8z M88.0,202.4h8.8v8.8h-8.8z M96.8,202.4h8.8v8.8h-8.8z M105.6,202.4h8.8v8.8h-8.8z M114.4,202.4h8.8v8.8h-8.8z M123.2,202.4h8.8v8.8h-8.8z M132.0,202.4h8.8v8.8h-8.8z M158.4,202.4h8.8v8.8h-8.8z M184.8,202.4h8.8v8.8h-8.8z M202.4,202.4h8.8v8.8h-8.8z M211.2,202.4h8.8v8.8h-8.8z M0.0,211.2h8.8v8.8h-8.8z M8.8,211.2h8.8v8.8h-8.8z M17.6,211.2h8.8v8.8h-8.8z M26.4,211.2h8.8v8.8h-8.8z M35.2,211.2h8.8v8.8h-8.8z M44.0,211.2h8.8v8.8h-8.8z M52.8,211.2h8.8v8.8h-8.8z M70.4,211.2h8.8v8.8h-8.8z M96.8,211.2h8.8v8.8h-8.8z M123.2,211.2h8.8v8.8h-8.8z M158.4,211.2h8.8v8.8h-8.8z M184.8,211.2h8.8v8.8h-8.8z M193.6,211.2h8.8v8.8h-8.8z M202.4,211.2h8.8v8.8h-8.8z M211.2,211.2h8.8v8.8h-8.8z\" fill=\"#0f172a\" />\n    <!-- NPCI BHIM UPI Center Badge -->\n    <circle cx=\"110\" cy=\"110\" r=\"16\" fill=\"#ffffff\" />\n    <circle cx=\"110\" cy=\"110\" r=\"13\" fill=\"#10b981\" />\n    <text x=\"110\" y=\"114\" font-family=\"system-ui, sans-serif\" font-size=\"9\" font-weight=\"900\" fill=\"#ffffff\" text-anchor=\"middle\">UPI</text>\n  </svg>",
+          "intentLinks": {
+            "generic": "upi://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+            "gpay": "gpay://upi/pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+            "phonepe": "phonepe://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+            "paytm": "paytmmp://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+            "bhim": "bhim://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR",
+            "cred": "cred://pay?pa=payments%40nexuspay&pn=NexusPay+Global+Store&mc=5411&tr=tr_npci_76aa3a583677437d&tn=Idempotency+test+order&am=1999.00&cu=INR"
+          },
+          "status": "AWAITING_PAYMENT",
+          "customerVpa": null,
+          "expiryTimestamp": 1793989231584,
+          "initiatedAt": "2026-11-06T18:15:31.584Z"
+        },
+        "refundedAmount": 0,
+        "initiatedAt": "2026-11-06T18:15:31.584Z",
+        "capturedAt": null
+      }
+    },
     {
       "webhookId": "whk_5b9c1cbcb3560153",
       "event": "license.lifetime.activated",
@@ -6922,6 +8081,132 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud_dov6csft",
+      "timestamp": "2026-11-06T18:15:31.640Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_upi_76173924adef555e status: CAPTURED via UPI Direct (NPCI)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_dglu88e2",
+      "timestamp": "2026-11-06T18:15:31.639Z",
+      "action": "ORDER_CREATED",
+      "details": "Order order_56312e8ddf90ee6c created for USD 9",
+      "metadata": {}
+    },
+    {
+      "id": "aud_3e0hx3ja",
+      "timestamp": "2026-11-06T18:15:31.635Z",
+      "action": "PAYMENT_AWAITING_PAYMENT",
+      "details": "Payment pay_upi_76173924adef555e status: AWAITING_PAYMENT via UPI Direct (NPCI)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_ej9ojs38",
+      "timestamp": "2026-11-06T18:15:31.633Z",
+      "action": "ORDER_CREATED",
+      "details": "Order order_56312e8ddf90ee6c created for USD 9",
+      "metadata": {}
+    },
+    {
+      "id": "aud_efc9kzny",
+      "timestamp": "2026-11-06T18:15:31.633Z",
+      "action": "ONE_TIME_SESSION_CREATED",
+      "details": "Fresh QR & One-Time URL created for aarav@opendesk.app (ott_sess_a20d9cb21231beb6)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_n1lnlzfk",
+      "timestamp": "2026-11-06T18:15:31.629Z",
+      "action": "PAYMENT_REFUNDED",
+      "details": "Payment pay_rzp_fa5f272af42b892e status: REFUNDED via Razorpay Payment Gateway",
+      "metadata": {}
+    },
+    {
+      "id": "aud_gunx4cru",
+      "timestamp": "2026-11-06T18:15:31.628Z",
+      "action": "REFUND_ISSUED",
+      "details": "Refund rfnd_rzp_b9b79959327e971b of INR 600 issued for pay_rzp_fa5f272af42b892e",
+      "metadata": {}
+    },
+    {
+      "id": "aud_yxai8x7a",
+      "timestamp": "2026-11-06T18:15:31.624Z",
+      "action": "PAYMENT_PARTIALLY_REFUNDED",
+      "details": "Payment pay_rzp_fa5f272af42b892e status: PARTIALLY_REFUNDED via Razorpay Payment Gateway",
+      "metadata": {}
+    },
+    {
+      "id": "aud_irvre3xs",
+      "timestamp": "2026-11-06T18:15:31.623Z",
+      "action": "REFUND_ISSUED",
+      "details": "Refund rfnd_rzp_dc61aae984328673 of INR 400 issued for pay_rzp_fa5f272af42b892e",
+      "metadata": {}
+    },
+    {
+      "id": "aud_oy1z6bu2",
+      "timestamp": "2026-11-06T18:15:31.620Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_rzp_fa5f272af42b892e status: CAPTURED via Razorpay Payment Gateway",
+      "metadata": {}
+    },
+    {
+      "id": "aud_z2hw01gs",
+      "timestamp": "2026-11-06T18:15:31.617Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_intl_stripe_bcd09e636bff06b7 status: CAPTURED via NexusPay International (Global Rails)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_9anj6isf",
+      "timestamp": "2026-11-06T18:15:31.613Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_rzp_714dfb6a9a8cb118 status: CAPTURED via Razorpay Payment Gateway",
+      "metadata": {}
+    },
+    {
+      "id": "aud_3c04y6w8",
+      "timestamp": "2026-11-06T18:15:31.608Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_visa_695214e1f6a83209 status: CAPTURED via Visa / MasterCard Direct Rail",
+      "metadata": {}
+    },
+    {
+      "id": "aud_4qcnjspv",
+      "timestamp": "2026-11-06T18:15:31.602Z",
+      "action": "PAYMENT_REQUIRES_3DS2_AUTH",
+      "details": "Payment pay_visa_695214e1f6a83209 status: REQUIRES_3DS2_AUTH via Visa / MasterCard Direct Rail",
+      "metadata": {}
+    },
+    {
+      "id": "aud_onkxwg4g",
+      "timestamp": "2026-11-06T18:15:31.602Z",
+      "action": "CARD_TOKENIZED",
+      "details": "Card ending in 1111 (Visa) vaulted securely via AES-256-GCM",
+      "metadata": {}
+    },
+    {
+      "id": "aud_ii9sj6m1",
+      "timestamp": "2026-11-06T18:15:31.593Z",
+      "action": "PAYMENT_CAPTURED",
+      "details": "Payment pay_upi_0a14c9f7a0911ae8 status: CAPTURED via UPI Direct (NPCI)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_6y0gr6pp",
+      "timestamp": "2026-11-06T18:15:31.590Z",
+      "action": "PAYMENT_AWAITING_PAYMENT",
+      "details": "Payment pay_upi_0a14c9f7a0911ae8 status: AWAITING_PAYMENT via UPI Direct (NPCI)",
+      "metadata": {}
+    },
+    {
+      "id": "aud_pypmx9pi",
+      "timestamp": "2026-11-06T18:15:31.584Z",
+      "action": "PAYMENT_AWAITING_PAYMENT",
+      "details": "Payment pay_upi_721749a2b3641012 status: AWAITING_PAYMENT via UPI Direct (NPCI)",
+      "metadata": {}
+    },
     {
       "id": "aud_gx0no55b",
       "timestamp": "2026-11-03T06:36:03.804Z",

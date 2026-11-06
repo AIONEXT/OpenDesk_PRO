@@ -295,6 +295,71 @@ const server = http.createServer(async (req, res) => {
         return sendJson(res, 200, result);
       }
 
+      // 18. Create Fresh QR Code & One-Time Payment URL Session (15-Day Trial Lock Screen)
+      if (pathname === '/api/checkout/session' && method === 'POST') {
+        const body = await parseJsonBody(req);
+        const session = await aggregatorService.createOneTimePaymentSession(body);
+        return sendJson(res, 201, session);
+      }
+
+      // 19. Customer Email Authentication & Credential Provisioning (VAULT_MASTER_KEY, WEBHOOK_SECRET, etc.)
+      if (pathname === '/api/auth/provision' && method === 'POST') {
+        const body = await parseJsonBody(req);
+        const creds = aggregatorService.provisionCustomerCredentials(
+          body.customerEmail || body.email,
+          body.customerName || body.name,
+          body.tier || 'PRO'
+        );
+        return sendJson(res, 200, creds);
+      }
+
+      // 20. One-Time Payment URL Landing & Instant OTT Certificate Push
+      if (pathname.startsWith('/api/checkout/one-time/') && method === 'GET') {
+        const sessionId = pathname.split('/')[4];
+        const emailParam = parsedUrl.query.email || 'customer@opendesk.app';
+        const tierParam = parsedUrl.query.tier || 'PRO';
+        const checkoutResult = await aggregatorService.expressLifetimeCheckout({
+          tier: tierParam,
+          customerEmail: emailParam,
+          paymentMethod: 'One-Time Payment URL / QR'
+        });
+
+        if (parsedUrl.query.format === 'json') {
+          return sendJson(res, 200, checkoutResult);
+        }
+
+        const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>OpenDesk PRO — One-Time Payment & OTT Certificate Activation</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; max-width: 560px; width: 100%; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .badge { display: inline-block; background: #10b98122; color: #34d399; border: 1px solid #10b98155; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .box { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 12px; font-family: monospace; font-size: 12px; word-break: break-all; margin-top: 8px; color: #38bdf8; }
+    .label { font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-top: 14px; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">✅ OTT Update & App Certificate Activated ($9 Lifetime)</span>
+    <h2 style="margin: 12px 0 4px;">OpenDesk PRO v3.1 Lifetime Activated</h2>
+    <p style="color:#94a3b8; font-size:13px; margin:0 0 16px;">Session: ${sessionId} · Authenticated Email: <strong>${checkoutResult.customerEmail}</strong></p>
+    <div style="text-align:center; margin: 16px 0;">${checkoutResult.qrSvg}</div>
+    <div class="label">Ed25519 App Certificate (OTT Activated)</div>
+    <div class="box">${checkoutResult.appCertificate}</div>
+    <div class="label">Offline License Key</div>
+    <div class="box">${checkoutResult.licenseKey}</div>
+    <div class="label">Provisioned Customer Credentials (${checkoutResult.customerEmail})</div>
+    <div class="box">VAULT_MASTER_KEY=${checkoutResult.customerCredentials.VAULT_MASTER_KEY}<br/>WEBHOOK_SECRET=${checkoutResult.customerCredentials.WEBHOOK_SECRET}<br/>RAZORPAY_KEY_ID=${checkoutResult.customerCredentials.RAZORPAY_KEY_ID}<br/>API_ACCESS_TOKEN=${checkoutResult.customerCredentials.API_ACCESS_TOKEN}</div>
+  </div>
+</body>
+</html>`;
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        return res.end(html);
+      }
+
       // Endpoint not matched
       return sendJson(res, 404, { error: `API endpoint '${method} ${pathname}' not found.` });
     } catch (err) {

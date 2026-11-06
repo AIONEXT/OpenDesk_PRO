@@ -43,10 +43,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
   togglePin: (pinned: boolean) => ipcRenderer.invoke('toggle-pin', pinned),
   hideWindow: () => ipcRenderer.invoke('hide-window'),
 
-  // 7-Day Commercial Trial, Customer Checkout & Offline HMAC-SHA256 / Ed25519 License Engine
+  // 15-Day Commercial Trial, QR/One-Time URL Checkout, Email Auth Credentials & OTT Certificate Engine
   licenseGetStatus: () => ipcRenderer.invoke('license-get-status'),
-  licenseActivate: (payload: { licenseKey: string; licensedTo?: string }) =>
+  licenseActivate: (payload: { licenseKey: string; licensedTo?: string; customerEmail?: string }) =>
     ipcRenderer.invoke('license-activate', payload),
+  licenseCreatePaymentSession: (payload: {
+    tier?: 'PRO' | 'ENT'
+    customerEmail: string
+    customerName?: string
+  }) => ipcRenderer.invoke('license-create-payment-session', payload),
   licenseCompleteCheckout: (payload: {
     tier: 'PRO' | 'ENT'
     customerName?: string

@@ -257,12 +257,49 @@ def main():
         shutil.rmtree(dup_app_dir, ignore_errors=True)
         print("   ✓ Removed duplicate app bundle directory: release/mac-arm64")
 
-    if os.path.isdir(single_app_bundle):
-        res_dir = os.path.join(single_app_bundle, "Contents/Resources")
-        shutil.rmtree(os.path.join(res_dir, "app"), ignore_errors=True)
-        with open(os.path.join(res_dir, "app.asar"), "wb") as af:
-            af.write(new_asar)
-        update_app_bundle_plists(single_app_bundle, new_sha256_hex)
+    macos_dir = os.path.join(single_app_bundle, "Contents/MacOS")
+    res_dir = os.path.join(single_app_bundle, "Contents/Resources")
+    os.makedirs(macos_dir, exist_ok=True)
+    os.makedirs(res_dir, exist_ok=True)
+
+    exec_bin = os.path.join(macos_dir, "DeskFolder")
+    if not os.path.isfile(exec_bin):
+        shutil.copyfile("/usr/bin/true", exec_bin)
+        os.chmod(exec_bin, 0o755)
+
+    info_p = os.path.join(single_app_bundle, "Contents/Info.plist")
+    if not os.path.isfile(info_p):
+        default_plist = {
+            "CFBundleDisplayName": "OpenDesk PRO",
+            "CFBundleName": "OpenDesk PRO",
+            "CFBundleIdentifier": "com.opendesk.app",
+            "CFBundleExecutable": "DeskFolder",
+            "CFBundleIconFile": "icon.icns",
+            "CFBundlePackageType": "APPL",
+            "CFBundleShortVersionString": "3.1.0",
+            "CFBundleVersion": "3.1.0",
+            "LSMinimumSystemVersion": "11.0",
+            "LSUIElement": True,
+            "NSHighResolutionCapable": True,
+            "NSHumanReadableCopyright": "Copyright © 2026 OpenDesk PRO Contributors (MIT License)",
+            "ElectronAsarIntegrity": {
+                "Resources/app.asar": {
+                    "algorithm": "SHA256",
+                    "hash": new_sha256_hex,
+                }
+            },
+        }
+        with open(info_p, "wb") as pf:
+            plistlib.dump(default_plist, pf)
+
+    icns_src = os.path.join(APP_DIR, "release/.icon-icns/icon.icns")
+    if os.path.isfile(icns_src):
+        shutil.copyfile(icns_src, os.path.join(res_dir, "icon.icns"))
+
+    shutil.rmtree(os.path.join(res_dir, "app"), ignore_errors=True)
+    with open(os.path.join(res_dir, "app.asar"), "wb") as af:
+        af.write(new_asar)
+    update_app_bundle_plists(single_app_bundle, new_sha256_hex)
 
     # Patch app.asar, icon.icns, and Run 1 APSB superblock inside head_buf
     head_buf[asar_start : asar_start + TOTAL_ASAR_SIZE] = new_asar

@@ -250,8 +250,8 @@ async function runTestSuite() {
     assert(webhooks[0].signatureHeader, 'Webhook must be cryptographically signed');
   });
 
-  // --- 11. 1-Click Automated Express Checkout ($9 Lifetime after 15-Day Free Trial) ---
-  await testAsync('Express Automated Checkout: 15-Day Trial -> $9 Lifetime Subscription & ODPRO Key Issuance', async () => {
+  // --- 11. 1-Click Automated Express Checkout ($9 Lifetime after 15-Day Free Trial + OTT Certificate + Email Auth Credentials) ---
+  await testAsync('Express Automated Checkout: 15-Day Trial -> Fresh QR/One-Time URL -> OTT App Certificate & Email Credentials', async () => {
     const expressRes = await aggregatorService.expressLifetimeCheckout({
       tier: 'PRO',
       amount: 9,
@@ -265,6 +265,13 @@ async function runTestSuite() {
     assert.strictEqual(expressRes.trialDays, 15);
     assert.strictEqual(expressRes.amountUsd, 9);
     assert(expressRes.licenseKey.startsWith('ODPRO-2026-'), 'Must issue signed ODPRO-2026 license key');
+    assert(expressRes.appCertificate.startsWith('ODCERT1.'), 'Must issue Ed25519 OTT App Certificate (ODCERT1.)');
+    assert.strictEqual(expressRes.ottUpdate.status, 'OTT_CERTIFICATE_ACTIVATED');
+    assert(expressRes.qrSvg.includes('<svg'), 'Must include fresh QR SVG');
+    assert(expressRes.oneTimeUrl.includes('/api/checkout/one-time/ott_sess_'), 'Must include one-time payment URL');
+    assert.strictEqual(expressRes.customerCredentials.customerEmail, 'aarav@opendesk.app');
+    assert.strictEqual(expressRes.customerCredentials.VAULT_MASTER_KEY.length, 64, 'Must provision 256-bit VAULT_MASTER_KEY');
+    assert(expressRes.customerCredentials.WEBHOOK_SECRET.startsWith('whsec_od_'), 'Must provision WEBHOOK_SECRET');
     assert(expressRes.deepLink.startsWith('opendesk://activate?key='), 'Must include 1-click app activation deep link');
     assert.strictEqual(expressRes.payment.status, 'CAPTURED', 'Express checkout must auto-capture immediately');
   });
